@@ -1,3 +1,6 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+welcome_page:
+    path: /welcome
+    defaults: { _controller: AppBundle:Welcome:welcome}
