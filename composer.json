@@ -11,7 +11,6 @@
             "app/AppCache.php"
         ]
     },
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.8.*",
@@ -21,12 +20,29 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "twbs/bootstrap": "3.0.*",
+        "jquery/jquery": "1.9.1",
+        "leafo/lessphp": "dev-master",
+        "symfony/assetic-bundle": "^2.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7"
     },
+    "repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name": "jquery/jquery",
+            "version": "1.9.1",
+            "dist": {
+                "url": "http://code.jquery.com/jquery-1.9.1.min.js",
+                "type": "file"
+            }
+        }
+    }
+],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
