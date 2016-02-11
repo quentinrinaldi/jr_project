@@ -3704,7 +3704,7 @@ input[type="button"].btn-block {
 }
 
 .logo {
-  width:100px;
+  width:70px;
 }
 
 .btn-group .btn + .btn,
@@ -4354,9 +4354,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+  height: 90px;
+  /*border: 1px solid transparent;*/
+  color:#fff;
+  font-size: 16px;
+  font-family: @font-family-base;
+  text-transform: uppercase;
+  letter-spacing: 0px;
 }
 
 .navbar:before,
@@ -4495,7 +4499,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
   right: 0;
   left: 0;
   z-index: 1030;
@@ -4516,12 +4519,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0;
-  border-width: 1px 0 0;
 }
 
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
+  padding: 10px 15px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -4569,6 +4571,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-nav {
   margin: 7.5px -15px;
+  padding:20px;
 }
 
 .navbar-nav > li > a {
@@ -4754,7 +4757,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777777;
+  color: #fff;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -4835,16 +4838,15 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse {
   background-color: #222222;
-  border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #fff;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  color: #999999;
   background-color: transparent;
 }
 
@@ -4853,12 +4855,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #fff;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #999999;
   background-color: transparent;
 }
 

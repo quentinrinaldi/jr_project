@@ -1,0 +1,45 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block stylesheet%}
+    <link rel="stylesheet" href="{{ asset('assets/css/signup_form.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="signup_container">
+{{ form_start(form, {'attr': {'class': 'form-signup'}}) }}
+ <h2 class="form-signup-heading">Please sign up</h2>
+    {{ form_errors(form) }}
+
+    {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}})}}
+    {{ form_errors(form.firstName) }}
+
+    {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}})}}
+    {{ form_errors(form.lastName) }}
+
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
+    {{ form_errors(form.email) }}
+    
+    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+    {{ form_errors(form.plainPassword.first) }}
+   
+    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Retapez votre mot de passe'}}) }}
+    {{ form_errors(form.plainPassword.second) }}
+    <div class="checkbox">
+    <label>
+        <input value="remember-me" type="checkbox"> Remember me
+    </label>
+</div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
+    {{ form_end(form) }}
+</div>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  
+
+
+    {% endblock %}

@@ -1,0 +1,41 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block stylesheet%}
+    <link rel="stylesheet" href="{{ asset('assets/css/login_form.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="login_container">
+
+      <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        {% if error %}
+    		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <input class="form-control" id="username" name="_username" placeholder="Email address" required="required" autofocus="" type="email">
+
+        <input id="password" name = "_password" class="form-control" placeholder="Mot de Passe" required="required" type="password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  
+
+
+    {% endblock %}
+    

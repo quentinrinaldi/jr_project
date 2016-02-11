@@ -9,13 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Casting-event</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/modern-buisness.css') }}" />
 
    
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
         <!-- jQuery -->
 
 
@@ -25,7 +25,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -39,11 +38,14 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-
-
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Casting-Public.fr</a>
+                <div class="navbar-brand">
+                    <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
+                    &
+                    <img src="http://www.idille.com/img/top/logo-idille.png" class="logo" />
+               <!-- <a class="navbar-brand" href="index.html">Casting-Public.fr</a>-->
+           </div>
 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,17 +64,16 @@
                         <a href="contact.html">Nous contacter</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right account-nav">
-                    <li>
-                        <button class="btn btn-primary navbar_button" type="submit">Se connecter</button>
-                     <!--   <a href="contact.html" class="btn btn-primary login_button">Se connecter</a>-->
-                    </li>
-                    
-                    <li>
-                      <!--  <a href="contact.html">S'inscrire</a> -->
-                      <button class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</button>
-                    </li>
-                </ul>
+                <div class="nav navbar-nav navbar-right account-nav">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        Connecté en tant que {{ app.user.username }}
+                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                      <!--  <button class="btn btn-primary navbar_button" type="submit" onclick="location.href='/login'">Se connecter</button>-->
+
+                      {% else %}
+                        <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button">Se connecter</a>
+                      <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</a>
+                      {% endif %}
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -92,8 +93,12 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-             <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Ne regardez plus la tv. ');"></div>
+            <!-- <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Ne regardez plus la tv. ');"></div>-->
             <!--   <div class="fill" style="background-image:url('http://jrproduction.tv/images/header.png');"></div>-->
+              <div class="fill" style="background-image:url('https://awesomewallpapers.files.wordpress.com/2014/02/background-tv.jpg');">
+                    <div class="overlay-fill"></div>
+              </div>
+
                 <div class="carousel-caption">
                     <h2>Vivez-la !</h2>
                 </div>
