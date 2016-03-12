@@ -1,20 +1,21 @@
-{% extends "UserBundle::layout.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block stylesheet%}
     <link rel="stylesheet" href="{{ asset('assets/css/login_form.css') }}" />
+    <script src="{{ asset('assets/js/modal.js') }}"></script>
 {% endblock %}
 
-{% block body %}
+{% block body_content %}
 
-
-    <div class="login_container">
+      <div class="container">
+      <div class="login_container">
 
       <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
 
         {% if error %}
-    		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
@@ -30,10 +31,7 @@
       </form>
 
     </div> <!-- /container -->
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</div>
   
 
 

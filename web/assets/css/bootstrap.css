@@ -3646,7 +3646,13 @@ input[type="button"].btn-block {
   }
 }
 
-.account-nav{
+.account-nav-logged{
+  right:35px;
+  position: absolute;
+  line-height: 50px;
+}
+
+.account-nav-anonymous{
   right:35px;
   position: absolute;
 }
@@ -3657,7 +3663,7 @@ input[type="button"].btn-block {
 }
 
 .navbar_button {
-  line-height: 0px;
+  line-height: 17px;
   margin-right: 10px;
   margin-top: 11px;
   height: 30px;
@@ -3684,7 +3690,7 @@ input[type="button"].btn-block {
 }
 .menu-bar{
   position :absolute;
-  right:300px;
+  left:300px;
 } 
 
 .btn-group > .btn:hover,
@@ -3704,7 +3710,7 @@ input[type="button"].btn-block {
 }
 
 .logo {
-  width:70px;
+  width:60px;
 }
 
 .btn-group .btn + .btn,
@@ -4354,10 +4360,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  height: 90px;
+  height: 80px;
   /*border: 1px solid transparent;*/
   color:#fff;
-  font-size: 16px;
+  font-size: 15px;
   font-family: @font-family-base;
   text-transform: uppercase;
   letter-spacing: 0px;
@@ -4526,6 +4532,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 10px 15px;
   font-size: 18px;
   line-height: 20px;
+  position: absolute;
+  left:100px;
 }
 
 .navbar-brand:hover,

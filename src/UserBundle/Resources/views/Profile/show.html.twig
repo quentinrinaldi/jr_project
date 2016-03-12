@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+{% block body_content %}
+
+<div class="container">
+    <h1>Editer vos informations personnelles </h1>
+  	<hr>
+	<div class="row">
+
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          <strong>Attention :</strong> Le changement de votre adresse mail nécessite une nouvelle vérification de celle ci.
+        </div>
+        <h3>Personal info</h3>
+        
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    	{{ form_widget(form) }}
+		    <div>
+		         <input class="btn btn-primary" value="Save Changes" type="submit">
+		    </div>
+		{{ form_end(form) }}
+      </div>
+  </div>
+</div>
+<hr> 
+
+
+{% endblock %}

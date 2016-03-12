@@ -21,15 +21,29 @@ class User extends BaseUser
     protected $id;
     /**
      * @ORM\Column(type="string")
-      * @Assert\NotBlank(message="Name missing!")
+      * @Assert\NotBlank()
     */
     protected $lastName;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Name missing!")
+     * @Assert\NotBlank()
     */
     protected $firstName;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */    
+    protected $birthday;
+
+    /**
+     * @ORM\Column(type="string",length=1)
+     * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"M", "F"})
+     */    
+    protected $gender;
+
 
     public function __construct()
     {
@@ -57,11 +71,29 @@ class User extends BaseUser
     }
 
     public function setEmail($email)
-{
-    $email = is_null($email) ? '' : $email;
-    parent::setEmail($email);
-    $this->setUsername($email);
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
 
-    return $this;
-}
+        return $this;
+    }
+
+    public function setGender($gender) 
+    {
+        $this->gender = $gender; 
+    }
+
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function setBirthday($birthday) 
+    {
+        $this->birthday = $birthday; 
+    }
+
+    public function getBirthday() {
+        return $this->birthday;
+    }
 }

@@ -1,6 +1,16 @@
 .form-signup {
-	margin:0 auto;
+	margin:auto auto;
 	max-width: 330px;
 	padding: 15px;
 	background-color: #eee; 
+
 }
+
+.signup_container {
+	
+	background-color: #eee;
+	min-height: 500px;
+
+}
+
+

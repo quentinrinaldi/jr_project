@@ -1,13 +1,13 @@
-{% extends "UserBundle::layout.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block stylesheet%}
     <link rel="stylesheet" href="{{ asset('assets/css/signup_form.css') }}" />
 {% endblock %}
 
-{% block body %}
+{% block body_content %}
 
 
-    <div class="signup_container">
+    <!-- <div class="signup_container"> -->
 {{ form_start(form, {'attr': {'class': 'form-signup'}}) }}
  <h2 class="form-signup-heading">Please sign up</h2>
     {{ form_errors(form) }}
@@ -34,8 +34,8 @@
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
     {{ form_end(form) }}
-</div>
-
+<!-- </div>
+ -->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
