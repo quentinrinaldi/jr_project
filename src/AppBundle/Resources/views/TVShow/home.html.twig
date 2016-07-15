@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
-
+{% block stylesheet%} 
+<link rel="stylesheet" href="{{ asset('assets/css/tvshow.css') }}" />
+{% endblock %}
 {% block body_content %}
 
     <div class="container">
@@ -20,13 +22,13 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="http://www.jrproduction.tv/images/header.png" alt="">
+                <img class="img-responsive center-block" src="http://www.jrproduction.tv/images/header.png" alt="">
             </div>
         </div>
         <!-- Content Row -->
         <div class="row">
             <div class="col-lg-12">
-                <p>Most of Start Bootstrap's unstyled templates can be directly integrated into the Modern Business template. You can view all of our unstyled templates on our website at <a href="http://startbootstrap.com/template-categories/unstyled">http://startbootstrap.com/template-categories/unstyled</a>.</p>
+                <p>Toutes nos émissions sont ici. Cliquez sur l'emission qui vous interesse pour accéder à sa page !</p>
             </div>
 
             {% for tvShow in tvShows %}
@@ -41,6 +43,9 @@
                     <small>Pas de tournage prévu</small>
                 </h1>
             </div>
+        </div>
+
+    </div>
 
         {% endblock %}
 

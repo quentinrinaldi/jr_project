@@ -52,6 +52,10 @@ contact:
     path: /contact
     defaults: { _controller: AppBundle:Help:showContact}
 
+legal_notice:
+    path: /mentions_legales
+    defaults: { _controller: AppBundle:Help:showLegalNotice}
+    
 request_registration_form:
     path: /registration_request/{recordingID}/form
     defaults: { _controller: AppBundle:RegistrationRequest:generateForm}

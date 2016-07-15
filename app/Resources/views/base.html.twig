@@ -10,24 +10,19 @@
     <meta name="author" content="">
 
     <title>Casting-Public</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/modern-buisness.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/general.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
     {% block stylesheet%} {% endblock %}
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
     <!-- jQuery -->
 
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     </head>
 
     <!DOCTYPE html>
@@ -40,97 +35,97 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="navbar-brand">
-                            <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
-                            <!-- <a class="navbar-brand" href="index.html">Casting-Public.fr</a>-->
-                        </div>
-                    </div>
+            <header class="header">
+                <div class="header_logo"> 
+                    <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
+                </div>
+                <nav class="navbar navbar-inverse custom-navbar" role="navigation">
+          
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right menu-bar">
+                        <ul class="nav navbar-nav menu-bar">
                             <li>
                                 <a href="{{ path('home') }}">Accueil</a>
-                            <li>
-                                <a href="about.html">Qui sommes-nous ?</a>
                             </li>
-                            <li>
-                                <a href="{{ path('tvshows') }}">Toutes nos émissions</a>
-                            </li>
-                            <li>
-                                <a href="services.html">Le calendrier</a>
-                            </li>
-                            <li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{ path('faq') }}">FAQ</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('contact') }}">Nous contacter</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-post.html">Blog Post</a>
-                                        </li>
-                                    </ul>
+                                <li>
+                                    <a href="about.html">Qui sommes-nous ?</a>
                                 </li>
-                                {# <a href="contact.html">Nous contacter</a> #}
-                            </li>
-                        </ul>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-  
-                           <div class="nav navbar-nav navbar-right account-nav-logged btn-group">
+                                <li>
+                                    <a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+                                </li>
+                                <li>
+                                    <a href="services.html">Le calendrier</a>
+                                </li>
+                                <li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="{{ path('faq') }}">FAQ</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('contact') }}">Nous contacter</a>
+                                            </li>
+                                             <li>
+                                                <a href="{{ path('legal_notice') }}">Mentions légales</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {# <a href="contact.html">Nous contacter</a> #}
+                                </li>
+                            </ul>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                             <div class="nav navbar-nav account-nav-logged btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
-    <ul class="dropdown-menu">
-                            <li><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                        </ul>
-                            {% else %}
-                            <div class="nav navbar-nav navbar-right account-nav-anonymous">
-                          <!-- 
-                           <button class="btn btn-primary navbar_button" id="login_button" type="submit" data-toggle="modal" data-target="#login_modal">Se connecter</button> 
-                           <button class="btn btn-primary navbar_button" id="signup_button" type="submit" onclick="location.href='/login'">S'inscrire</button> -->
-                           <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button">Se connecter</a>
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    </ul>
+                                </div>
+                                    {% else %}
+                                    <div class="nav navbar-nav account-nav-anonymous">
+                
+                           <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button" id="login-button">Se connecter</a>
                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</a>
+                       </div>
                        {% endif %}
-                   </div>
+                  
 
                    <!-- /.navbar-collapse -->
-               </div>
-               <!-- /.container -->
-           </div>
+        
        </nav>
+   </header>
        {% block slides %} {% endblock %}
 
         {% block body_content %}
         {% endblock %}
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+        <footer class="footer">
+                <div class="container">
+                    <p><span id="copyright">Copyright &copy; JRProduction </span><span>|</span><span><a href="{{path('legal_notice') }}">Mentions légales</a></span><span>|</span><span><a href="{{ path('contact')}}">Nous contacter</a></span></p>
                 </div>
-            </div>
+         
         </footer>
         
         <!-- Footer -->
         
 
         <!-- /.container -->
-
+        <div class="loginModal"></div>
     </body>
-
+<script>
+$(document).ready(function() {
+$('.login-button').click(function() {
+                var id = this.id;
+                var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
+                url = url.replace("recording_ID", id);
+                $.get(url, function(data) {
+                    $("#myModal").replaceWith(data);
+                    $('#myModal').modal();
+                })});
+        });
+</script>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -139,4 +134,4 @@
     {% block scripts %}
     {% endblock %}
 
-        </html>
+    </html>

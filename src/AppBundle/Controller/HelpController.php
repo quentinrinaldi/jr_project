@@ -24,4 +24,8 @@ class HelpController extends Controller
     {
         return $this->render('AppBundle:Help:contact.html.twig',array());
     }
+
+    public function showLegalNoticeAction() {
+        return $this->render('AppBundle:Help:legal_notice.html.twig',array());
+    }
 }
