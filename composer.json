@@ -25,7 +25,12 @@
         "jquery/jquery": "1.9.1",
         "leafo/lessphp": "dev-master",
         "symfony/assetic-bundle": "^2.7",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "egeloen/ckeditor-bundle": "^4.0",
+        "kartik-v/bootstrap-fileinput": "dev-master",
+        "vich/uploader-bundle": "^1.1",
+        "moment/moment": "^2.14",
+        "eonasdan/bootstrap-datetimepicker": "^4.17"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

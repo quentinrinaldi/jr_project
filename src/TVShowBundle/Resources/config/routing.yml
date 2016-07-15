@@ -1,3 +1,0 @@
-tv_show_homepage:
-    path:     /
-    defaults: { _controller: TVShowBundle:Default:index }

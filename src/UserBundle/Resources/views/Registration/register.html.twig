@@ -2,14 +2,16 @@
 
 {% block stylesheet%}
     <link rel="stylesheet" href="{{ asset('assets/css/signup_form.css') }}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block body_content %}
 
-
+<article class="main center-block">
+ <h3 class="form-signup-heading">S'inscrire</h2>
     <!-- <div class="signup_container"> -->
 {{ form_start(form, {'attr': {'class': 'form-signup'}}) }}
- <h2 class="form-signup-heading">Please sign up</h2>
+
     {{ form_errors(form) }}
 
     {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}})}}
@@ -24,22 +26,39 @@
     {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
     {{ form_errors(form.plainPassword.first) }}
    
-    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Retapez votre mot de passe'}}) }}
+    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmer le mot de passe'}}) }}
     {{ form_errors(form.plainPassword.second) }}
-    <div class="checkbox">
-    <label>
-        <input value="remember-me" type="checkbox"> Remember me
-    </label>
-</div>
 
+
+   <div class="form-group">
+          <div class="col-md-12">
+
+        {{ form_widget(form.birthday, {'attr': {'class': 'form-control'}}) }}
+        </div></div>
+ 
+    {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.gender) }}
+
+    {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.phoneNumber) }}
     <button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
     {{ form_end(form) }}
 <!-- </div>
  -->
+</article>
+
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  
+   <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
-
+    {% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+            $(function () {
+                $('#fos_user_registration_form_birthday').datetimepicker({
+                    format: 'DD/MM/YYYY',
+                    keepOpen: true 
+                });
+            });
+        </script>
     {% endblock %}

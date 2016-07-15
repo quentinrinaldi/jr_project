@@ -1,0 +1,13 @@
+<tr>
+    <td>{{ recording.tvShow.title }}</td>
+    <td>{{ recording.location.name }}</td>
+    <td>{{ recording.date |date('Y-m-d')}}</td>
+    <td>{{ recording.startTime |date('h:i') }}</td>
+    <td>{{ recording.endTime  |date('h:i')}}</td>
+    <td>{{ recording.recordingCondition }}</td>
+    <td>{{ recording.availability }}</td>
+    <td><form action="{{ path('remove_recording', {'id': recording.id}) }}" method="post">
+                 <a href="{{path('edit_recording', {'id': recording.id}) }}" class="fa fa-edit" role="button"></a>
+                <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+            </form>   </td>
+</tr>

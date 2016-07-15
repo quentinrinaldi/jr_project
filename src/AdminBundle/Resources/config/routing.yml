@@ -1,0 +1,99 @@
+admin_homepage:
+    path: /
+    defaults: { _controller: AdminBundle:Home:home }
+
+admin_channels:
+    path: /channels
+    defaults: { _controller: AdminBundle:Channel:showAll}
+
+add_channel:
+    path: /channels/add
+    defaults: { _controller: AdminBundle:Channel:add}
+    methods: [GET, POST]
+
+edit_channel:
+    path: /channels/{id}
+    defaults: { _controller: AdminBundle:Channel:edit}
+    methods: [GET, POST]
+
+remove_channel:
+    path: /channels/{id}/remove 
+    defaults: { _controller: AdminBundle:Channel:remove}
+    methods: [POST]
+
+admin_tvshows:
+    path: /tvshows
+    defaults: { _controller: AdminBundle:TVShow:showAll}
+
+add_tvshow:
+    path: /tvshows/add
+    defaults: { _controller: AdminBundle:TVShow:add}
+    methods: [GET, POST]
+
+edit_tvshow:
+    path: /tvshows/{id}
+    defaults: { _controller: AdminBundle:TVShow:edit}
+    methods: [GET, POST]
+
+remove_tvshow:
+    path: /tvshows/{id}/remove 
+    defaults: { _controller: AdminBundle:TVShow:remove}
+    methods: [POST]
+
+admin_locations:
+    path: /locations
+    defaults: { _controller: AdminBundle:Location:showAll}
+
+add_location:
+    path: /locations/add
+    defaults: { _controller: AdminBundle:Location:add}
+    methods: [GET, POST]
+
+edit_location:
+    path: /locations/{id}
+    defaults: { _controller: AdminBundle:Location:edit}
+    methods: [GET, POST]
+
+remove_location:
+    path: /locations/{id}/remove 
+    defaults: { _controller: AdminBundle:Location:remove}
+    methods: [POST]
+
+admin_faq:
+    path: /faq
+    defaults: { _controller: AdminBundle:FAQ:showFAQ}
+
+add_to_faq:
+    path: /faq/add
+    defaults: { _controller: AdminBundle:FAQ:addToFAQ}
+    methods: [GET, POST]
+
+edit_faq:
+    path: /faq/{id}
+    defaults: { _controller: AdminBundle:FAQ:edit}
+    methods: [GET, POST]
+
+remove_from_faq:
+    path: /faq/{id}/remove 
+    defaults: { _controller: AdminBundle:FAQ:removeFromFAQ}
+    methods: [POST]
+
+admin_recordings:
+    path: /recordings
+    defaults: { _controller: AdminBundle:Recording:showAll}
+
+add_recording:
+    path: /recordings/add
+    defaults: { _controller: AdminBundle:Recording:add}
+    methods: [GET, POST]
+
+edit_recording:
+    path: /recordings/{id}
+    defaults: { _controller: AdminBundle:Recording:edit}
+    methods: [GET, POST]
+
+remove_recording:
+    path: /recordings/{id}/remove 
+    defaults: { _controller: AdminBundle:Recording:remove}
+    methods: [POST]
+

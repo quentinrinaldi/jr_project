@@ -12,11 +12,13 @@
     <title>Casting-Public</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/modern-buisness.css') }}" />
-{% block stylesheet%} {% endblock %}
-   
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/general.css') }}" />
+    {% block stylesheet%} {% endblock %}
+
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
-        <!-- jQuery -->
+    <!-- jQuery -->
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,92 +26,117 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    </head>
 
-</head>
-
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        </head>
 
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="navbar-brand">
-                        <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
-                        &
-                        <img src="http://www.idille.com/img/top/logo-idille.png" class="logo" />
-                   <!-- <a class="navbar-brand" href="index.html">Casting-Public.fr</a>-->
+        <body>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand">
+                            <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
+                            <!-- <a class="navbar-brand" href="index.html">Casting-Public.fr</a>-->
+                        </div>
                     </div>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right menu-bar">
-                        <li>
-                            <a href="about.html">Qui sommes-nous ?</a>
-                        </li>
-                        <li>
-                            <a href="services.html">Toutes nos émissions</a>
-                        </li>
-                        <li>
-                            <a href="services.html">Le calendrier</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Nous contacter</a>
-                        </li>
-                    </ul>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right menu-bar">
+                            <li>
+                                <a href="{{ path('home') }}">Accueil</a>
+                            <li>
+                                <a href="about.html">Qui sommes-nous ?</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+                            </li>
+                            <li>
+                                <a href="services.html">Le calendrier</a>
+                            </li>
+                            <li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ path('faq') }}">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('contact') }}">Nous contacter</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-post.html">Blog Post</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {# <a href="contact.html">Nous contacter</a> #}
+                            </li>
+                        </ul>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                         <div class="nav navbar-nav navbar-right account-nav-logged">
-                            Bonjour {{ app.user.firstname }}
-                        <a href="{{ path('fos_user_profile_show') }}">Mon compte</a>
-                        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-                         {% else %}
-                        <div class="nav navbar-nav navbar-right account-nav-anonymous">
+  
+                           <div class="nav navbar-nav navbar-right account-nav-logged btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
+    <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        </ul>
+                            {% else %}
+                            <div class="nav navbar-nav navbar-right account-nav-anonymous">
                           <!-- 
                            <button class="btn btn-primary navbar_button" id="login_button" type="submit" data-toggle="modal" data-target="#login_modal">Se connecter</button> 
                            <button class="btn btn-primary navbar_button" id="signup_button" type="submit" onclick="location.href='/login'">S'inscrire</button> -->
-                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button">Se connecter</a>
-                          <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</a>
-                          {% endif %}
-                    </div>
+                           <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button">Se connecter</a>
+                           <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</a>
+                       {% endif %}
+                   </div>
 
-                <!-- /.navbar-collapse -->
+                   <!-- /.navbar-collapse -->
+               </div>
+               <!-- /.container -->
+           </div>
+       </nav>
+       {% block slides %} {% endblock %}
+
+        {% block body_content %}
+        {% endblock %}
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
-            <!-- /.container -->
             </div>
-        </nav>
-         {% block slides %} {% endblock %}
-        <div class="container">
-        {% block body_content %}{% endblock %}
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-                <!-- Footer -->
+        </footer>
+        
+        <!-- Footer -->
         
 
-    <!-- /.container -->
+        <!-- /.container -->
 
     </body>
 
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets/js/moment.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
 
-</html>
+        </html>

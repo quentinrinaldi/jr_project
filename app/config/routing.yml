@@ -1,6 +1,6 @@
-tv_show:
-    resource: "@TVShowBundle/Resources/config/routing.yml"
-    prefix:   /
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
 
 root:
     path: /
@@ -13,8 +13,8 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-welcome_page:
-    path: /welcome
+home:
+    path: /home
     defaults: { _controller: AppBundle:Welcome:welcome}
 
 fos_user_security:
@@ -36,3 +36,23 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
+tvshows:
+    path: /emissions
+    defaults: { _controller: AppBundle:TVShow:showAll}
+
+show_tvshow:
+    path: /emissions/{id}
+    defaults: { _controller: AppBundle:TVShow:show}
+
+faq:
+    path: /faq
+    defaults: { _controller: AppBundle:Help:showFAQ}
+
+contact:
+    path: /contact
+    defaults: { _controller: AppBundle:Help:showContact}
+
+request_registration_form:
+    path: /registration_request/{recordingID}/form
+    defaults: { _controller: AppBundle:RegistrationRequest:generateForm}
+    methods: [GET, POST]

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{count}}">{{ questionAnswer.question }} </a>
+    </h4>
+    <span class="buttons">
+     <form action="{{ path('remove_from_faq', {'id': questionAnswer.id}) }}" method="post">
+      <a href="{{path('edit_faq', {'id': questionAnswer.id}) }}" class="fa fa-edit" role="button"> Editer</a>
+      <button type="submit" name="your_name" value="Supprimer" class="btn-link glyphicon glyphicon-remove">Supprimer</button>
+    </form> 
+  </span>
+
+</div>
+<div id="collapse{{count}}" class="panel-collapse collapse">
+  <div class="panel-body">
+    {{ questionAnswer.answer }} 
+  </div>
+</div>
+</div>

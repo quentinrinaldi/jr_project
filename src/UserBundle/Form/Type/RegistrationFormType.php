@@ -12,6 +12,21 @@ class RegistrationFormType extends AbstractType
         $builder->add('lastName');
         $builder->add('firstName');
         $builder->remove('username');
+        $builder->add('gender','choice', array(
+        'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
+        'required'  => true,
+        'label'  => 'Vous êtes',
+        ));
+        $builder->add('birthday','date', array(
+            'widget' => 'single_text',
+'input' => 'datetime',
+'format' => 'dd/MM/yyyy',
+        'label'  => 'Birthday',
+        ));
+        $builder->add('phoneNumber','number', array(
+      
+        'label'  => 'Numéro de téléphone',
+        ));
     }
 
     public function getParent()

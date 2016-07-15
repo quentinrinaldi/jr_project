@@ -1,0 +1,18 @@
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{ channel.name }}
+        </div>
+        <div class="panel-body">
+            <img src="{{ asset('uploads/' ~ channel.imageName) }}"></img>
+        </div>
+        <div class="panel-footer">
+           
+            <form action="{{ path('remove_channel', {'id': channel.id}) }}" method="post" class="channel-button">
+                 <a href="{{path('edit_channel', {'id': channel.id}) }}" class="fa fa-edit" role="button"></a>
+                <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+            </form>   
+            {# <a href="{{ path('remove_channel', {'id': channel.id}) }}" class="glyphicon glyphicon-remove" role="button"></a> #}
+        </div>
+    </div>
+</div>

@@ -5,6 +5,8 @@ namespace UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\RegistrationRequest as RegistrationRequest;
 
 /**
  * @ORM\Entity
@@ -41,59 +43,96 @@ class User extends BaseUser
      * @ORM\Column(type="string",length=1)
      * @Assert\NotBlank()
      * @Assert\Choice(choices = {"M", "F"})
-     */    
+     */
+
     protected $gender;
 
+    /**
+     * @ORM\Column(type="integer",length=10)
+     * @Assert\NotBlank()
+     */
+    protected $phoneNumber;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->roles = array('ROLE_USER');
+  /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user")
+   */
+  protected $registrationRequests;
 
-    }
+  public function __construct()
+  {
+    parent::__construct();
+    $this->roles = array('ROLE_USER');
+    $this->registrationRequests = new ArrayCollection();
 
-    public function getLastName() 
-    {
-        return $this->lastName;
-    }
+}
 
-    public function getFirstName() 
-    {
-        return $this->firstName;
-    }
+public function getLastName() 
+{
+    return $this->lastName;
+}
 
-    public function setLastName($lastName) {
-        $this->lastName = $lastName;
-    }
+public function getFirstName() 
+{
+    return $this->firstName;
+}
 
-    public function setFirstName($firstName) {
-        $this->firstName = $firstName;
-    }
+public function setLastName($lastName) {
+    $this->lastName = $lastName;
+}
 
-    public function setEmail($email)
-    {
-        $email = is_null($email) ? '' : $email;
-        parent::setEmail($email);
-        $this->setUsername($email);
+public function setFirstName($firstName) {
+    $this->firstName = $firstName;
+}
 
-        return $this;
-    }
+public function setEmail($email)
+{
+    $email = is_null($email) ? '' : $email;
+    parent::setEmail($email);
+    $this->setUsername($email);
 
-    public function setGender($gender) 
-    {
-        $this->gender = $gender; 
-    }
+    return $this;
+}
 
-    public function getGender() {
-        return $this->gender;
-    }
+public function setGender($gender) 
+{
+    $this->gender = $gender; 
+}
 
-    public function setBirthday($birthday) 
-    {
-        $this->birthday = $birthday; 
-    }
+public function getGender() {
+    return $this->gender;
+}
 
-    public function getBirthday() {
-        return $this->birthday;
-    }
+public function setBirthday($birthday) 
+{
+    $this->birthday = $birthday; 
+}
+
+public function getBirthday() {
+    return $this->birthday;
+}
+
+public function getPhoneNumber() {
+    return $this->birthday;
+}
+
+public function setPhoneNumber($phoneNumber) {
+    return $this->phoneNumber = $phoneNumber;
+}
+
+public function addRegistrationRequest (RegistrationRequest $registrationRequest)
+{
+    $this->registrationRequests[] = $registrationRequest;
+    return $this;
+}
+
+public function removeRegistrationRequest(RegistrationRequest $registrationRequest)
+{
+    $this->registrationRequests->removeElement($registrationRequest);
+}
+
+
+public function getRegistrationRequests()
+{
+    return $this->registrationRequests;
+}
 }

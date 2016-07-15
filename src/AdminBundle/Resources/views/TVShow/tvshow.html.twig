@@ -1,0 +1,18 @@
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{ tvShow.title }}
+        </div>
+        <div class="panel-body">
+           <img src="{{ asset('uploads/' ~ tvShow.imageName) }}"></img>
+        </div>
+        <div class="panel-footer">
+           
+            <form action="{{ path('remove_tvshow', {'id': tvShow.id}) }}" method="post">
+                 <a href="{{path('edit_tvshow', {'id': tvShow.id}) }}" class="fa fa-edit" role="button"></a>
+                <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+            </form>   
+        </div>
+    </div>
+</div>
+

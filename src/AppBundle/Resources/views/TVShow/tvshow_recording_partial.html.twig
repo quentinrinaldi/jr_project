@@ -1,0 +1,12 @@
+<tr>
+    <td>{{ recording.date |date('d-m-Y')}}</td>
+    <td>{{ recording.startTime |date('h:i') }}</td>
+    <td>{{ recording.endTime  |date('h:i')}}</td>
+    <td>{{ recording.recordingCondition }}</td>
+    <td> {% if recording.availability == 'Complet' %} 
+    	Complet 
+    	{% else %} 
+    	<button type="button" id={{ recording.id }} class="btn btn-primary btn-lg register-button" >S'inscrire</button>
+		{% endif %} 
+    </td>
+</tr>

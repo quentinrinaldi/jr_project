@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body_content %}
+
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Nos emissions
+                    <small>En cours de tournage</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">Full Width Page</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="http://www.jrproduction.tv/images/header.png" alt="">
+            </div>
+        </div>
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Most of Start Bootstrap's unstyled templates can be directly integrated into the Modern Business template. You can view all of our unstyled templates on our website at <a href="http://startbootstrap.com/template-categories/unstyled">http://startbootstrap.com/template-categories/unstyled</a>.</p>
+            </div>
+
+            {% for tvShow in tvShows %}
+                {{ include('AppBundle:TVShow:tvshow_partial.html.twig', { 'tvShow' : tvShow }) }}
+            {% endfor %}
+
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Les émissions passés
+                    <small>Pas de tournage prévu</small>
+                </h1>
+            </div>
+
+        {% endblock %}
+
+
+            

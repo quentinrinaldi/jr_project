@@ -1,0 +1,21 @@
+{% extends 'AdminBundle:Home:base.html.twig' %}
+
+{% block body_content %}
+
+    <!-- Page Content -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Les lieux de tournages
+                        <a class="btn btn-primary btn-lg" role="button" href="{{path('add_location') }}">Ajouter un lieu de tournage</a>
+                    </h1>
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            {% for location in locations %}
+                {{ include('AdminBundle:Location:location.html.twig', { 'location' : location }) }}
+            {% endfor %}
+            <!-- /.row -->
+            
+{% endblock %}

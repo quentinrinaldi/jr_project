@@ -14,6 +14,22 @@ services:
         parent: fos_user.profile.form.type
         tags:
             - { name: form.type, alias: app_user_profile }
+    channel_form:
+        class: AdminBundle\Form\Type\ChannelFormType
+        tags:
+            -  { name: form.type, alias: Channel }
+  #  app.file_uploader:
+   #     class: AppBundle\FileUploader
+    #    arguments: ['%uploads_directory%']
+
+    # app.doctrine_file_listener:
+    #     class: AppBundle\EventListener\UploadListener
+    #     arguments: ['@app.file_uploader','%uploads_directory%']
+    #     tags:
+    #         - { name: doctrine.event_listener, event: prePersist }
+    #         - { name: doctrine.event_listener, event: preUpdate }
+    #         - { name: doctrine.event_listener, event: postLoad }
+
 
 #    service_name:
 #        class: AppBundle\Directory\ClassName

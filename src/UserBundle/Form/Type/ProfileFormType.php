@@ -55,7 +55,7 @@ class ProfileFormType extends AbstractType
         'label'  => 'Nom',
         ))
         ->add('gender','choice', array(
-        'choices'   => array('1' => 'Male', '2' => 'Female'),
+        'choices'   => array('M' => 'Male', 'M' => 'Female'),
         'expanded'  => true,
         'required'  => true,
         'label'  => 'Vous êtes',

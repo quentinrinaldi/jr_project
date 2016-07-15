@@ -1,0 +1,101 @@
+{% extends "base.html.twig" %}
+{% block stylesheet %}
+
+
+
+{% endblock %}
+{% block body_content %}
+
+	<div class="container">
+		<!-- Page Heading/Breadcrumbs -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">{{ tvShow.title }}
+					<small>En cours de tournage</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="index.html">Home</a>
+					</li>
+					<li class="active">Full Width Page</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<img class="img-responsive" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
+			</div>
+			<div class="col-md-6">
+				<h2>A propos de l'emission</h2>
+				<p>L'émission mythique" Des Chiffres et des Lettres " vous accueille dorénavant sur son plateau !</p>
+				<p>Elle mettra à l’épreuve vos capacités de calcul mental et de combinaisons de lettres.</p>
+				<p>Des chiffres et des lettres est basé sur les mécaniques des jeux « Le mot le plus long » et « Le compte est bon ».</p>
+				<p>Dans ce jeu, deux candidats devront faire appel à toute leur culture générale pour parvenir au sprint final...</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="page-header">Les dates de tournages</h2>
+				<table id="events_calendar" class="display" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Heure de début</th>
+							<th>Heure de fin</th>
+							<th>Condition</th>
+							<th>Inscription</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for recording in tvShow.recordings %}
+							{{ include('AppBundle:TVShow:tvshow_recording_partial.html.twig', { 'recording' : recording }) }}
+						{% endfor %}
+
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="page-header">Le lieu</h2>
+			</div>
+		</div>
+	</div>
+
+<div id="myModal" tabindex="-1">
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		$(document).ready(function() {
+			$('#events_calendar').DataTable({
+				"language": {
+					"lengthMenu": "Afficher _MENU_ dates par page",
+					"info": "Page _PAGE_/_PAGES_",
+					"infoEmpty": "Aucune date n'est actuellement prévue",
+					"paginate": {
+						"first":      "Première page",
+						"last":       "Dernière page",
+						"next":       "Suivant",
+						"previous":   "Précédent"
+					}
+				},
+				"bFilter": false,
+
+			});
+			$('.register-button').click(function() {
+				var id = this.id;
+				var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
+				url = url.replace("recording_ID", id);
+				$.get(url, function(data) {
+					$("#myModal").replaceWith(data);
+					$('#myModal').modal();
+				})});
+		});
+
+
+	</script>
+{% endblock %}
