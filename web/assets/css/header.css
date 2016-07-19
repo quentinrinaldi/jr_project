@@ -44,12 +44,12 @@ body {
 
 .account-nav-anonymous {
 	position:absolute;
-	right:100px;
+	right:80px;
 	top:10px;
 }
 
-.account-nav-anonymous > a {
-	margin-right: 10px;
+.account-nav-anonymous > button {
+	margin-right: 8px;
 }
 
 .account-nav-logged {

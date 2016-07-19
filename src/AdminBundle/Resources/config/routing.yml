@@ -97,3 +97,17 @@ remove_recording:
     defaults: { _controller: AdminBundle:Recording:remove}
     methods: [POST]
 
+admin_uploads:
+    path: /uploads
+    defaults: { _controller: AdminBundle:Upload:showAll}
+    methods: [GET]
+
+add_upload:
+    path: /uploads/add
+    defaults: { _controller: AdminBundle:Upload:add}
+    methods: [GET, POST]
+
+remove_upload:
+    path: /uploads/{id}/remove 
+    defaults: { _controller: AdminBundle:Upload:remove}
+    methods: [POST]

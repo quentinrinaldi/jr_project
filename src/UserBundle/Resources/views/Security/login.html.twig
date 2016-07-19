@@ -1,39 +1,72 @@
-{% extends "base.html.twig" %}
 
-{% block stylesheet%}
-    <link rel="stylesheet" href="{{ asset('assets/css/login_form.css') }}" />
-    <script src="{{ asset('assets/js/modal.js') }}"></script>
-{% endblock %}
 
-{% block body_content %}
 
-      <div class="container">
-      <div class="login_container">
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog login-modal" role="document">
+    <div class="modal-content">
 
-      <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+      <div class="modal-body">
+        <div class="login_container">
 
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+          <form class="ajaxForm form-signin" action="{{ path("fos_user_security_check") }}" method="post" class="ajaxForm">
+            <h2 class="form-signin-heading">Connectez-vous</h2>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% if error %}
+              <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <div class="error">
+              <div class="error-content"></div>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-        <input class="form-control" id="username" name="_username" placeholder="Email address" required="required" autofocus="" type="email">
+            <input class="form-control" id="username" name="_username" placeholder="Email address" required="required" autofocus="" type="email">
 
-        <input id="password" name = "_password" class="form-control" placeholder="Mot de Passe" required="required" type="password">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
-          </label>
+            <input id="password" name = "_password" class="form-control" placeholder="Mot de Passe" required="required" type="password">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
-    </div> <!-- /container -->
+      </div>
+    </div>
+  </div>
 </div>
-  
+<script>
+  function initAjaxForm()
+  {
+    $('body').on('submit', '.ajaxForm', function (e) {
 
+      e.preventDefault()
+      $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: $(this).serialize()
+      })
+      .done(function (data) {
+        if (typeof data.message !== 'undefined') {
+          alert(data.message)
+          $('.error-content').replaceWith(data.message);
+        }
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        if (typeof jqXHR.responseJSON !== 'undefined') {
+          if (jqXHR.responseJSON.hasOwnProperty('form')) {
+            $('#form_body').html(jqXHR.responseJSON.form);
+          }
 
-    {% endblock %}
-    
+          $('.form_error').html(jqXHR.responseJSON.message);
+
+        } else {
+          alert(errorThrown);
+        }
+
+      });
+    });
+  }   
+  initAjaxForm();
+</script>

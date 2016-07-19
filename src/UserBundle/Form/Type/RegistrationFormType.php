@@ -4,6 +4,7 @@ namespace UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -13,20 +14,25 @@ class RegistrationFormType extends AbstractType
         $builder->add('firstName');
         $builder->remove('username');
         $builder->add('gender','choice', array(
-        'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
-        'required'  => true,
-        'label'  => 'Vous êtes',
-        ));
-        $builder->add('birthday','date', array(
+            'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
+            'required'  => true,
+            'label'  => 'Vous êtes',
+            ));
+        $builder->add('birthday',DateType::class, array(
+
             'widget' => 'single_text',
-'input' => 'datetime',
-'format' => 'dd/MM/yyyy',
-        'label'  => 'Birthday',
-        ));
+            'format' => 'dd-MM-yyyy',
+
+    // do not render as type="date", to avoid HTML5 date pickers
+            'html5' => false,
+
+    // add a class that can be selected in JavaScript
+            'placeholder' => 'Date de naissance'
+            ));
         $builder->add('phoneNumber','number', array(
-      
-        'label'  => 'Numéro de téléphone',
-        ));
+
+            'label'  => 'Numéro de téléphone',
+            ));
     }
 
     public function getParent()
@@ -42,7 +48,7 @@ class RegistrationFormType extends AbstractType
         return 'app_user_registration';
     }
 
-     public function getName()
+    public function getName()
     {
         return $this->getBlockPrefix();
     }

@@ -12,9 +12,13 @@
     <title>Casting-Public</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/modern-buisness.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/general.css') }}" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/login_form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/signup_form.css') }}" />
+
+
     {% block stylesheet%} {% endblock %}
 
     <!-- Custom Fonts -->
@@ -22,116 +26,142 @@
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
     <!-- jQuery -->
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        </head>
+    <body>
+        <header class="header">
+            <div class="header_logo"> 
+                <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
+            </div>
+            <nav class="navbar navbar-inverse custom-navbar" role="navigation">
 
-        <body>
-            <header class="header">
-                <div class="header_logo"> 
-                    <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
-                </div>
-                <nav class="navbar navbar-inverse custom-navbar" role="navigation">
-          
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                        <ul class="nav navbar-nav menu-bar">
-                            <li>
-                                <a href="{{ path('home') }}">Accueil</a>
-                            </li>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <ul class="nav navbar-nav menu-bar">
+                    <li>
+                        <a href="{{ path('home') }}">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="about.html">Qui sommes-nous ?</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Le calendrier</a>
+                    </li>
+                    <li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                                 <li>
-                                    <a href="about.html">Qui sommes-nous ?</a>
+                                    <a href="{{ path('faq') }}">FAQ</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+                                    <a href="{{ path('contact') }}">Nous contacter</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Le calendrier</a>
-                                </li>
-                                <li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos<b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="{{ path('faq') }}">FAQ</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ path('contact') }}">Nous contacter</a>
-                                            </li>
-                                             <li>
-                                                <a href="{{ path('legal_notice') }}">Mentions légales</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    {# <a href="contact.html">Nous contacter</a> #}
+                                    <a href="{{ path('legal_notice') }}">Mentions légales</a>
                                 </li>
                             </ul>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        </li>
+                        {# <a href="contact.html">Nous contacter</a> #}
+                    </li>
+                </ul>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                             <div class="nav navbar-nav account-nav-logged btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                                    </ul>
-                                </div>
-                                    {% else %}
-                                    <div class="nav navbar-nav account-nav-anonymous">
-                
-                           <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary navbar_button" id="login-button">Se connecter</a>
-                           <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary navbar_button signin_button" type="submit">S'inscrire</a>
-                       </div>
-                       {% endif %}
-                  
+                   <div class="nav navbar-nav account-nav-logged btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="nav navbar-nav account-nav-anonymous">
 
-                   <!-- /.navbar-collapse -->
-        
-       </nav>
-   </header>
-       {% block slides %} {% endblock %}
+                     <button class="btn btn-primary navbar_button" id="login-button">Se connecter</button>
+                     <button class="btn btn-primary navbar_button" id="register-button">S'inscrire</button>
+                 </div>
+             {% endif %}
+
+
+             <!-- /.navbar-collapse -->
+
+         </nav>
+     </header>
+     {% block slides %} {% endblock %}
 
         {% block body_content %}
         {% endblock %}
         <footer class="footer">
-                <div class="container">
-                    <p><span id="copyright">Copyright &copy; JRProduction </span><span>|</span><span><a href="{{path('legal_notice') }}">Mentions légales</a></span><span>|</span><span><a href="{{ path('contact')}}">Nous contacter</a></span></p>
-                </div>
-         
+            <div class="container">
+                <p><span id="copyright">Copyright &copy; JRProduction </span><span>|</span><span><a href="{{path('legal_notice') }}">Mentions légales</a></span><span>|</span><span><a href="{{ path('contact')}}">Nous contacter</a></span></p>
+            </div>
+
         </footer>
         
         <!-- Footer -->
         
 
         <!-- /.container -->
-        <div class="loginModal"></div>
-    </body>
-<script>
-$(document).ready(function() {
-$('.login-button').click(function() {
-                var id = this.id;
-                var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
-                url = url.replace("recording_ID", id);
-                $.get(url, function(data) {
-                    $("#myModal").replaceWith(data);
-                    $('#myModal').modal();
-                })});
-        });
-</script>
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets/js/moment.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
+        <div id="loginModal" tabindex="-1"></div>
+        <!-- Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog register-modal" role="document">
+            <div class="modal-content">
 
-    </html>
+              <div class="modal-body">
+                <div class="register_container">
+
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+
+<script src="{{ asset('assets/js/jquery.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets/js/moment.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#login-button').click(function() {
+            var url = "{{ path('fos_user_security_login') }}"
+            $.get(url, function(data) {
+                $("#loginModal").replaceWith(data);
+                $('#loginModal').modal();
+            })});
+
+        $('#register-button').click(function() {
+            var url = "{{ path('fos_user_registration_register') }}"
+            $.get(url, function(data) {
+                $(".register_container").replaceWith(data);
+                $('#registerModal').modal();
+            })});
+    });
+</script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="{{ asset('assets/js/datepicker-fr.js') }}"></script>
+<script>
+    $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+</script>
+{% block scripts %}
+{% endblock %}
+
+</body>
+
+</html>

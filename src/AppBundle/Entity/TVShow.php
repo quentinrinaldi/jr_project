@@ -47,29 +47,29 @@ class TVShow
   /**
      * @ORM\Column(type="string")
     */
-    protected $imageName;
+  protected $imageName;
 
    /**
      * @Vich\UploadableField(mapping="image", fileNameProperty="imageName")
     */
-    protected $imageFile;
+   protected $imageFile;
 
  /**
      * @ORM\Column(type="string")
     */
-    protected $iconeName;
+ protected $iconeName;
 
    /**
      * @Vich\UploadableField(mapping="icone", fileNameProperty="iconeName")
     */
-    protected $iconeFile;
+   protected $iconeFile;
 
 /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
      */
-    private $updatedAt;
+private $updatedAt;
 
     /**
    * @ORM\OneToMany(targetEntity="Recording", mappedBy="tvShow")
@@ -79,55 +79,55 @@ class TVShow
 
     public function __construct()
     {
-        $this->recordings = new ArrayCollection();
+      $this->recordings = new ArrayCollection();
     }
 
     public function getId() {
-        return $this->id;
+      return $this->id;
     }
 
     public function getTitle() 
     {
-        return $this->title;
+      return $this->title;
     }
 
     public function getPresenter() 
     {
-        return $this->presenter;
+      return $this->presenter;
     }
 
     public function getDescription() {
-        return $this->description;
+      return $this->description;
     }
 
     public function getChannel() {
-        return $this->channel;
+      return $this->channel;
     }
 
     public function setTitle($title) {
-        $this->title = $title;
+      $this->title = $title;
     }
 
     public function setPresenter($presenter) {
-        $this->presenter = $presenter;
+      $this->presenter = $presenter;
     }
 
     public function setDescription($description) {
-        $this->description = $description;
+      $this->description = $description;
     }
     
     public function setChannel($channel) {
-        $this->channel = $channel;
+      $this->channel = $channel;
     }
 
     public function getImageName() 
     {
-        return $this->imageName;
+      return $this->imageName;
     }
 
     public function setImageName($imageName) {
-        $this->imageName = $imageName;
-        $this->updatedAt = new \DateTime();
+      $this->imageName = $imageName;
+      $this->updatedAt = new \DateTime();
     }
 
     public function update() {
@@ -135,58 +135,58 @@ class TVShow
     }
 
 
-     public function getImageFile()
+    public function getImageFile()
     {
-        return $this->imageFile;
+      return $this->imageFile;
     }
 
     public function setImageFile($imageFile) {
-        $this->imageFile = $imageFile;
+      $this->imageFile = $imageFile;
     }
 
-public function getIconeName() 
+    public function getIconeName() 
     {
-        return $this->iconeName;
+      return $this->iconeName;
     }
 
     public function setIconeName($iconeName) {
-        $this->iconeName = $iconeName;
-        $this->updatedAt = new \DateTime();
+      $this->iconeName = $iconeName;
+      $this->updatedAt = new \DateTime();
     }
 
 
-     public function getIconeFile()
+    public function getIconeFile()
     {
-        return $this->iconeFile;
+      return $this->iconeFile;
     }
 
     public function setIconeFile($iconeFile) {
-        $this->iconeFile = $iconeFile;
+      $this->iconeFile = $iconeFile;
     }
 
-public function addRecording (Recording $recording)
-  {
-    $this->recordings[] = $recording;
-    
-    return $this;
-  }
-
-
-  public function removeRecording(Recording $recording)
-  {
-    $this->recordings->removeElement($recording);
-  }
-
-
-  public function getRecordings()
-  {
-    return $this->recordings;
-  }
-
-      public function __toString() 
+    public function addRecording (Recording $recording)
     {
-        return (string) $this->getId();
+      $this->recordings[] = $recording;
+      
+      return $this;
     }
 
 
-}
+    public function removeRecording(Recording $recording)
+    {
+      $this->recordings->removeElement($recording);
+    }
+
+
+    public function getRecordings()
+    {
+      return $this->recordings;
+    }
+
+    public function __toString() 
+    {
+      return (string) $this->getId();
+    }
+
+
+  }

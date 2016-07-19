@@ -1,0 +1,11 @@
+<tr>
+    <td>{{ upload.fileName }}</td>
+    <td>{{ upload.url }}</td>
+
+    <td>{{ upload.createdAt |date('d-m-Y')}}</td>
+    
+    <td><form action="{{ path('remove_upload', {'id': upload.id}) }}" method="post">
+                <button type="submit" name="your_name" value="Supprimer" class="btn-link glyphicon glyphicon-remove"></button>
+            </form>   </td>
+                <td>{{ upload.info }}</td>
+</tr>

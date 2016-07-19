@@ -6,7 +6,7 @@ root:
     path: /
     defaults:
         _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /welcome
+        path: /home
         permanent: true
 
 app:
