@@ -52,7 +52,7 @@ class RegistrationRequest
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
      */  
-    protected $guessNumber;
+    protected $peopleNumber;
 /**
  * @ORM\PrePersist
  * @ORM\PreUpdate
@@ -111,12 +111,12 @@ public function setUpdatedAt($updatedAt) {
 	$this->updatedAt = $updatedAt;
 }
 
-public function getGuessNumber() {
-    return $this->guessNumber;
+public function getPeopleNumber() {
+    return $this->peopleNumber;
 }
 
-public function setGuessNumber($guessNumber) {
-    $this->guessNumber = $guessNumber;
+public function setPeopleNumber($peopleNumber) {
+    $this->peopleNumber = $peopleNumber;
 }
 
 

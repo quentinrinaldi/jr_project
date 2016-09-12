@@ -71,12 +71,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      smtp.gmail.com
+    transport: gmail
     username:  quentind2@gmail.com
     password:  obiyoda023
     spool:     { type: memory }
     auth_mode:  login
+    delivery_address: 'quentin.rinaldi@gmail.com'
     
 #Assetic config
 assetic:
@@ -120,21 +120,24 @@ vich_uploader:
         image:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
-
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         icone:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
-
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         file:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
-
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        slide:
+            uri_prefix:         /slides
+            upload_destination: %kernel.root_dir%/../web/slides
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true

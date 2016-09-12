@@ -22,9 +22,15 @@
     height: 45px !important;
     outline: 0 none !important;
     padding: 0 10px !important;
-    width: 100% !important;
+    width: 100%;
     border-radius: 2px !important; 
     margin-top: 16px !important;
+}
+
+.form-signup h2 {
+    text-align: center;
+    margin-bottom: 30px;
+
 }
 
 .form-signup button[type='submit'] {
@@ -50,10 +56,27 @@
     width:500px;
 }
 
-.form-inline {
-    margin-top:10px;
-}
+
 .inline-input {
     display:inline-block !important;
-    width:158px !important;
+    width:49% !important;
+}
+
+.birthday-input {
+    width:69% !important;
+    display: inline-block !important;
+    margin-top: 0 !important;
+}
+.gender-input {
+    
+    width:29% !important;
+    display: inline-block !important;
+    margin-top: 5px;
+}
+
+.gender-input > button {
+        height:45px !important;
+}
+.dropdown-menu {
+    margin-top:10px;
 }

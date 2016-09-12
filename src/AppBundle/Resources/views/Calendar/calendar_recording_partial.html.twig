@@ -1,0 +1,17 @@
+<tr>
+    <td>{{ recording.tvShow.title }}</td>
+    <td>{{ recording.date |date('d-m-Y')}}</td>
+    <td>{{ recording.startTime |date('h:i') }}</td>
+    <td>{{ recording.endTime  |date('h:i')}}</td>
+    <td>{{ recording.recordingCondition }}</td>
+    <td> {% if recording.availability == 'Complet' %} 
+        <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg register-button disabled" >Complet</button>
+        {% else %} 
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg connected-register-button" >S'inscrire</button>
+            {% else %}
+                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg anonymous-register-button" >S'inscrire</button>
+            {% endif %}
+        {% endif %} 
+    </td>
+</tr>

@@ -46,7 +46,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for recording in tvShow.recordings %}
+						{% for recording in next_recordings %}
 							{{ include('AppBundle:TVShow:tvshow_recording_partial.html.twig', { 'recording' : recording }) }}
 						{% endfor %}
 
@@ -62,8 +62,21 @@
 		</div>
 	</div>
 
-<div id="myModal" tabindex="-1">
-</div>
+	<div id="connectedSuscribtionModal" tabindex="-1">
+	</div>
+
+	<div class="modal fade" id="anonymousSuscribtionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog register-modal" role="document">
+			<div class="modal-content">
+
+				<div class="modal-body">
+					<div class="suscribtion_container">
+						<p>Vous devez être identifié pour vous inscrire à une émission.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 {% endblock %}
@@ -75,7 +88,8 @@
 				"language": {
 					"lengthMenu": "Afficher _MENU_ dates par page",
 					"info": "Page _PAGE_/_PAGES_",
-					"infoEmpty": "Aucune date n'est actuellement prévue",
+					"emptyTable": "Aucune date n'est actuellement prévue",
+                    "infoEmpty": "",
 					"paginate": {
 						"first":      "Première page",
 						"last":       "Dernière page",
@@ -86,14 +100,20 @@
 				"bFilter": false,
 
 			});
-			$('.register-button').click(function() {
+			$('.connected-register-button').click(function() {
+
 				var id = this.id;
 				var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
 				url = url.replace("recording_ID", id);
 				$.get(url, function(data) {
-					$("#myModal").replaceWith(data);
-					$('#myModal').modal();
+
+					$('#connectedSuscribtionModal').replaceWith(data);
+					$('#connectedSuscribtionModal').modal();
 				})});
+
+			$('.anonymous-register-button').click(function() {
+				$('#anonymousSuscribtionModal').modal();
+			});
 		});
 
 

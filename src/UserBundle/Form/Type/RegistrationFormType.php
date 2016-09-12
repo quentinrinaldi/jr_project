@@ -16,7 +16,8 @@ class RegistrationFormType extends AbstractType
         $builder->add('gender','choice', array(
             'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
             'required'  => true,
-            'label'  => 'Vous êtes',
+            'placeholder' => 'Sexe'
+
             ));
         $builder->add('birthday',DateType::class, array(
 
@@ -29,10 +30,11 @@ class RegistrationFormType extends AbstractType
     // add a class that can be selected in JavaScript
             'placeholder' => 'Date de naissance'
             ));
-        $builder->add('phoneNumber','number', array(
+        $builder->add('phoneNumber','number');
 
-            'label'  => 'Numéro de téléphone',
-            ));
+        $builder->add('address','text');
+        $builder->add('zipCode','text');
+        $builder->add('city','text');
     }
 
     public function getParent()

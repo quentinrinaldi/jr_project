@@ -52,10 +52,28 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */
     protected $phoneNumber;
+    /**
+     * @ORM\Column(type="string")
+      * @Assert\NotBlank()
+    */
+    protected $address;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+    */
+    protected $zipCode;
+
+        /**
+     * @ORM\Column(type="string")
+      * @Assert\NotBlank()
+    */
+    protected $city;
 
   /**
    * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user")
    */
+
   protected $registrationRequests;
 
   public function __construct()
@@ -102,13 +120,14 @@ public function getGender() {
     return $this->gender;
 }
 
-public function setBirthday($birthday) 
-{
-    $this->birthday = $birthday; 
-}
 
 public function getBirthday() {
     return $this->birthday;
+}
+
+public function setBirthday($birthday) 
+{
+    $this->birthday = $birthday; 
 }
 
 public function getPhoneNumber() {
@@ -134,5 +153,32 @@ public function removeRegistrationRequest(RegistrationRequest $registrationReque
 public function getRegistrationRequests()
 {
     return $this->registrationRequests;
+}
+
+public function getAddress() {
+    return $this->address;
+}
+
+public function setAddress($address) 
+{
+    $this->address = $address; 
+}
+
+public function getZipCode() {
+    return $this->zipCode;
+}
+
+public function setZipCode($zipCode) 
+{
+    $this->zipCode = $zipCode; 
+}
+
+public function getCity() {
+    return $this->city;
+}
+
+public function setCity($city) 
+{
+    $this->city = $city; 
 }
 }

@@ -1,38 +1,52 @@
 <div class="register_container">
-<h3 class="form-signup-heading">S'inscrire</h3>
-           <!-- <div class="signup_container"> -->
-           {{ form_start(form, {'attr': {'class': 'form-signup registerAjaxForm', 'action' : path('fos_user_registration_register')  }} ) }}
+  <h3 class="form-signup-heading">S'inscrire</h3>
+  <!-- <div class="signup_container"> -->
+  {{ form_start(form, {'attr': {'class': 'form-signup registerAjaxForm', 'action' : path('fos_user_registration_register')  }} ) }}
 
-           {{ form_errors(form) }}
+  {{ form_errors(form) }}
 
-           <span class="form-group" style="display:inline;">
-               {{ form_widget(form.firstName, {'attr': {'class':  'form-inline inline-input', 'placeholder': 'Prénom'}})}}
-               {{ form_errors(form.firstName) }}
+  <span class="form-group" style="display:inline;">
+   {{ form_widget(form.firstName, {'attr': {'class':  'inline-input', 'placeholder': 'Prénom'}})}}
+   {{ form_errors(form.firstName) }}
 
-               {{ form_widget(form.lastName, {'attr': {'class': ' form-inline inline-input', 'placeholder': 'Nom'}})}}
-               {{ form_errors(form.lastName) }}
-           </span>
-           {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
-           {{ form_errors(form.email) }}
+   {{ form_widget(form.lastName, {'attr': {'class': 'inline-input', 'placeholder': 'Nom'}})}}
+   {{ form_errors(form.lastName) }}
+ </span>
 
-           {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
-           {{ form_errors(form.plainPassword.first) }}
+ {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
+ {{ form_errors(form.email) }}
+ <div class="form-group" style="display:inline;">
+  {{ form_widget(form.gender, {'attr': {'class': 'form-control selectpicker gender-input'}}) }}
+  {{ form_errors(form.gender) }}
+  {{ form_widget(form.birthday, {'attr': {'class': 'js-datepicker birthday-input' , 'placeholder': 'Date de naissance'}}) }}
+  {{ form_errors(form.birthday) }}
 
-           {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmer le mot de passe'}}) }}
-           {{ form_errors(form.plainPassword.second) }}
+</div>
+{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+{{ form_errors(form.plainPassword.first) }}
+
+{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmer le mot de passe'}}) }}
+{{ form_errors(form.plainPassword.second) }}
 
 
-           {{ form_widget(form.birthday, {'attr': {'class': 'js-datepicker' , 'placeholder': 'Date de naissance'}}) }}
-           {{ form_errors(form.birthday) }}
 
-           {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
-           {{ form_errors(form.gender) }}
 
-           {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone'}}) }}
-           {{ form_errors(form.phoneNumber) }}
-           <button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
-           {{ form_end(form) }}
-            </div>
+{{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone'}}) }}
+{{ form_errors(form.phoneNumber) }}
+
+{{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+{{ form_errors(form.address) }}
+
+<div style="display:inline">
+{{ form_widget(form.zipCode, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Code postal'}}) }}
+{{ form_errors(form.zipCode) }}
+
+{{ form_widget(form.city, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Ville'}}) }}
+{{ form_errors(form.city) }}
+</div>
+<button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
+{{ form_end(form) }}
+</div>
 <!-- </div>
 -->
 
@@ -43,20 +57,20 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
-        $('.js-datepicker').datepicker({
-                  changeMonth: true,
-                    changeYear: true,
-            format: 'dd-mm-yyyy',
-            language: "fr",
-            defaultDate: "-30y" ,
-            maxDate: "+0d",
-            yearRange: '1900:' + new Date().getFullYear()
+  $(document).ready(function() {
+    $('.js-datepicker').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      format: 'dd-mm-yyyy',
+      language: "fr",
+      defaultDate: "-30y" ,
+      maxDate: "+0d",
+      yearRange: '1900:' + new Date().getFullYear()
 
-        });
     });
+  });
 
-function initAjaxForm()
+  function initAjaxForm()
   {
     $('body').on('submit', '.registerAjaxForm', function (e) {
 

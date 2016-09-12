@@ -1,0 +1,20 @@
+{% extends 'AdminBundle:Home:base.html.twig' %}
+
+{% block body_content %}
+
+    <!-- Page Content -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Configuration du slider 
+                        <a class="btn btn-primary btn-lg" role="button" href="{{path('add_slide') }}">Ajouter une slide</a>
+                    </h1>
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            {% for slide in slides %}
+                {{ include('AdminBundle:SliderConfig:slide.html.twig', { 'slide' : slide }) }}
+            {% endfor %}
+            <!-- /.row -->
+{% endblock %}

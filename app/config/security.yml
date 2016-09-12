@@ -23,6 +23,8 @@ security:
                 always_use_default_target_path : true
                 default_target_path: /home
                 use_referer : true
+                success_handler: authentication_handler
+                failure_handler: authentication_handler
             logout:
                 path:       fos_user_security_logout
                 target:     /

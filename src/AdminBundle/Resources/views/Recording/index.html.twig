@@ -28,7 +28,7 @@
         </thead>
         <tbody>
             {% for recording in recordings %}
-                {{ include('AdminBundle:Recording:recording.html.twig', { 'recording' : recording }) }}
+                {{ include('AdminBundle:Recording:recording_partial.html.twig', { 'recording' : recording }) }}
             {% endfor %}
         </tbody>
         <!-- /.row -->

@@ -33,6 +33,11 @@ class TVShow
     protected $presenter;
 
     /**
+     * @ORM\Column(type="boolean")
+    */
+    protected $homePageVisibility;
+
+    /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
     */
@@ -80,6 +85,7 @@ private $updatedAt;
     public function __construct()
     {
       $this->recordings = new ArrayCollection();
+      $this->homePageVisibiliy = false;
     }
 
     public function getId() {
@@ -181,6 +187,14 @@ private $updatedAt;
     public function getRecordings()
     {
       return $this->recordings;
+    }
+
+    public function getHomePageVisibility() {
+      return $this->homePageVisibility;
+    }
+
+    public function setHomePageVisibility($homePageVisibility) {
+      $this->homePageVisibility=$homePageVisibility;
     }
 
     public function __toString() 

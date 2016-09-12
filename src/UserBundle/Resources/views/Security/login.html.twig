@@ -9,7 +9,7 @@
       <div class="modal-body">
         <div class="login_container">
 
-          <form class="ajaxForm form-signin" action="{{ path("fos_user_security_check") }}" method="post" class="ajaxForm">
+          <form class="ajaxForm form-signin" action="{{ path("fos_user_security_check") }}" method="post" class="ajaxForm" novalidate>
             <h2 class="form-signin-heading">Connectez-vous</h2>
 
             {% if error %}
@@ -42,15 +42,23 @@
     $('body').on('submit', '.ajaxForm', function (e) {
 
       e.preventDefault()
+      $('.error-content').html("");
       $.ajax({
         type: $(this).attr('method'),
         url: $(this).attr('action'),
         data: $(this).serialize()
       })
       .done(function (data) {
-        if (typeof data.message !== 'undefined') {
-          alert(data.message)
-          $('.error-content').replaceWith(data.message);
+       // alert(data.message)
+        if (data.success == false) {
+          $('.error-content').html(data.message);
+        }
+        else {
+          $('.login_container').replaceWith(data.message);
+          // redirect to google after 5 seconds
+          window.setTimeout(function() {
+            window.location.href = data.referer;
+          }, 3000);
         }
       })
       .fail(function (jqXHR, textStatus, errorThrown) {

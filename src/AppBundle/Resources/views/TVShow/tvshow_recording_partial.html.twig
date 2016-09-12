@@ -4,9 +4,13 @@
     <td>{{ recording.endTime  |date('h:i')}}</td>
     <td>{{ recording.recordingCondition }}</td>
     <td> {% if recording.availability == 'Complet' %} 
-    	Complet 
+    	<button type="button" id={{ recording.id }} class="btn btn-danger btn-lg register-button disabled" >Complet</button>
     	{% else %} 
-    	<button type="button" id={{ recording.id }} class="btn btn-primary btn-lg register-button" >S'inscrire</button>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    	       <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg connected-register-button" >S'inscrire</button>
+            {% else %}
+                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg anonymous-register-button" >S'inscrire</button>
+            {% endif %}
 		{% endif %} 
     </td>
 </tr>

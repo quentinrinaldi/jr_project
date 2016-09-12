@@ -111,3 +111,28 @@ remove_upload:
     path: /uploads/{id}/remove 
     defaults: { _controller: AdminBundle:Upload:remove}
     methods: [POST]
+
+slider_config:
+    path: /slider_config
+    defaults: { _controller: AdminBundle:SliderConfig:showConfig}
+    methods: [GET]
+
+add_slide:
+    path: /slider_config/add
+    defaults: { _controller: AdminBundle:SliderConfig:addSlide}
+    methods: [GET, POST]
+
+remove_slide:
+    path: /slider_config/{id}/remove
+    defaults: { _controller: AdminBundle:SliderConfig:removeSlide}
+    methods: [POST]
+
+switch_slide_visibility:
+    path: /slider_config/{id}/switch_visibility
+    defaults: { _controller: AdminBundle:SliderConfig:switchSlideVisibilty}
+    methods: [POST]
+
+registration_requests:
+    path: /registration_requests
+    defaults: { _controller: AdminBundle:RegistrationRequest:showAll}
+    methods: [GET]

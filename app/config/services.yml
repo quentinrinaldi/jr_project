@@ -18,11 +18,17 @@ services:
         class: AdminBundle\Form\Type\ChannelFormType
         tags:
             -  { name: form.type, alias: Channel }
+   # authentication_handler:
+    #    class:  UserBundle\Handler\AuthenticationFailureHandler
+     #   arguments:  ["@http_kernel", "@security.http_utils", {}, "@logger", @service_container]
+      #  tags:
+       #     - { name: 'monolog.logger', channel: 'security' }
     authentication_handler:
-        class:  UserBundle\Handler\AuthenticationFailureHandler
-        arguments:  ["@http_kernel", "@security.http_utils", {}, "@logger", @service_container]
-        tags:
-            - { name: 'monolog.logger', channel: 'security' }
+        class: UserBundle\Handler\AuthenticationHandler
+        public: false
+        arguments:
+            - @router
+            - @session
   #  app.file_uploader:
    #     class: AppBundle\FileUploader
     #    arguments: ['%uploads_directory%']

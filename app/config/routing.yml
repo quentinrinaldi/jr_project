@@ -60,3 +60,7 @@ request_registration_form:
     path: /registration_request/{recordingID}/form
     defaults: { _controller: AppBundle:RegistrationRequest:generateForm}
     methods: [GET, POST]
+
+calendar:
+    path: /calendrier
+    defaults: { _controller: AppBundle:Calendar:show}

@@ -4,21 +4,25 @@
 	padding: 15px;
 }
 
-.form-control {
+.form-signin .form-control {
 
 	margin-top: 10px;
 
 }
 
-.form-signin h2 {
+.form-signin-heading {
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 30px
 
 }
 
-.form-signin .checkbox {
-	margin-bottom: 30px;
-	margin-top: 10px;
+.form-signin {
+	margin-bottom: 20px;
+}
+
+.checkbox {
+	margin-top:20px;
+	margin-bottom:20px;
 }
 
 

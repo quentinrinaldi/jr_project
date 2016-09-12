@@ -13,7 +13,7 @@ class RegistrationRequestFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       
-        $builder->add('guessNumber','choice', array(
+        $builder->add('peopleNumber','choice', array(
         'choices'   => array('1' => 1, '2' => 2,'3' => 3,'4' => 4,'5' => 5),
         'required'  => true,
         'label'  => 'Nombre de places demandeés',

@@ -37,8 +37,6 @@ class RegistrationRequestController extends Controller
  			$em->persist($entity);
  			$em->flush();
 
- 			$request->getSession()->getFlashBag()->add('sucess', 'Annonce bien enregistrée.');
-
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
  			return $this->render('AppBundle:RegistrationRequest:confirmation.html.twig');
  		}

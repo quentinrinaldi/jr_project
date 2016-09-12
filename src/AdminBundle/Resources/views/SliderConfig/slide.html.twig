@@ -1,0 +1,28 @@
+<div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+            {{ slide.tvShow.title }} 
+            {% if not slide.enabled %}
+                <span class="label label-warning">Masqué</span>
+            {% else %}
+                <span class="label label-success">Affiché</span>
+            {% endif %}
+        </div>
+        <div class="panel-body">
+            <img src="{{ asset('slides/' ~ slide.fileName) }}"></img>
+        </div>
+        <div class="panel-footer">
+           
+            <form action="{{ path('switch_slide_visibility', {'id': slide.id}) }}" method="post" class="channel-button">
+
+             <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %}Masquer la slide {%else%}Afficher la slide{% endif %}</a>
+              {#   <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button> #}
+            </form>   
+
+            <form action="{{ path('remove_slide', {'id': slide.id}) }}" method="post" class="channel-button">
+              <button class="btn btn-primary btn-sm" role="button">Supprimer la slide</a>
+            </form
+   {#          { <a href="{{ path('remove_slide', {'id': slide.id}) }}" class="glyphicon glyphicon-remove" role="button"></a> } #}
+        </div>
+    </div>
+</div>

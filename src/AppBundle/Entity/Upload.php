@@ -85,5 +85,4 @@ class Upload
     	$this->info=$info;
     }
 
-
 }

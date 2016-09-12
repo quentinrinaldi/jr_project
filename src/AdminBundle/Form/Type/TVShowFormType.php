@@ -48,6 +48,13 @@ class TVShowFormType extends AbstractType
             'multiple' => false
             ));
 
+        $builder->add('homePageVisibility', 'checkbox', array(
+            'trim' => true,
+            'label'  => 'Visible sur la page d\'accueil',
+          
+            'required' => false)
+        );
+
 
         $builder->add('imageFile',FileType::class, array(
             'trim' => true,
@@ -67,6 +74,8 @@ class TVShowFormType extends AbstractType
             'config_name' => 'my_config',
             'label' => 'Description')
         );
+
+        
 
     }
 
