@@ -1,25 +1,29 @@
+
 <div class="register_container">
-  <h3 class="form-signup-heading">S'inscrire</h3>
+  <h2 class="form-signup-heading">Inscription</h3>
   <!-- <div class="signup_container"> -->
-  {{ form_start(form, {'attr': {'class': 'form-signup registerAjaxForm', 'action' : path('fos_user_registration_register')  }} ) }}
+  {{ form_start(form, {'attr': {'class': 'form-signup registerAjaxForm', 'action' : path('fos_user_registration_register'), 'novalidate' : 'novalidate'  }} ) }}
 
   {{ form_errors(form) }}
 
   <span class="form-group" style="display:inline;">
    {{ form_widget(form.firstName, {'attr': {'class':  'inline-input', 'placeholder': 'Prénom'}})}}
-   {{ form_errors(form.firstName) }}
-
    {{ form_widget(form.lastName, {'attr': {'class': 'inline-input', 'placeholder': 'Nom'}})}}
+   
+   {{ form_errors(form.firstName) }}
    {{ form_errors(form.lastName) }}
  </span>
 
  {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
  {{ form_errors(form.email) }}
  <div class="form-group" style="display:inline;">
+
   {{ form_widget(form.gender, {'attr': {'class': 'form-control selectpicker gender-input'}}) }}
-  {{ form_errors(form.gender) }}
   {{ form_widget(form.birthday, {'attr': {'class': 'js-datepicker birthday-input' , 'placeholder': 'Date de naissance'}}) }}
+  
+  {{ form_errors(form.gender) }}
   {{ form_errors(form.birthday) }}
+
 
 </div>
 {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
@@ -39,12 +43,12 @@
 
 <div style="display:inline">
 {{ form_widget(form.zipCode, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Code postal'}}) }}
-{{ form_errors(form.zipCode) }}
-
 {{ form_widget(form.city, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Ville'}}) }}
+
+{{ form_errors(form.zipCode) }}
 {{ form_errors(form.city) }}
 </div>
-<button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
+
 {{ form_end(form) }}
 </div>
 <!-- </div>
@@ -68,41 +72,10 @@
       yearRange: '1900:' + new Date().getFullYear()
 
     });
+    initRegistrationForm();
+    $('.selectpicker').selectpicker({});
   });
-
-  function initAjaxForm()
-  {
-    $('body').on('submit', '.registerAjaxForm', function (e) {
-
-      e.preventDefault()
-      $.ajax({
-        type: $(this).attr('method'),
-        url: $(this).attr('action'),
-        data: $(this).serialize()
-      })
-      .done(function (data) {
-        if (typeof data.message !== 'undefined') {
-          alert(data.message)
-          $('.error-content').replaceWith(data.message);
-        }
-        $('.register_container').replaceWith(data);
-      })
-      .fail(function (jqXHR, textStatus, errorThrown) {
-        alert('toto');
-        if (typeof jqXHR.responseJSON !== 'undefined') {
-          if (jqXHR.responseJSON.hasOwnProperty('form')) {
-            $('#form_body').html(jqXHR.responseJSON.form);
-          }
-
-          $('.form_error').html(jqXHR.responseJSON.message);
-
-        } else {
-          alert(errorThrown);
-        }
-
-      });
-    });
-  }   
-  initAjaxForm();
+  
+  
 </script>
 </script>

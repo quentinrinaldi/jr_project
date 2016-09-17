@@ -120,12 +120,8 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $repository = $this
-        ->getDoctrine()
-        ->getManager()
-        ->getRepository('AppBundle:Recording');
-        $regRequests = $repository->findByUser($user);
-        return $this->render('AppBundle:Profile:show_registration_requests.html.twig',array('regRequests' => $regRequests));
+        $regRequests = $user->getRegistrationRequests();
+        return $this->render('UserBundle:Profile:show_registration_requests.html.twig',array('regRequests' => $regRequests));
     }
 
 

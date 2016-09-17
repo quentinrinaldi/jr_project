@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     public function homeAction()
     {
-        return $this->render('AdminBundle:Home:base.html.twig', array('tvShows' => $tvShows));
+        return $this->render('AdminBundle:Home:base.html.twig');
     }
 }

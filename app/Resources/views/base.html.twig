@@ -25,9 +25,11 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}" />
     <!-- jQuery -->
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <!DOCTYPE html>
@@ -80,7 +82,7 @@
                 </ul>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                 <div class="nav navbar-nav account-nav-logged btn-group">
+                   <div class="nav navbar-nav account-nav-logged btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
                         <ul class="dropdown-menu">
@@ -92,22 +94,22 @@
                 {% else %}
                     <div class="nav navbar-nav account-nav-anonymous">
 
-                       <button class="btn btn-primary navbar_button" id="login-button">Se connecter</button>
-                       <button class="btn btn-primary navbar_button" id="register-button">S'inscrire</button>
-                   </div>
-               {% endif %}
+                     <button class="btn btn-primary navbar_button" id="login-button">Se connecter</button>
+                     <button class="btn btn-primary navbar_button" id="register-button">S'inscrire</button>
+                 </div>
+             {% endif %}
 
 
-               <!-- /.navbar-collapse -->
+             <!-- /.navbar-collapse -->
 
-           </nav>
-       </header>
-       {% block slides %} {% endblock %}
+         </nav>
+     </header>
+     {% block slides %} {% endblock %}
 
         {% block body_content %}
         {% endblock %}
         <footer class="footer">
-            <div class="container">
+            <div class="footer-container">
                 <p><span id="copyright">Copyright &copy; JRProduction </span><span>|</span><span><a href="{{path('legal_notice') }}">Mentions légales</a></span><span>|</span><span><a href="{{ path('contact')}}">Nous contacter</a></span></p>
             </div>
 
@@ -118,12 +120,13 @@
 
         <!-- /.container -->
         <div id="loginModal" tabindex="-1"></div>
+
         <!-- Modal -->
         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog register-modal" role="document">
                 <div class="modal-content">
-
                     <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <div class="register_container">
                         </div>
                     </div>
@@ -153,7 +156,6 @@
                         $(".register_container").replaceWith(data);
                         $('#registerModal').modal();
                         $('.selectpicker').selectpicker({
-
                         });
                     })});
 
@@ -164,9 +166,47 @@
         <script>
             $.fn.modal.Constructor.prototype.enforceFocus = function() {};
         </script>
+        <script>
+          function initRegistrationForm()
+          {
+            $('.registerAjaxForm').unbind();
+
+            $('.registerAjaxForm').submit(function (e) {
+              e.preventDefault();
+              $('.register-submit-button').addClass("disabled");
+              $.ajax({
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize()
+            })
+              .done(function (data) {
+                $('.register_container').replaceWith(data);
+                if (typeof data.message !== 'undefined') {
+                  $('.error-content').replaceWith(data.message);
+              }
+
+          })
+              .fail(function (jqXHR, textStatus, errorThrown) {
+                alert('fail');
+                if (typeof jqXHR.responseJSON !== 'undefined') {
+                  if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                    $('#form_body').html(jqXHR.responseJSON.form);
+                }
+
+                $('.form_error').html(jqXHR.responseJSON.message);
+
+            } else {
+              alert(errorThrown);
+          }
+
+      });
+          });
+        } </script>
         {% block scripts %}
         {% endblock %}
 
     </body>
 
-</html>
+    </html>
+
+

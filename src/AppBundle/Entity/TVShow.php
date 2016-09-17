@@ -42,7 +42,11 @@ class TVShow
      * @Assert\NotBlank()
     */
     protected $description;
-
+ /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+    */
+    protected $generalInformation;
     /**
     * @ORM\ManyToOne(targetEntity="Channel")
      * @ORM\JoinColumn(nullable=false)
@@ -77,7 +81,7 @@ class TVShow
 private $updatedAt;
 
     /**
-   * @ORM\OneToMany(targetEntity="Recording", mappedBy="tvShow")
+   * @ORM\OneToMany(targetEntity="Recording", mappedBy="tvShow", cascade={"remove"})
    */
     private $recordings;
 
@@ -197,6 +201,14 @@ private $updatedAt;
       $this->homePageVisibility=$homePageVisibility;
     }
 
+    public function getGeneralInformation() {
+      return $this->generalInformation;
+    }
+
+    public function setGeneralInformation($infos) {
+       $this->generalInformation = $infos;
+    }
+    
     public function __toString() 
     {
       return (string) $this->getId();

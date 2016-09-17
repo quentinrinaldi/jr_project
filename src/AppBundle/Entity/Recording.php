@@ -11,7 +11,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Recording
 {
-
+   public function __construct()
+   {
+        parent::__construct();
+        $this->registrationRequests = new ArrayCollection();
+    }
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -59,7 +63,12 @@ class Recording
     */
 protected $availability;
 
-public function getID() {
+ /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="recording", cascade={"remove"})
+   */
+ protected $registrationRequests;
+
+ public function getID() {
     return $this->id;
 }
 
@@ -115,6 +124,18 @@ public function setRecordingCondition($recordingCondition) {
 public function setAvailability($availability) {
     $this->availability = $availability;
 }
+
+public function addRegistrationRequest (RegistrationRequest $registrationRequest)
+{
+    $this->registrationRequests[] = $registrationRequest;
+    return $this;
+}
+
+public function removeRegistrationRequest(RegistrationRequest $registrationRequest)
+{
+    $this->registrationRequests->removeElement($registrationRequest);
+}
+
 public function __toString() 
 {
     return (string) $this->getId();

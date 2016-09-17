@@ -9,9 +9,32 @@ UserBundle\Entity\User:
             - NotBlank:
                 message: "Veuillez saisir votre nom."
                 groups: [ "UserRegistration" ]
+
+        phoneNumber:
+            - NotBlank:
+                message: "Veuillez saisir un numéro de téléphone."
+                groups: [ "UserRegistration" ]
             
-
-
+        gender:
+            - NotBlank:
+                message: "Veuillez selectionner votre genre."
+                groups: [ "UserRegistration" ]
+        address:
+            - NotBlank:
+                message: "Veuillez saisir votre adresse."
+                groups: [ "UserRegistration" ]
+        zipCode:
+            - NotBlank:
+                message: "Veuillez saisir votre code postal."
+                groups: [ "UserRegistration" ]
+        city:
+            - NotBlank:
+                message: "Veuillez saisir votre ville."
+                groups: [ "UserRegistration" ]
+        birthday:
+            - NotBlank:
+                message: "Veuillez saisir votre date de naissance."
+                groups: [ "UserRegistration" ]
 
 # Note: We still want to validate the email
 # See FOSUserBundle/Resources/config/validation/orm.xml to understand

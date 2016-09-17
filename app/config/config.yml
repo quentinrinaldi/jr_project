@@ -108,6 +108,10 @@ fos_user:
     resetting:
         email:
             template: email/password_resetting_email.twig
+        form:
+            type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
+            name:               fos_user_resetting_form
+            validation_groups:  [ResetPassword, Default]
 
 ivory_ck_editor:
     configs:
@@ -123,21 +127,25 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_origname
         icone:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_origname
         file:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_origname
         slide:
             uri_prefix:         /slides
             upload_destination: %kernel.root_dir%/../web/slides
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_origname

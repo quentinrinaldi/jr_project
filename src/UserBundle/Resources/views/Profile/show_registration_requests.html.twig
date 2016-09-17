@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}" />
+
+{% endblock %}
+
+{% block body_content %}
+
+  <div class="panel panel-default panel-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Mon profil</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <li>
+          <a href="{{ path('fos_user_profile_show') }}" >Editer mes informations</a>
+        </li>
+        <li>
+          <a href="{{ path('registration_requests_overview') }}">Mes inscriptions</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container main-container">
+
+   <div class="row">
+
+    <!-- edit form column -->
+    <div class="col-md-9 personal-info col-md-offset-2">
+      <h1>Mes demandes d'inscriptions</h1>
+      <hr>
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        Nous avertirons dès lors que le statut de l'une de vos demandes évolue
+      </div>
+
+      <table id="events_calendar" class="display" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Emission</th>
+            <th>Date du tournage</th>
+            <th>Heure de début</th>
+            <th>Heure de fin</th>
+            <th>Nombre de places demandées</th>
+            <th>Statut de la demande</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for regRequest in regRequests %}
+            <tr>
+              <td>{{ regRequest.recording.tvShow.title }}</td>
+              <td>{{ regRequest.recording.date |date('Y-m-d')}}</td>
+              <td>{{ regRequest.recording.startTime |date('h:i') }}</td>
+              <td>{{ regRequest.recording.endTime  |date('h:i')}}</td>
+              <td>{{ regRequest.peopleNumber}}</td>
+              <td>{{ regRequest.status }}</td>
+            </tr>
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <hr> 
+
+
+{% endblock %}

@@ -30,7 +30,8 @@ class RegistrationFormType extends AbstractType
     // add a class that can be selected in JavaScript
             'placeholder' => 'Date de naissance'
             ));
-        $builder->add('phoneNumber','number');
+        $builder->add('phoneNumber','number', array(
+            'required' => true));
 
         $builder->add('address','text');
         $builder->add('zipCode','text');

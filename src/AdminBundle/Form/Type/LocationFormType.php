@@ -21,14 +21,6 @@ class LocationFormType extends AbstractType
         'label'  => 'Adresse du tournage',
         ));
 
-        $builder->add('imageFile',FileType::class, array(
-            'trim' => true,
-            'label'  => 'Illustration',
-            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
-            'required' => false
-
-            ));
-
         $builder->add('helper', 'ckeditor', array(
             'config_name' => 'my_config',
             'label' => 'Description')

@@ -1,0 +1,71 @@
+
+html {
+	 min-height: 100% !important;
+    position: relative;
+}
+
+body {
+	margin-bottom: 60px;
+}
+
+.header_logo {
+	position:absolute;
+	width:80px;
+	display: block;
+	left:8%;
+	z-index: 10;
+	top:10px;
+}
+
+.header {
+	background-color: #222;
+	height:100px;
+	position: relative;
+	color:#fff !important;
+	font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.header_logo img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.custom-navbar {
+	background: none;
+	border:none !important;
+	position:relative;
+	top:25px;
+
+}
+
+.account-nav-anonymous {
+	position:absolute;
+	right:80px;
+	top:10px;
+}
+
+.account-nav-anonymous > button {
+	margin-right: 8px;
+}
+
+.account-nav-logged {
+	position:absolute;
+	right:100px;
+	top:10px;
+}
+
+
+.menu-bar {
+	margin-left: 20%;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+
+

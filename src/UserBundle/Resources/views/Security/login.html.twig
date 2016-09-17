@@ -7,10 +7,11 @@
     <div class="modal-content">
 
       <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="login_container">
 
           <form class="ajaxForm form-signin" action="{{ path("fos_user_security_check") }}" method="post" class="ajaxForm" novalidate>
-            <h2 class="form-signin-heading">Connectez-vous</h2>
+            <h2 class="form-signin-heading">Connexion</h2>
 
             {% if error %}
               <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -28,9 +29,9 @@
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
               </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
           </form>
-
+          <a href="#" onclick='passwordRetriever();'>Mot de passe oubilé</a>
         </div>
       </div>
     </div>
@@ -75,6 +76,17 @@
 
       });
     });
-  }   
+  } 
+  function passwordRetriever($url) {
+  
+    var url = "{{ path('fos_user_resetting_request') }}"
+    $.ajax({
+        type: 'GET',
+        url: url
+  })
+    .done(function (data) {
+      $('.login_container').replaceWith(data);
+    });
+  } 
   initAjaxForm();
 </script>

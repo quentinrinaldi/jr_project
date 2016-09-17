@@ -1,8 +1,6 @@
 {% extends "base.html.twig" %}
 {% block stylesheet %}
-
-
-
+<link rel="stylesheet" href="{{ asset('assets/css/tvShow_details.css') }}" />
 {% endblock %}
 {% block body_content %}
 
@@ -11,25 +9,28 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">{{ tvShow.title }}
-					<small>En cours de tournage</small>
+					{% if next_recordings %}
+            <small><span class="label label-success">En cours de tournage</span></small>
+        {% else %}
+        	<small><span class="label label-warning">Aucun tournage de prévue</span></small>
+        {% endif %}
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a>
+					<li><a href="{{ path('home') }}">Accueil</a>
 					</li>
-					<li class="active">Full Width Page</li>
+					<li><a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+					</li>
+					<li class="active">{{ tvShow.title }}</li>
 				</ol>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<img class="img-responsive" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
-			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 vcenter">
+				<img class="img-responsive center-block" src="{{ asset('uploads/' ~ tvShow.iconeName) }}" alt="">
+			</div><!--
+    --><div class="col-md-6 vcenter">
 				<h2>A propos de l'emission</h2>
-				<p>L'émission mythique" Des Chiffres et des Lettres " vous accueille dorénavant sur son plateau !</p>
-				<p>Elle mettra à l’épreuve vos capacités de calcul mental et de combinaisons de lettres.</p>
-				<p>Des chiffres et des lettres est basé sur les mécaniques des jeux « Le mot le plus long » et « Le compte est bon ».</p>
-				<p>Dans ce jeu, deux candidats devront faire appel à toute leur culture générale pour parvenir au sprint final...</p>
+				{{ tvShow.description | raw }}
 			</div>
 		</div>
 		<div class="row">
@@ -57,7 +58,9 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="page-header">Le lieu</h2>
+				<h2 class="page-header">Informations Pratiques</h2>
+
+				{{ tvShow.generalInformation | raw }}
 			</div>
 		</div>
 	</div>
@@ -66,17 +69,21 @@
 	</div>
 
 	<div class="modal fade" id="anonymousSuscribtionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog register-modal" role="document">
-			<div class="modal-content">
+        <div class="modal-dialog register-modal" role="document">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="suscribtion_container text-center">
+                        <h3>Oups...</h3>
+                        <p>Vous devez être identifié pour vous inscrire à une émission.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" >J'ai compris !</button>
+                    </div>
+                </div>
 
-				<div class="modal-body">
-					<div class="suscribtion_container">
-						<p>Vous devez être identifié pour vous inscrire à une émission.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

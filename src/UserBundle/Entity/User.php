@@ -52,9 +52,10 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */
     protected $phoneNumber;
+    
     /**
      * @ORM\Column(type="string")
-      * @Assert\NotBlank()
+     * @Assert\NotBlank()
     */
     protected $address;
 
@@ -73,7 +74,6 @@ class User extends BaseUser
   /**
    * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user")
    */
-
   protected $registrationRequests;
 
   public function __construct()

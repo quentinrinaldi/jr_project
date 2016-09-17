@@ -30,7 +30,8 @@
         "kartik-v/bootstrap-fileinput": "dev-master",
         "vich/uploader-bundle": "^1.1",
         "moment/moment": "^2.14",
-        "eonasdan/bootstrap-datetimepicker": "^4.17"
+        "eonasdan/bootstrap-datetimepicker": "^4.17",
+        "excelwebzone/recaptcha-bundle": "^1.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

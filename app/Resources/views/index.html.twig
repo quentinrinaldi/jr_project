@@ -3,6 +3,7 @@
 {% block stylesheet%} 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick-theme.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index.css') }}"/>
 {% endblock %}
 
 {% block slides %}
@@ -50,7 +51,7 @@
       <div class="panel-body">
         <h4>Créer votre compte</h4>
         <p>C'est très simple, et ne vous prendra qu'une minute</p>
-        <a class="btn btn-primary" href="#">Learn More</a>
+        <a class="btn btn-primary" href="#">S'inscrire</a>
       </div>
     </div>
   </div>
@@ -63,20 +64,24 @@
         </span>
       </div>
       <div class="panel-body">
-        <h4>Choisissez votre émissions</h4>
-        <p>Il y en a forcément une pour vous !</p>
-        <a class="btn btn-primary" href="#">Learn More</a>
+        <h4>Choisissez votre émission</h4>
+        <p>Allez-y, cherchez, il y en a forcément une pour vous !</p>
+        <a class="btn btn-primary" href="#">Les émissions</a>
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="panel panel-default">
+    <div class="panel panel-default text-center">
       <div class="panel-heading">
-        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+         <span class="fa-stack fa-5x">
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+        </span>
       </div>
       <div class="panel-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-        <a href="#" class="btn btn-default">Learn More</a>
+        <h4>Nous nous occupons de tout !</h4>
+        <p>Nous prenons contact avec vous pour vous confirmer la réservation.</p>
+        <a class="btn btn-primary" href="#">Mes réservations</a>
       </div>
     </div>
   </div>
@@ -91,13 +96,33 @@
   {% for tvShow in tvShows %}
     <div class="col-md-4 col-sm-6">
     <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="{{ asset('uploads/' ~ tvShow.iconeName) }}" alt="">
+      <img class="img-responsive img-portfolio img-hover" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
     </a>
   </div>
   {% endfor %}
   <div class="col-md-4 col-sm-6">
     <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+    </a>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <a href="portfolio-item.html">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/300x175" alt="">
+    </a>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <a href="portfolio-item.html">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+    </a>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <a href="portfolio-item.html">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+    </a>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <a href="portfolio-item.html">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
     </a>
   </div>
 </div>
@@ -106,7 +131,7 @@
 <!-- Features Section -->
 <div class="row">
   <div class="col-lg-12">
-    <h2 class="page-header">Modern Business Features</h2>
+    <h2 class="page-header">Venez en groupe !</h2>
   </div>
   <div class="col-md-6">
     <p>The Modern Business template by Start Bootstrap includes:</p>
@@ -122,8 +147,8 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
   </div>
   <div class="col-md-6">
-    <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-  </div>
+    <img class="img-responsive" src="http://placehold.it/700x350" alt="">
+</div>
 </div>
 <!-- /.row -->
 
@@ -133,10 +158,10 @@
 <div class="well">
   <div class="row">
     <div class="col-md-8">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+      <p> Si jamais vous avez une question, que ce soit pour choisir votre émission, vous rendre sur le lieux du tournage, venir en groupe ou bien tout autres renseignements, n'hésitez surtout pas à nous contacter !</p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+      <a class="btn btn-lg btn-default btn-block" href="#">Contactez-nous</a>
     </div>
   </div>
 </div>
@@ -154,7 +179,7 @@
   <script>
     $(function(){
       $(".jumbotron-content").typed({
-        strings: ["Ne regardez plus la tv...^4000 Vivez-là !."],
+        strings: ["Ne regardez plus la tv...<br>^4000Vivez-là !."],
         typeSpeed: 200,
         showCursor: true,
         cursorChar: "|",

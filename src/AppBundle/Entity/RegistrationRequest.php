@@ -52,7 +52,7 @@ class RegistrationRequest
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
      */  
-    protected $peopleNumber;
+        protected $peopleNumber;
 /**
  * @ORM\PrePersist
  * @ORM\PreUpdate
@@ -85,6 +85,7 @@ public function getRecording() {
 
 public function setRecording($recording) {
 	$this->recording = $recording;
+   $this->recording->addRegistrationRequest($this);
 }
 
 public function getStatus() {

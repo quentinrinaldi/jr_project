@@ -1,0 +1,81 @@
+
+.form-signup {
+    margin:0 auto;
+    max-width: 350px;
+    padding: 15px;
+}
+
+
+.main {
+	margin-top: 30px !important;
+	text-align: center !important;
+	width:463px !important;
+	height: 100%;
+}
+
+.form-signup input {
+	 background: #fff none repeat scroll 0 0 !important;
+    border: 1px solid #d0d0d0 !important;
+    box-shadow: none !important;
+    font-size: 15px !important;
+    height: 45px !important;
+    outline: 0 none !important;
+    padding: 0 10px !important;
+    width: 100%;
+    border-radius: 2px !important; 
+    margin-top: 16px !important;
+}
+
+.register_container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+.form-signup button[type='submit'] {
+	margin-bottom: 10px;
+    margin-top: 30px;
+
+}
+.form-signup {
+	margin: 0 50px !important;
+}
+
+.form-signup h3 {
+	 font-weight: 500 !important;
+    line-height: 1.1 !important;
+    font-family: 'Open Sans' !important;
+    font-size: 30px !important;
+    margin: 20px auto !important;
+    font-style: normal !important;
+    text-align: center;
+}
+
+.register-modal {
+    width:500px;
+}
+
+
+.inline-input {
+    display:inline-block !important;
+    width:49% !important;
+}
+
+.birthday-input {
+    width:69% !important;
+    display: inline-block !important;
+    margin-top: 0 !important;
+}
+.gender-input {
+    
+    width:29% !important;
+    display: inline-block !important;
+    margin-top: 5px;
+}
+
+.gender-input > button {
+        height:45px !important;
+}
+.dropdown-menu {
+    margin-top:10px;
+}

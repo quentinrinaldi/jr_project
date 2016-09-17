@@ -59,7 +59,7 @@ class TVShowFormType extends AbstractType
         $builder->add('imageFile',FileType::class, array(
             'trim' => true,
             'label'  => 'Illustration',
-            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false', 'data-help' => 'L\'image d\'illustration est celle qui peut se retrouver sur la page d\'accueil'),
             'required' => false
             ));
 
@@ -73,6 +73,10 @@ class TVShowFormType extends AbstractType
         $builder->add('description', 'ckeditor', array(
             'config_name' => 'my_config',
             'label' => 'Description')
+        );
+        $builder->add('generalInformation', 'ckeditor', array(
+            'config_name' => 'my_config',
+            'label' => 'Informations pratiques')
         );
 
         

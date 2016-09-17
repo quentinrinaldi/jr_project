@@ -27,30 +27,50 @@
                 <p class="subcomment">Sur cette page, visualisez en un coup d'oeil tous les tournages programmés.</p>
             </div>
 
-                <table id="events_calendar" class="display" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Emission</th>
-                            <th>Date</th>
-                            <th>Heure de début</th>
-                            <th>Heure de fin</th>
-                            <th>Condition</th>
-                            <th>Inscription</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for recording in recordings %}
-                            {{ include('AppBundle:Calendar:calendar_recording_partial.html.twig', { 'recording' : recording }) }}
-                        {% endfor %}
+            <table id="events_calendar" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Emission</th>
+                        <th>Date</th>
+                        <th>Heure de début</th>
+                        <th>Heure de fin</th>
+                        <th>Condition</th>
+                        <th>Inscription</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recording in recordings %}
+                        {{ include('AppBundle:Calendar:calendar_recording_partial.html.twig', { 'recording' : recording }) }}
+                    {% endfor %}
 
-                        
-                    </tbody>
-                </table>
+
+                </tbody>
+            </table>
 
         </div>
     </div>
 
-        {% endblock %}
+    <div id="connectedSuscribtionModal" tabindex="-1">
+    </div>
+
+    <div class="modal fade" id="anonymousSuscribtionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog register-modal" role="document">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="suscribtion_container text-center">
+                        <h3>Oups...</h3>
+                        <p>Vous devez être identifié pour vous inscrire à une émission.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" >J'ai compris !</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
 
 {% block scripts %}
     <script>
@@ -70,18 +90,25 @@
                 "bFilter": false,
 
             });
-            // $('.register-button').click(function() {
-            //     var id = this.id;
-            //     var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
-            //     url = url.replace("recording_ID", id);
-            //     $.get(url, function(data) {
-            //         $("#myModal").replaceWith(data);
-            //         $('#myModal').modal();
-            //     })});
+
+            $('.connected-register-button').click(function() {
+
+                var id = this.id;
+                var url = "{{ path('request_registration_form', {'recordingID': 'recording_ID'})}}"
+                url = url.replace("recording_ID", id);
+                $.get(url, function(data) {
+
+                    $('#connectedSuscribtionModal').replaceWith(data);
+                    $('#connectedSuscribtionModal').modal();
+                })});
+
+            $('.anonymous-register-button').click(function() {
+                $('#anonymousSuscribtionModal').modal();
+            });
+            
         });
 
 
     </script>
 {% endblock %}
 
-            

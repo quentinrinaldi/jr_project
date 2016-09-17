@@ -1,5 +1,14 @@
+{% extends "base.html.twig" %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ asset('assets/css/tvShow_details.css') }}" />
+{% endblock %}
+{% block body_content %}
 
-   <div class="register_container">
-    <p>Votre compte est désormais activé ! </p>
+	<div class="container">
+		<!-- Page Heading/Breadcrumbs -->
+		<div class="row">
+   <div class="register_container alert alert-success">
+    <p>Félicitation, votre compte est désormais activé ! </p> <a role="button" class="btn btn-primary" href="{{ path('home')) }}">Retour vers la page d'accueil</a>
 </div>
-
+</div>
+{% endblock %}
