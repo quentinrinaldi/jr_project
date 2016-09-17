@@ -1,7 +1,9 @@
 {% extends "base.html.twig" %}
 {% block stylesheet%} 
-<link rel="stylesheet" href="{{ asset('assets/css/calendar.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/client_website/css/calendar.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
 {% endblock %}
+
 {% block body_content %}
 
     <div class="container">
@@ -73,6 +75,9 @@
 {% endblock %}
 
 {% block scripts %}
+
+    <script src="{{ asset('assets/shared_assets/js/jquery.dataTables.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#events_calendar').DataTable({

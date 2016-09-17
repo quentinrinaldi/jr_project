@@ -1,5 +1,9 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
 
+{% block stylesheets %}
+     <link href="{{ asset('assets/admin_website/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" /> 
+{% endblock %}
+
 {% block body_content %}
 
 
@@ -25,4 +29,5 @@
 {% endblock %}
 
 {% block scripts %}
+       <script src="{{ asset('assets/admin_website/js/fileinput.min.js') }}"></script>
 {% endblock %}

@@ -10,25 +10,24 @@
     <meta name="author" content="">
 
     <title>Interface admin</title>
-
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/bootstrap.min.css') }}" />
 
     <!-- MetisMenu CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/metisMenu/dist/metisMenu.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin_website/css/metisMenu.min.css') }}" />
 
     <!-- Timeline CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/timeline.css') }}" />
+{#     <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/timeline.css') }}" /> #}
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/sb-admin-2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin_website/css/sb-admin-2.css') }}" />
 
     <!-- Morris Charts CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/morrisjs/morris.css') }}" />
+{#     <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/morrisjs/morris.css') }}" /> #}
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" />
-
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin_website/css/base.css') }}" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,13 +35,12 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="{{ asset('assets/css/channel.css') }}" />
 
-        <link href="{{ asset('assets/admin/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+   
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
 
-        {% block stylesheet%} {% endblock %}
+        {% block stylesheets %} {% endblock %}
 
     </head>
 
@@ -150,16 +148,11 @@
             </div>
 
         </div>
-        <!-- /#wrapper -->
-        <script src="{{ asset('assets/js/jquery.js') }}"></script>
-        <script src="{{ asset('assets/admin/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
-        <!-- jQuery -->
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="{{ asset('assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="{{ asset('assets/admin/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+    
+        <script src="{{ asset('assets/shared_assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/shared_assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/admin_website/js/sb-admin-2.js') }}"></script>
+          <script src="{{ asset('assets/admin_website/js/metisMenu.min.js') }}"></script>
 
         <!-- Morris Charts JavaScript -->
     <!-- <script src="{{ asset('assets/admin/bower_components/raphael/raphael-min.js') }}"></script>
@@ -167,9 +160,9 @@
     <script src="{{ asset('assets/admin/js/morris-data.js') }}"></script> -->
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('assets/admin/dist/js/sb-admin-2.js') }}"></script>
 
-    <script src="{{ asset('assets/admin/js/fileinput.min.js') }}"></script>
+
+    <!-- <script src="{{ asset('assets/admin_website/js/fileinput.min.js') }}"></script>-->
 
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 

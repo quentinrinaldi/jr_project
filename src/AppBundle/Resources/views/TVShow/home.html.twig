@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
 {% block stylesheet%} 
-<link rel="stylesheet" href="{{ asset('assets/css/tvshow.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/client_website/css/tvshow.css') }}" />
 {% endblock %}
-{% block body_content %}
 
+{% block body_content %}
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
@@ -34,8 +34,6 @@
             {% for tvShow in tvShows %}
                 {{ include('AppBundle:TVShow:tvshow_partial.html.twig', { 'tvShow' : tvShow }) }}
             {% endfor %}
-
-
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -44,10 +42,11 @@
                 </h1>
             </div>
         </div>
-
     </div>
 
-        {% endblock %}
+{% endblock %}
 
+${% block scripts %}
 
-            
+{% endblock %}
+

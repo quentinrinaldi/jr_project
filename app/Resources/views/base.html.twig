@@ -10,26 +10,28 @@
     <meta name="author" content="">
 
     <title>Casting-Public</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/modern-buisness.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/general.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/login_form.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/signup_form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/bootstrap.min.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/modern-buisness.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/bootstrap-datetimepicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/general.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/bootstrap-select.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/jquery-ui.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/login_form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/signup_form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/header.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/footer.css') }}" />
 
     {% block stylesheet%} {% endblock %}
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}" />
+   
     <!-- jQuery -->
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 
 <!DOCTYPE html>
@@ -134,12 +136,11 @@
             </div>
         </div>
 
-        <script src="{{ asset('assets/js/jquery.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script src="{{ asset('assets/js/moment.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('assets/shared_assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/shared_assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/moment.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/bootstrap-datetimepicker.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/bootstrap-select.min.js') }}"></script>
 
         <script>
             $(document).ready(function() {
@@ -161,8 +162,8 @@
 
             });
         </script>
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-        <script src="{{ asset('assets/js/datepicker-fr.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/datepicker-fr.js') }}"></script>
         <script>
             $.fn.modal.Constructor.prototype.enforceFocus = function() {};
         </script>
@@ -202,6 +203,8 @@
       });
           });
         } </script>
+
+         <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
         {% block scripts %}
         {% endblock %}
 
