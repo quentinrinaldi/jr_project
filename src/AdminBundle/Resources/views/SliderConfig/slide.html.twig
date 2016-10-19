@@ -12,17 +12,12 @@
             <img src="{{ asset('slides/' ~ slide.fileName) }}"></img>
         </div>
         <div class="panel-footer">
-           
             <form action="{{ path('switch_slide_visibility', {'id': slide.id}) }}" method="post" class="channel-button">
-
-             <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %}Masquer la slide {%else%}Afficher la slide{% endif %}</a>
-              {#   <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button> #}
+             <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %} Masquer la slide {% else %}Afficher la slide {% endif %}</button>
             </form>   
-
             <form action="{{ path('remove_slide', {'id': slide.id}) }}" method="post" class="channel-button">
-              <button class="btn btn-primary btn-sm" role="button">Supprimer la slide</a>
-            </form
-   {#          { <a href="{{ path('remove_slide', {'id': slide.id}) }}" class="glyphicon glyphicon-remove" role="button"></a> } #}
+              <button class="btn btn-primary btn-sm" role="button">Supprimer la slide</button>
+            </form>
         </div>
     </div>
 </div>

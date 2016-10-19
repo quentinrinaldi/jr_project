@@ -32,21 +32,9 @@ class ProfileFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->buildUserForm($builder, $options);
 
-        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
-            'label' => 'form.current_password',
-            'translation_domain' => 'FOSUserBundle',
-            'mapped' => false,
-            'constraints' => new UserPassword(),
-        ));
 
-        $builder->add('birthday','birthday', array(
-        'widget' => 'choice',
-
-        'label'  => 'Birthday',
-        ))
-        ->add('firstname','text', array(
+        $builder->add('firstname','text', array(
         'trim' => true,
         'label'  => 'Prénom',
         ))
@@ -55,10 +43,34 @@ class ProfileFormType extends AbstractType
         'label'  => 'Nom',
         ))
         ->add('gender','choice', array(
-        'choices'   => array('M' => 'Male', 'M' => 'Female'),
+        'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
         'expanded'  => true,
         'required'  => true,
         'label'  => 'Vous êtes',
+        ))
+        ->add('birthday','birthday', array(
+        'widget' => 'choice',
+        'label'  => 'Birthday',
+        'format' => 'dd-MM-yyyy'
+        ))
+        ->add('address','text', array(
+        'label'  => 'Adresse'
+        ))
+        ->add('zipCode','text', array(
+        'label'  => 'Code postal'
+        ))
+        ->add('city','text', array(
+        'label'  => 'Ville'
+        )) 
+        ->add('phoneNumber','text', array(
+        'label'  => 'Téléphone',
+        ));
+
+        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
+            'label' => 'form.current_password',
+            'translation_domain' => 'FOSUserBundle',
+            'mapped' => false,
+            'constraints' => new UserPassword(),
         ));
     }
 

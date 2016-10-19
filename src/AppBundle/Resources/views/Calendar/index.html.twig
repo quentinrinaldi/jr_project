@@ -1,5 +1,6 @@
 {% extends "base.html.twig" %}
-{% block stylesheet%} 
+
+{% block stylesheets %} 
 <link rel="stylesheet" href="{{ asset('assets/client_website/css/calendar.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
 {% endblock %}
@@ -84,7 +85,8 @@
                 "language": {
                     "lengthMenu": "Afficher _MENU_ dates par page",
                     "info": "Page _PAGE_/_PAGES_",
-                    "infoEmpty": "Aucune date n'est actuellement prévue",
+                    "emptyTable": "Aucune date n'est actuellement prévue",
+                    "infoEmpty": "",
                     "paginate": {
                         "first":      "Première page",
                         "last":       "Dernière page",

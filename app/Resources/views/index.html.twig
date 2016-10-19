@@ -1,27 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block stylesheet%} 
+{% block stylesheets %} 
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/index.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick-theme.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/index.css') }}"/>
 {% endblock %}
 
-{% block slides %}
-
-
-
-{% endblock %}
 {% block body_content %}
   <div class="header-slides">
    <div class="slide-class">
+
     {% for slide in slides %}
-
-      <img src="{{ asset('slides/' ~ slide.fileName) }}"></img>
-
+      <img class="logo" src="{{ asset('slides/' ~ slide.fileName) }}"></img>
     {% endfor %}
-    <div><img src="http://jrproduction.tv/upload/emission/26/359_HARRY%20IMAGE%20TYPE%20SLIDER.png"></img></div>
+    
+{#     <div><img src="http://jrproduction.tv/upload/emission/26/359_HARRY%20IMAGE%20TYPE%20SLIDER.png"></img></div>
     <div><img src="http://jrproduction.tv/upload/emission/64/386_DCDL%20TYPE%20SLIDER.png" class="logo" /></div>
-    <div><img src="http://jrproduction.tv/upload/emission/17/382_MONEY%20DROP%20TYPE%20SLIDER.png" class="logo" /></div>
+    <div><img src="http://jrproduction.tv/upload/emission/17/382_MONEY%20DROP%20TYPE%20SLIDER.png" class="logo" /></div> #}
   </div>
   <div class="jumbotron">
     <h1 class="jumbotron-content"></h1>
@@ -35,7 +30,6 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header" style="text-align:center">
-       <!-- <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />-->
        Venez assistez à nos émissions !
        
      </h1>
@@ -179,7 +173,7 @@
   <script>
     $(function(){
       $(".jumbotron-content").typed({
-        strings: ["Ne regardez plus la tv...<br>^4000Vivez-là !."],
+        strings: ["Ne regardez plus la tv<br>^3000Vivez-là !!!!!!^3000"],
         typeSpeed: 200,
         showCursor: true,
         cursorChar: "|",
@@ -196,7 +190,7 @@
        cssEase: 'linear',
        centerMode: true,
        dots: true,
-       pauseOnHover:false
+       pauseOnHover:true
 
 
      });

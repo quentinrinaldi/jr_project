@@ -33,7 +33,7 @@ fos_user_resetting:
     prefix: /resetting
 
 fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    resource: "change_password.xml"
     prefix: /profile
 
 registration_requests_overview:

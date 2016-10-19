@@ -9,18 +9,18 @@ body {
 }
 
 .header_logo {
-	position:absolute;
-	width:80px;
+/*	position:absolute;
+*/	width:80px;
 	display: block;
-	left:8%;
-	z-index: 10;
+/*	left:8%;
+*/	z-index: 10;
 	top:10px;
 }
 
 .header {
 	background-color: #222;
 	height:100px;
-	position: relative;
+	/*position: relative;*/
 	color:#fff !important;
 	font-family: 'Open Sans', sans-serif;
     letter-spacing: 0.5px;
@@ -29,23 +29,26 @@ body {
 }
 
 .header_logo img {
-    display: block;
-    height: auto;
+/*    display: block;
+*/    height: auto;
     width: 100%;
 }
 
 .custom-navbar {
 	background: none;
 	border:none !important;
-	position:relative;
-	top:25px;
+/*	position:relative;
+	top:25px;*/
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+
 
 }
 
 .account-nav-anonymous {
-	position:absolute;
-	right:80px;
-	top:10px;
+	display:inline-block;
 }
 
 .account-nav-anonymous > button {
@@ -53,14 +56,15 @@ body {
 }
 
 .account-nav-logged {
-	position:absolute;
-	right:100px;
-	top:10px;
+/*	position:absolute;
+	right:100px;*/
+	/*top:10px;*/
 }
 
 
 .menu-bar {
-	margin-left: 20%;
+/*	margin-left: 20%;*/
+	display:inline-block;
 }
 
 .navbar-inverse .navbar-nav > li > a {

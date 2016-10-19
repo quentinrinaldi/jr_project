@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Casting-Public</title>
+    <title>JRProduction</title>
     <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/bootstrap.min.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('assets/client_website/css/modern-buisness.css') }}" />
@@ -24,32 +24,16 @@
     <link rel="stylesheet" href="{{ asset('assets/client_website/css/header.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/client_website/css/footer.css') }}" />
 
-    {% block stylesheet%} {% endblock %}
+    {% block stylesheets %} {% endblock %}
 
-    <!-- Custom Fonts -->
-   
-    <!-- jQuery -->
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-
-</head>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
     <body>
         <header class="header">
-            <div class="header_logo"> 
-                <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
-            </div>
-            <nav class="navbar navbar-inverse custom-navbar" role="navigation">
-
+            <nav class=" navbar-inverse custom-navbar" role="navigation">
+                <div class="header_logo"> 
+                    <img src="https://pbs.twimg.com/profile_images/378800000369977729/1f4b12072398b0c6e348982528b64fce_400x400.png" class="logo" />
+                </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <ul class="nav navbar-nav menu-bar">
                     <li>
@@ -84,7 +68,7 @@
                 </ul>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                   <div class="nav navbar-nav account-nav-logged btn-group">
+                 <div class="nav navbar-nav account-nav-logged btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mon compte   <span class="caret"> </span></button>
                         <ul class="dropdown-menu">
@@ -96,17 +80,17 @@
                 {% else %}
                     <div class="nav navbar-nav account-nav-anonymous">
 
-                     <button class="btn btn-primary navbar_button" id="login-button">Se connecter</button>
-                     <button class="btn btn-primary navbar_button" id="register-button">S'inscrire</button>
-                 </div>
-             {% endif %}
+                       <button class="btn btn-primary navbar_button" id="login-button">Se connecter</button>
+                       <button class="btn btn-primary navbar_button" id="register-button">S'inscrire</button>
+                   </div>
+               {% endif %}
 
 
-             <!-- /.navbar-collapse -->
+               <!-- /.navbar-collapse -->
 
-         </nav>
-     </header>
-     {% block slides %} {% endblock %}
+           </nav>
+       </header>
+       {% block slides %} {% endblock %}
 
         {% block body_content %}
         {% endblock %}
@@ -114,16 +98,10 @@
             <div class="footer-container">
                 <p><span id="copyright">Copyright &copy; JRProduction </span><span>|</span><span><a href="{{path('legal_notice') }}">Mentions légales</a></span><span>|</span><span><a href="{{ path('contact')}}">Nous contacter</a></span></p>
             </div>
-
         </footer>
         
-        <!-- Footer -->
-        
-
-        <!-- /.container -->
         <div id="loginModal" tabindex="-1"></div>
 
-        <!-- Modal -->
         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog register-modal" role="document">
                 <div class="modal-content">
@@ -141,6 +119,8 @@
         <script src="{{ asset('assets/client_website/js/moment.js') }}"></script>
         <script src="{{ asset('assets/client_website/js/bootstrap-datetimepicker.js') }}"></script>
         <script src="{{ asset('assets/client_website/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/client_website/js/datepicker-fr.js') }}"></script>
 
         <script>
             $(document).ready(function() {
@@ -162,8 +142,7 @@
 
             });
         </script>
-        <script src="{{ asset('assets/client_website/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('assets/client_website/js/datepicker-fr.js') }}"></script>
+
         <script>
             $.fn.modal.Constructor.prototype.enforceFocus = function() {};
         </script>
@@ -204,7 +183,6 @@
           });
         } </script>
 
-         <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
         {% block scripts %}
         {% endblock %}
 

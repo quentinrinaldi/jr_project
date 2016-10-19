@@ -1,35 +1,35 @@
 {% extends "base.html.twig" %}
 
 
-{% block stylesheet%}
-<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}" />
-
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('assets/client_website/css/profile.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
 {% endblock %}
 
 {% block body_content %}
-
-  <div class="panel panel-default panel-menu">
-    <div class="panel-heading">
-      <h3 class="panel-title">Mon profil</h3>
-    </div>
-    <div class="panel-body">
-      <ul>
-        <li>
-          <a href="{{ path('fos_user_profile_show') }}" >Editer mes informations</a>
-        </li>
-        <li>
-          <a href="{{ path('registration_requests_overview') }}">Mes inscriptions</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-
   <div class="container main-container">
-
    <div class="row">
-
-    <!-- edit form column -->
-    <div class="col-md-9 personal-info col-md-offset-2">
+    <div class="col-md-3">
+      <div class="panel panel-default panel-menu">
+        <div class="panel-heading">
+          <h3 class="panel-title">Mon profil</h3>
+        </div>
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="" role="presentation">
+              <a href="{{ path('fos_user_profile_show') }}">Editer mes informations</a>
+            </li>
+            <li class="" role="presentation">
+              <a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a>
+            </li>
+            <li class="active" role="presentation">
+              <a href="{{ path('registration_requests_overview') }}">Mes inscriptions</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 personal-info">
       <h1>Mes demandes d'inscriptions</h1>
       <hr>
       <div class="alert alert-info alert-dismissable">
@@ -38,7 +38,7 @@
         Nous avertirons dès lors que le statut de l'une de vos demandes évolue
       </div>
 
-      <table id="events_calendar" class="display" cellspacing="0" width="100%">
+      <table id="registration_requests_overview" class="display" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>Emission</th>
@@ -59,16 +59,35 @@
               <td>{{ regRequest.peopleNumber}}</td>
               <td>{{ regRequest.status }}</td>
             </tr>
-            {% endfor %}
+          {% endfor %}
 
 
-          </tbody>
-        </table>
-
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
-  <hr> 
+</div>
+<hr> 
+{% endblock %}
 
+{% block scripts %}
+  <script src="{{ asset('assets/shared_assets/js/jquery.dataTables.min.js') }}"></script>
+  <script>
+    $('#registration_requests_overview').DataTable({
+      "language": {
+        "lengthMenu": "Afficher _MENU_ dates par page",
+        "info": "Page _PAGE_/_PAGES_",
+        "emptyTable": "Aucune inscription n'est à afficher pour votre compte",
+        "infoEmpty": "",
+        "paginate": {
+          "first":      "Première page",
+          "last":       "Dernière page",
+          "next":       "Suivant",
+          "previous":   "Précédent"
+        }
+      },
+      "bFilter": false,
+    });
+  </script>
 
 {% endblock %}

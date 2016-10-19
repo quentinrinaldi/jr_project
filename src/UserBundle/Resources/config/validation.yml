@@ -14,6 +14,12 @@ UserBundle\Entity\User:
             - NotBlank:
                 message: "Veuillez saisir un numéro de téléphone."
                 groups: [ "UserRegistration" ]
+            - Length:
+                min: 8
+                minMessage: "Le format n'est pas valide"
+                max: 10
+                maxMessage: "Le format n'est pas valide"
+                groups: [ "UserRegistration" ]
             
         gender:
             - NotBlank:

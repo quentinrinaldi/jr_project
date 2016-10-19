@@ -36,8 +36,6 @@ class SliderConfigController extends Controller
 			$em->flush();
 
 			$request->getSession()->getFlashBag()->add('success', 'Le slide a bien été ajouté');
-
-      // On redirige vers la page de visualisation de l'annonce nouvellement créée
 			return $this->redirect($this->generateUrl('slider_config'));
 		}
 		else {
@@ -58,7 +56,7 @@ public function removeSlideAction(Request $request, $id) {
 public function switchSlideVisibiltyAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
 		$slide = $em->find('AppBundle:Slide', $id);
-		$message = $slide->getEnabled() ? "Le slide a bien été masqué" : "Le slide sera de nouveau visible sur la page d'accueil";
+		$message = $slide->getEnabled() ? "La slide a bien été masquée" : "La slide sera de nouveau visible sur la page d'accueil";
 		$slide->switchVisibility();
 		$em->flush();
 		$request->getSession()->getFlashBag()->add('success', $message);

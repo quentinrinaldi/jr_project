@@ -18,7 +18,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 {
 	private $router;
 	private $session;
- 
+ 	private $translator;
 	/**
 	 * Constructor
 	 *
@@ -26,10 +26,11 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 	 * @param 	RouterInterface $router
 	 * @param 	Session $session
 	 */
-	public function __construct( RouterInterface $router, Session $session )
+	public function __construct( RouterInterface $router, Session $session, $translator )
 	{
 		$this->router  = $router;
 		$this->session = $session;
+		$this->translator = $translator;
 	}
  
 	/**
@@ -81,8 +82,8 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 	{
 		// if AJAX login
 		if ( $request->isXmlHttpRequest() ) {
- 
-			$array = array( 'success' => false, 'message' => $exception->getMessage() ); // data to return via JSON
+ 			$errorMessage = $this->translator->trans($exception->getMessage(),array(), 'FOSUserBundle');
+			$array = array( 'success' => false, 'message' => $errorMessage); // data to return via JSON
 			$response = new Response( json_encode( $array ) );
 			$response->headers->set( 'Content-Type', 'application/json' );
  

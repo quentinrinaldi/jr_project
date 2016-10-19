@@ -9,11 +9,13 @@ html > * {
 .slide-class {
 	position:relative;
 	margin-top: 30px;
+	margin-left:100px;
+	margin-right: 100px;
 }
 
 .slide-class img {
-	margin:0 auto;
-	width:500px;
+	margin:0 30px;
+
 }
 
 .slide-class {
@@ -22,21 +24,21 @@ html > * {
 
 	/*width:800px;*/
 	display:inline-block !important;
-	width:48%;
+	width:35%;
 }
 
 .jumbotron {
 	display:inline-block !important;
-	width:41%;
-	position:absolute;
-	margin-top: 50px;
+	width:55%;
+	margin: auto !important;
 	height:250px;
 }
 
 .header-slides {
 	/*background-color: rgba(66,139,202,0.8); */
 	background-color: #eee;
-	color:rgba(66,139,202,1);;
+	color:rgba(66,139,202,1);
+	display:flex;
 }
 
 .typed-cursor{

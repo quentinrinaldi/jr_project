@@ -1,5 +1,9 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
 
+{% block stylesheets %} 
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin_website/css/slider_config.css') }}"/>
+{% endblock %}
+
 {% block body_content %}
 
     <!-- Page Content -->
@@ -11,7 +15,6 @@
                     </h1>
 
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
             {% for slide in slides %}
                 {{ include('AdminBundle:SliderConfig:slide.html.twig', { 'slide' : slide }) }}

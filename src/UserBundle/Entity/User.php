@@ -44,12 +44,16 @@ class User extends BaseUser
      * @Assert\NotBlank()
      * @Assert\Choice(choices = {"M", "F"})
      */
-
     protected $gender;
 
     /**
-     * @ORM\Column(type="integer",length=10)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=10)
+    *  @Assert\Length(
+     *      min = 8,
+     *      max = 10,
+     *      minMessage = "Le format n'est pas valide",
+     *      maxMessage = "Le format n'est pas valide"
+     * )
      */
     protected $phoneNumber;
     
@@ -65,14 +69,14 @@ class User extends BaseUser
     */
     protected $zipCode;
 
-        /**
-     * @ORM\Column(type="string")
+    /**
+      * @ORM\Column(type="string")
       * @Assert\NotBlank()
     */
     protected $city;
 
   /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user")
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user",cascade={"remove"})
    */
   protected $registrationRequests;
 
@@ -131,7 +135,7 @@ public function setBirthday($birthday)
 }
 
 public function getPhoneNumber() {
-    return $this->birthday;
+    return $this->phoneNumber;
 }
 
 public function setPhoneNumber($phoneNumber) {
