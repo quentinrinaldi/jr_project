@@ -75,10 +75,10 @@ class RecordingFormType extends AbstractType
         ));
 
         $builder->add('availability','choice', array(
-        'choices'   => array('Complet' => 'Complet', 'Disponible' => 'Disponible'),
+        'choices'   => array("Bientôt Disponible" => "Bientôt Disponible", "Disponible" => "Disponible", "Dernières places" => "Dernières places", "Complet" => "Complet", "Annulé" => "Annulé"),
         'required'  => true,
         'label'  => 'Statut de l\'émission',
-        'empty_data' => 'Disponible'
+        'empty_data' => 'Bientôt Disponible'
         ));
 
 

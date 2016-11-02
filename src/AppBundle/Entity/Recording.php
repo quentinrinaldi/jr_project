@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\RecordingRepository")
@@ -13,7 +14,6 @@ class Recording
 {
    public function __construct()
    {
-        parent::__construct();
         $this->registrationRequests = new ArrayCollection();
     }
     /**
@@ -59,7 +59,7 @@ class Recording
 /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
-     * @Assert\Choice(choices = {"Complet", "Disponible"})
+     * @Assert\Choice(choices = {"Bientôt Disponible", "Disponible", "Dernières places","Complet", "Annulé"})
     */
 protected $availability;
 

@@ -14,13 +14,11 @@ UserBundle\Entity\User:
             - NotBlank:
                 message: "Veuillez saisir un numéro de téléphone."
                 groups: [ "UserRegistration" ]
-            - Length:
-                min: 8
-                minMessage: "Le format n'est pas valide"
-                max: 10
-                maxMessage: "Le format n'est pas valide"
+            - Regex :
+                pattern: "/0[1-9][0-9]{8}$/"
+                match: true
+                message: "Le numéro de téléphone n'est pas valide."
                 groups: [ "UserRegistration" ]
-            
         gender:
             - NotBlank:
                 message: "Veuillez selectionner votre genre."

@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-use AppBundle\Entity\Channel;
 use AppBundle\Entity\Location;
 use AdminBundle\Form\Type\ChannelFormType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -26,7 +25,7 @@ class TVShowFormType extends AbstractType
         $tvShow = $builder->getData();
  
         if ($tvShow != null) {
-            $channelID = $builder->getData()->getChannel(); 
+            $locationID = $builder->getData()->getLocation(); 
         }
 
         $builder->add('title','text', array(
@@ -39,12 +38,12 @@ class TVShowFormType extends AbstractType
             'label'  => 'Présentateur',
             ));
 
-        $builder->add('channel','entity', array(
-            'class' => 'AppBundle:Channel',
+        $builder->add('location','entity', array(
+            'class' => 'AppBundle:Location',
             'choice_label'  => 'name',
             'choice_value' => 'id',
-            'label'  => 'Chaine',
-            'data' =>  $tvShow == null ? null : $builder->getData()->getChannel(), 
+            'label'  => 'Lieu de tournage',
+            'data' =>  $tvShow == null ? null : $builder->getData()->getLocation(), 
             'multiple' => false
             ));
 
@@ -59,13 +58,13 @@ class TVShowFormType extends AbstractType
         $builder->add('imageFile',FileType::class, array(
             'trim' => true,
             'label'  => 'Illustration',
-            'attr' => array('class' => 'file', 'data-show-upload'=>'false', 'data-help' => 'L\'image d\'illustration est celle qui peut se retrouver sur la page d\'accueil'),
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
             'required' => false
             ));
 
         $builder->add('iconeFile',FileType::class, array(
             'trim' => true,
-            'label'  => 'Vignette',
+            'label'  => 'Logo de l\'émission',
             'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
             'required' => false
             ));
@@ -79,6 +78,18 @@ class TVShowFormType extends AbstractType
             'label' => 'Informations pratiques')
         );
 
+        $builder->add('underageLicenseFile',FileType::class, array(
+            'trim' => true,
+            'label'  => 'Autorisation de diffusion (personne mineure)',
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'required' => false
+            ));
+        $builder->add('adultLicenseFile',FileType::class, array(
+            'trim' => true,
+            'label'  => 'Autorisation de diffusion (personne majeure)',
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'required' => false
+            ));
         
 
     }

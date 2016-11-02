@@ -47,13 +47,11 @@ class User extends BaseUser
     protected $gender;
 
     /**
-     * @ORM\Column(type="string", length=10)
-    *  @Assert\Length(
-     *      min = 8,
-     *      max = 10,
-     *      minMessage = "Le format n'est pas valide",
-     *      maxMessage = "Le format n'est pas valide"
-     * )
+     * @ORM\Column(type="string")
+     * @Assert\Regex(
+        pattern="/0[1-9][0-9]{8}/",
+        match=true,
+        message="Veuillez entrez un numéro de téléphone valide")
      */
     protected $phoneNumber;
     

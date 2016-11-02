@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity
  * @ORM\Table(name="location")
+ * @Vich\Uploadable 
  */
 class Location
 {
@@ -35,6 +36,21 @@ class Location
      * @Assert\NotBlank()
     */
     protected $helper;
+ /**
+     * @ORM\Column(type="string")
+    */
+    protected $imageName;
+
+   /**
+     * @Vich\UploadableField(mapping="studio", fileNameProperty="imageName")
+    */
+   protected $imageFile;
+/**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+private $updatedAt;
 
 
     public function getID() {
@@ -65,6 +81,20 @@ class Location
         $this->helper = $helper;
     }
 
+    public function getImageName() 
+    {
+      return $this->imageName;
+    }
+
+    public function setImageName($imageName) {
+      $this->imageName = $imageName;
+      $this->updatedAt = new \DateTime();
+    }
+
+
+    public function update() {
+      $this->updatedAt = new \DateTime();
+    }
 
     public function __toString() 
     {

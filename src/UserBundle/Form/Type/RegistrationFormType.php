@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
         $builder->add('birthday',DateType::class, array(
 
             'widget' => 'single_text',
-            'format' => 'dd-MM-yyyy',
+            'format' => 'dd/MM/yyyy',
 
     // do not render as type="date", to avoid HTML5 date pickers
             'html5' => false,

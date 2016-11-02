@@ -1,8 +1,9 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
+{% block stylesheets %}
+ <link href="{{ asset('assets/admin_website/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" /> 
+{% endblock %}
 
 {% block body_content %}
-
-
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Ajout d'une émission
@@ -23,4 +24,8 @@
   </div>
 {{ form_end(form) }}
 
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ asset('assets/admin_website/js/fileinput.min.js') }}"></script>
 {% endblock %}

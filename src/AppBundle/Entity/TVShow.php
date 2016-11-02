@@ -48,10 +48,10 @@ class TVShow
     */
     protected $generalInformation;
     /**
-    * @ORM\ManyToOne(targetEntity="Channel")
+    * @ORM\ManyToOne(targetEntity="Location")
      * @ORM\JoinColumn(nullable=false)
      */    
-    protected $channel;
+    protected $location;
 
   /**
      * @ORM\Column(type="string")
@@ -72,6 +72,26 @@ class TVShow
      * @Vich\UploadableField(mapping="icone", fileNameProperty="iconeName")
     */
    protected $iconeFile;
+
+     /**
+     * @ORM\Column(type="string")
+    */
+  protected $underageLicenseName;
+
+   /**
+     * @Vich\UploadableField(mapping="underageLicense", fileNameProperty="underageLicenseName")
+    */
+   protected $underageLicenseFile;
+
+    /**
+     * @ORM\Column(type="string")
+    */
+  protected $adultLicenseName;
+
+   /**
+     * @Vich\UploadableField(mapping="adultLicense", fileNameProperty="adultLicenseName")
+    */
+   protected $adultLicenseFile;
 
 /**
      * @ORM\Column(type="datetime")
@@ -110,8 +130,8 @@ private $updatedAt;
       return $this->description;
     }
 
-    public function getChannel() {
-      return $this->channel;
+    public function getLocation() {
+      return $this->location;
     }
 
     public function setTitle($title) {
@@ -126,8 +146,8 @@ private $updatedAt;
       $this->description = $description;
     }
     
-    public function setChannel($channel) {
-      $this->channel = $channel;
+    public function setLocation($location) {
+      $this->location = $location;
     }
 
     public function getImageName() 
@@ -181,7 +201,6 @@ private $updatedAt;
       return $this;
     }
 
-
     public function removeRecording(Recording $recording)
     {
       $this->recordings->removeElement($recording);
@@ -214,5 +233,42 @@ private $updatedAt;
       return (string) $this->getId();
     }
 
+    public function getAdultLicenseFile()
+    {
+      return $this->adultLicenseFile;
+    }
+
+    public function setAdultLicenseFile($adultLicenseFile) {
+      $this->adultLicenseFile = $adultLicenseFile;
+    }
+
+    public function getAdultLicenseName()
+    {
+      return $this->adultLicenseName;
+    }
+
+    public function setAdultLicenseName($adultLicenseName) {
+      $this->adultLicenseName = $adultLicenseName;
+      $this->updatedAt = new \DateTime();
+    }
+
+    public function getUnderageLicenseFile()
+    {
+      return $this->underageLicenseFile;
+    }
+
+    public function setUnderageLicenseFile($underageLicenseFile) {
+      $this->underageLicenseFile = $underageLicenseFile;
+    }
+
+    public function getUnderageLicenseName() 
+    {
+      return $this->underageLicenseName;
+    }
+
+    public function setUnderageLicenseName($underageLicenseName) {
+      $this->underageLicenseName = $underageLicenseName;
+      $this->updatedAt = new \DateTime();
+    }
 
   }

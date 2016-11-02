@@ -21,7 +21,7 @@
   <div class="jumbotron">
     <h1 class="jumbotron-content"></h1>
   </div>
-</div>
+</div
 
 <!-- Header Carousel -->
 <div class="container main-container">
@@ -45,7 +45,8 @@
       <div class="panel-body">
         <h4>Créer votre compte</h4>
         <p>C'est très simple, et ne vous prendra qu'une minute</p>
-        <a class="btn btn-primary" href="#">S'inscrire</a>
+        <br />
+        <a class="btn btn-primary" id="secondary-register-button" href="javascript: void(0)">S'inscrire</a>
       </div>
     </div>
   </div>
@@ -60,7 +61,8 @@
       <div class="panel-body">
         <h4>Choisissez votre émission</h4>
         <p>Allez-y, cherchez, il y en a forcément une pour vous !</p>
-        <a class="btn btn-primary" href="#">Les émissions</a>
+         <br />
+        <a class="btn btn-primary" href="{{ path('tvshows') }}">Les émissions</a>
       </div>
     </div>
   </div>
@@ -69,12 +71,13 @@
       <div class="panel-heading">
          <span class="fa-stack fa-5x">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+          <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
         </span>
       </div>
       <div class="panel-body">
         <h4>Nous nous occupons de tout !</h4>
         <p>Nous prenons contact avec vous pour vous confirmer la réservation.</p>
+         <br />
         <a class="btn btn-primary" href="#">Mes réservations</a>
       </div>
     </div>
@@ -194,6 +197,7 @@
 
 
      });
+
     });
   </script>
 {% endblock %}

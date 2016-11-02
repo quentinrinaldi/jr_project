@@ -131,7 +131,7 @@
                         $('#loginModal').modal();
                     })});
 
-                $('#register-button').click(function() {
+                $('#register-button, #secondary-register-button').click(function() {
                     var url = "{{ path('fos_user_registration_register') }}"
                     $.get(url, function(data) {
                         $(".register_container").replaceWith(data);
@@ -155,7 +155,7 @@
               e.preventDefault();
               $('.register-submit-button').addClass("disabled");
               $.ajax({
-                type: $(this).attr('method'),
+                type: $(this).attr('method'),                
                 url: $(this).attr('action'),
                 data: $(this).serialize()
             })
