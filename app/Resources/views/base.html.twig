@@ -105,9 +105,7 @@
         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog register-modal" role="document">
                 <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <div class="register_container">
+                    <div class="modal-body register-body">
                         </div>
                     </div>
                 </div>
@@ -134,7 +132,7 @@
                 $('#register-button, #secondary-register-button').click(function() {
                     var url = "{{ path('fos_user_registration_register') }}"
                     $.get(url, function(data) {
-                        $(".register_container").replaceWith(data);
+                        $(".register-body").replaceWith(data);
                         $('#registerModal').modal();
                         $('.selectpicker').selectpicker({
                         });
@@ -160,7 +158,7 @@
                 data: $(this).serialize()
             })
               .done(function (data) {
-                $('.register_container').replaceWith(data);
+                $('.register-body').replaceWith(data);
                 if (typeof data.message !== 'undefined') {
                   $('.error-content').replaceWith(data.message);
               }
