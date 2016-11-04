@@ -3,3 +3,13 @@
     vertical-align: middle;
     float: none;
 }
+
+img {
+	width:400px;
+}
+
+.info {
+	position: absolute;
+    right: 57px;
+    top: 47px;
+}

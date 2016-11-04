@@ -92,7 +92,7 @@
   </div>
   {% for tvShow in tvShows %}
     <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
+    <a href="{{ path('show_tvshow', {id: tvShow.id}) }}">
       <img class="img-responsive img-portfolio img-hover" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
     </a>
   </div>
@@ -104,7 +104,7 @@
   </div>
   <div class="col-md-4 col-sm-6">
     <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/300x175" alt="">
+      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
     </a>
   </div>
   <div class="col-md-4 col-sm-6">
