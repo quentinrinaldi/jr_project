@@ -6,44 +6,45 @@
 {% endblock %}
 
 {% block body_content %}
-	<div class="container">
-		<!-- Page Heading/Breadcrumbs -->
-		<div class="row row-title">
-			<div class="col-lg-12">
-				<h1 class="page-header">{{ tvShow.title }}
-					{% if next_recordings %}
-						<small class="info"><span class="label label-success">En cours de tournage</span></small>
-					{% else %}
-						<small class="info"><span class="label label-warning">Aucun tournage de prévue</span></small>
-					{% endif %}
-				</h1>
-				<ol class="breadcrumb">
-					<li><a href="{{ path('home') }}">Accueil</a>
-					</li>
-					<li><a href="{{ path('tvshows') }}">Toutes nos émissions</a>
-					</li>
-					<li class="active">{{ tvShow.title }}</li>
-				</ol>
-			</div>
-		</div>
-		<div class="row row-presentation">
-			<div class="col-md-6 vcenter">
+	<ol class="breadcrumb text-center">
+		<li><a href="{{ path('home') }}">Accueil</a>
+		</li>
+		<li><a href="{{ path('tvshows') }}">Toutes nos émissions</a>
+		</li>
+		<li class="active">{{ tvShow.title }}</li>
+	</ol>
+	
+	<!-- Page Heading/Breadcrumbs -->
+	<div class="row row-title">
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h1 class="">{{ tvShow.title }}</h1>
+			<h3><small>Présenté par {{ tvShow.presenter }}</small></h3>
+			<div>
+				{% if next_recordings %}
+					<span class="label label-success">En cours de tournage</span>
+				{% else %}
+					<span class="label label-warning">Aucun tournage de prévue</span>
+				{% endif %}
+			</div><br><hr><br>
+			<div class="col-md-6 vcenter vertical-middle-hr-left">
 				<img class="img-responsive center-block" src="{{ asset('uploads/' ~ tvShow.iconeName) }}" alt="">
-			</div><!--
-		--><div class="col-md-6 vcenter text-center">
-		{{ tvShow.description | raw }}
+				</div><!--
+			--><div class="col-md-6 vcenter text-center description-text">
+			{{ tvShow.description | raw }}
+		</div>
 	</div>
 </div>
+
 <div class="row row-recordings">
-	<div class="col-lg-12">
-		<h2 class="page-header">Les dates de tournages</h2>
-		<table id="events_calendar" class="display" cellspacing="0" width="100%">
+	<div class="col-lg-8 col-lg-offset-2">
+		<h2 class="page-header text-center">Les dates de tournages</h2>
+		<table id="events_calendar" class="display dt[-head|-body]-center" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th>Date</th>
-					<th>Heure de début</th>
-					<th>Heure de fin</th>
-					<th>Condition</th>
+					<th>Début</th>
+					<th>Fin</th>
+					<th>Information</th>
 					<th>Inscription</th>
 				</tr>
 			</thead>
@@ -58,19 +59,28 @@
 	</div>
 </div>
 <div class="row row-location">
-	<div class="col-lg-12">
-		<h2 class="page-header">Le lieu</h2>
-		<img class="img-responsive " src="{{ asset('uploads/' ~ tvShow.location.imageName) }}" alt="">
-		 {{ tvShow.location.description  | raw }} 
+	<div class="col-lg-8 col-lg-offset-2">
+		<h2 class="page-header text-center">Le lieu</h2>
+		<div class="col-md-6 vcenter">
+			{{ tvShow.location.description  | raw }} 
+		</div><!--
+		--><div class="col-md-6 vcenter vertical-middle-hr-right">
+			<img class="img-responsive center-block" src="{{ asset('uploads/' ~ tvShow.location.imageName) }}" alt="">
+		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-lg-12">
-		<h2 class="page-header">Informations Pratiques</h2>
-
+<div class="row row-info">
+	<div class="col-lg-8 col-lg-offset-2">
+		<h2 class="page-header text-center">Informations Pratiques</h2>
+			{% if tvShow.licenseVisibility == true %}	
+				<p>Gagnez du temps, imprimez et remplissez dès maintenant votre autorisation de diffusion !<br>
+				<a href="{{ asset('uploads/' ~ tvShow.underageLicenseName) }}">Pour les personnes mineurs</a><br>
+				<a href="{{ asset('uploads/' ~ tvShow.adultLicenseName) }}">Pour les personnes majeures</a>
+				
+		  		</p>
+		  	{% endif %}
 		{{ tvShow.generalInformation | raw }}
 	</div>
-</div>
 </div>
 
 <div id="connectedSuscribtionModal" tabindex="-1">
@@ -114,8 +124,16 @@
 					}
 				},
 				"bFilter": false,
+				"columns": [
+					null,
+					{ "width": "8%" },
+					{ "width": "8%" },
+					{ "width": "50%" },
+					null
+					],
+				"order": [[ 0, "desc" ]]
 
-			});
+				});
 			$('.connected-register-button').click(function() {
 
 				var id = this.id;

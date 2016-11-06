@@ -78,11 +78,18 @@ class User extends BaseUser
    */
   protected $registrationRequests;
 
+   /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */    
+    protected $created_at;
+
   public function __construct()
   {
     parent::__construct();
     $this->roles = array('ROLE_USER');
     $this->registrationRequests = new ArrayCollection();
+    $this->createdAt = new \DateTime('now');
 
 }
 
@@ -182,5 +189,10 @@ public function getCity() {
 public function setCity($city) 
 {
     $this->city = $city; 
+}
+
+public function getCreatedAt() 
+{
+    return $this->created_at;
 }
 }

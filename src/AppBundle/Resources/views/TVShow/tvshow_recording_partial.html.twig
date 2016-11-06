@@ -1,7 +1,8 @@
 <tr>
-    <td>{{ recording.date |date('d-m-Y')}}</td>
-    <td>{{ recording.startTime |date('h:i') }}</td>
-    <td>{{ recording.endTime  |date('h:i')}}</td>
+    {# <td>{{ recording.date |date('l d-m-Y')}}</td> #}
+    <td>{{ recording.date | format_date('EEEE e MMMM Y') }}</td>
+    <td>{{ recording.startTime |format_time('H\'h\'mm') }}</td>
+    <td>{{ recording.endTime  |format_time('H\'h\'mm')}}</td>
     <td>{{ recording.recordingCondition }}</td>
     <td> 
 
@@ -15,7 +16,7 @@
                 <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg anonymous-register-button" >Réserver</button>
             {% endif %}
         
-        {% elseif  recording.availability == 'Bientôt disponible' %} 
+        {% elseif  recording.availability == 'Bientôt Disponible' %} 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg disabled" >Bientôt disponible</button>
             {% else %}
@@ -36,6 +37,6 @@
                 <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg disabled" >Annulé</button>
             {% endif %}
 		{% endif %} 
-        
+       
     </td>
 </tr>

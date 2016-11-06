@@ -28,7 +28,8 @@ public function __construct($environment, $debug)
             new FOS\UserBundle\FOSUserBundle(),
             new AdminBundle\AdminBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle()
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

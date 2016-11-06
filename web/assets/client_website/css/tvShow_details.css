@@ -13,3 +13,33 @@ img {
     right: 57px;
     top: 47px;
 }
+
+.row-recordings, .row-info {
+	background-color:#f9f9f9;
+}
+
+.row-presentation, .row-recordings, .row-location, .row-info {
+	padding-bottom:30px;
+}
+
+.row-title {
+	padding-bottom:30px;
+}
+
+.description-text {
+	font-size:18px;
+	padding-left: 70px
+}
+
+.vertical-middle-hr-left {
+	border-right:  1px solid #eee;
+}
+
+.vertical-middle-hr-right {
+	border-left:  1px solid #eee;
+}
+
+h2.page-header {
+	margin-bottom: 30px;
+}
+

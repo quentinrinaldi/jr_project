@@ -71,3 +71,5 @@ html > * {
 .container {
 	margin-bottom: 150px;
 }
+
+table, th {text-align: center;}

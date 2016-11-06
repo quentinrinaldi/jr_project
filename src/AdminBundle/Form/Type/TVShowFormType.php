@@ -90,6 +90,12 @@ class TVShowFormType extends AbstractType
             'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
             'required' => false
             ));
+
+        $builder->add('licenseVisibility', 'checkbox', array(
+            'trim' => true,
+            'label'  => 'Intégrez les autorisation de diffusions dans les informations pratiques',
+            'required' => false)
+        );
         
 
     }

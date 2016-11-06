@@ -136,3 +136,8 @@ registration_requests:
     path: /registration_requests
     defaults: { _controller: AdminBundle:RegistrationRequest:showAll}
     methods: [GET]
+
+users:
+    path: /users
+    defaults: { _controller: AdminBundle:UsersList:showAll}
+    methods: [GET]
