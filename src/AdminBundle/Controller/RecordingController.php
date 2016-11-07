@@ -33,13 +33,13 @@ class RecordingController extends Controller
    ->getRepository('AppBundle:Recording');
    $recordings = $repository->getRecordings($id);
 
-   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvshowID' => $id));
+   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvshowID' => $id);
  }
 
  public function addAction(Request $request, $tvshowID) {
   $em = $this->getDoctrine()->getManager();
    $recording = new Recording();
-   $form = $this->get('form.factory')->create(new RecordingFormType($em),array('recording' => $recording, 'tvshowID' => $tvshowID));
+   $form = $this->get('form.factory')->create(new RecordingFormType($em), $recording);
 
    $form->handleRequest($request);
    if ($form->isSubmitted() && $form->isValid()) {
