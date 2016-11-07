@@ -8,6 +8,7 @@ use UserBundle\Entity\User as User;
 
 /**
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RegistrationRequestRepository")
  * @ORM\Table(name="registration_request")
  * @ORM\HasLifecycleCallbacks
  */

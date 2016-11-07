@@ -7,15 +7,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\RecordingRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RecordingRepository")
  * @ORM\Table(name="recording")
  */
 class Recording
 {
-   public function __construct()
-   {
-        $this->registrationRequests = new ArrayCollection();
-    }
+ public function __construct()
+ {
+    $this->registrationRequests = new ArrayCollection();
+}
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

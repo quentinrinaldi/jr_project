@@ -19,16 +19,27 @@ class RecordingController extends Controller
    $repository = $this
    ->getDoctrine()
    ->getManager()
-   ->getRepository('AppBundle:Recording');
-   $recordings = $repository->findAll();
+   ->getRepository('AppBundle:TVshow');
+   $tvShows = $repository->findAll();
 
-   return $this->render('AdminBundle:Recording:index.html.twig', array('recordings' => $recordings));
+   return $this->render('AdminBundle:Recording:index.html.twig', array('tvShows' => $tvShows));
  }
 
- public function addAction(Request $request) {
+  public function showAction(Request $request, $id)
+  {
+   $repository = $this
+   ->getDoctrine()
+   ->getManager()
+   ->getRepository('AppBundle:Recording');
+   $recordings = $repository->getRecordings($id);
+
+   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvshowID' => $id));
+ }
+
+ public function addAction(Request $request, $tvshowID) {
   $em = $this->getDoctrine()->getManager();
    $recording = new Recording();
-   $form = $this->get('form.factory')->create(new RecordingFormType($em), $recording);
+   $form = $this->get('form.factory')->create(new RecordingFormType($em),array('recording' => $recording, 'tvshowID' => $tvshowID));
 
    $form->handleRequest($request);
    if ($form->isSubmitted() && $form->isValid()) {
@@ -36,11 +47,15 @@ class RecordingController extends Controller
     $em->persist($recording);
     $em->flush();
 
-    $request->getSession()->getFlashBag()->add('sucess', 'Annonce bien enregistrée.');
+    $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
 
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
+    if ($tvshowID) {
+      return $this->redirect($this->generateUrl('show_recordings', array('tvshowID' => tvshowID)));
+    }
+    else {
     return $this->redirect($this->generateUrl('admin_recordings'));
-    			// return $this->render("AdminBundle:Recording:showAll");
+    		}
   }
   else {
     return $this->render('AdminBundle:Recording:add.html.twig',array('form' => $form->createView(), 'recording' => $recording));

@@ -82,9 +82,13 @@ admin_recordings:
     path: /recordings
     defaults: { _controller: AdminBundle:Recording:showAll}
 
+show_recordings:
+    path: /tvhows/{id}/recordings
+    defaults: { _controller: AdminBundle:Recording:show}
+    
 add_recording:
-    path: /recordings/add
-    defaults: { _controller: AdminBundle:Recording:add}
+    path: /recordings/add/{tvshowID}
+    defaults: { _controller: AdminBundle:Recording:add, tvshowID: null}
     methods: [GET, POST]
 
 edit_recording:
@@ -137,7 +141,8 @@ registration_requests:
     defaults: { _controller: AdminBundle:RegistrationRequest:showAll}
     methods: [GET]
 
-users:
+admin_users:
     path: /users
     defaults: { _controller: AdminBundle:UsersList:showAll}
     methods: [GET]
+

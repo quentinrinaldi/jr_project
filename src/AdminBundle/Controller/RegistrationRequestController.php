@@ -19,9 +19,20 @@ class RegistrationRequestController extends Controller
    $repository = $this
    ->getDoctrine()
    ->getManager()
-   ->getRepository('AppBundle:RegistrationRequest');
-   $regRequests = $repository->findAll();
+   ->getRepository('AppBundle:TVShow');
+   $tvshows = $repository->findAll();
 
-   return $this->render('AdminBundle:RegistrationRequest:index.html.twig', array('regRequests' => $regRequests));
+   return $this->render('AdminBundle:RegistrationRequest:index.html.twig', array('tvShows' => $tvShows));
+ }
+
+  public function showAction(Request $request, $id)
+  {
+   $repository = $this
+   ->getDoctrine()
+   ->getManager()
+   ->getRepository('AppBundle:RegistrationRequest');
+   $recordings = $repository->getRegistrationRequests($id);
+
+   return $this->render('AdminBundle:Recording:registration_requests.html.twig', array('registrationRequests' => $registrationRequests));
  }
 }

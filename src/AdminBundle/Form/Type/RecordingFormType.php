@@ -21,7 +21,7 @@ class RecordingFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $recording = $builder->getData();
+        $recording = var_dump($options["recording"]);
         if ($recording != null) {
             $tvShowID = $builder->getData()->getTvShow(); 
             $locationID = $builder->getData()->getLocation(); 
@@ -91,7 +91,7 @@ class RecordingFormType extends AbstractType
 
         public function getDefaultOptions(array $options)
         {
-            return array('data_class' => 'AppBundle\Entity\Recording');
+            return array('data_class' => 'AppBundle\Entity\Recording', 'recording' => null, 'tvShow' => null);
         }
 
 

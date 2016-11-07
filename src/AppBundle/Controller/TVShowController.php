@@ -26,7 +26,7 @@ class TVShowController extends Controller
 
 	public function showAction(Request $request, $id)
 	{
-		$TVShowrepository = $this
+		$tvShowRepository = $this
 		->getDoctrine()
 		->getManager()
 		->getRepository('AppBundle:TVShow');
@@ -35,7 +35,7 @@ class TVShowController extends Controller
 		->getManager()
 		->getRepository('AppBundle:Recording');
 
- 		$tvShow = $TVShowrepository->find($id);
+ 		$tvShow = $tvShowRepository->find($id);
  		$recordings = $recorgingRepository->getNextRecordings($tvShow->getId());
 		return $this->render('AppBundle:TVShow:tvshow_details.html.twig', array('tvShow' => $tvShow, 'next_recordings' => $recordings));
 	}
