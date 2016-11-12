@@ -88,7 +88,6 @@ public function setImageFile($imageFile) {
   $this->imageFile = $imageFile;
 }
 
-
 public function update() {
   $this->updatedAt = new \DateTime();
 }

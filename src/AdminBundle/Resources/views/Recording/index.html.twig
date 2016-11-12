@@ -10,14 +10,16 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Les émissions 
-                <a class="btn btn-primary btn-lg" role="button" href="{{path('add_tvshow') }}">Ajouter une émission</a>
+            <h1 class="page-header">Selectionnez une émission 
+                <div class="action-button"> 
+                    <a class="btn btn-primary btn-lg" role="button" href="{{path('add_recording') }}">Ajouter un tournage</a>
+                </div>
             </h1>
 
         </div>
     </div>
     {% for tvShow in tvShows %}
-        <a href="{{ path('show_recordings', {id: tvShow.id}) }}"
+        <a href="{{ path('show_recordings', {tvshowID: tvShow.id}) }}">
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">

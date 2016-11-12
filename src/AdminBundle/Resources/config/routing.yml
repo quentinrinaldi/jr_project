@@ -80,12 +80,12 @@ remove_from_faq:
 
 admin_recordings:
     path: /recordings
-    defaults: { _controller: AdminBundle:Recording:showAll}
+    defaults: { _controller: AdminBundle:Recording:selectTvShow}
 
 show_recordings:
-    path: /tvhows/{id}/recordings
+    path: /recordings/showAll/{tvshowID}
     defaults: { _controller: AdminBundle:Recording:show}
-    
+
 add_recording:
     path: /recordings/add/{tvshowID}
     defaults: { _controller: AdminBundle:Recording:add, tvshowID: null}
@@ -136,13 +136,18 @@ switch_slide_visibility:
     defaults: { _controller: AdminBundle:SliderConfig:switchSlideVisibilty}
     methods: [POST]
 
-registration_requests:
+admin_registration_requests:
     path: /registration_requests
-    defaults: { _controller: AdminBundle:RegistrationRequest:showAll}
+    defaults: { _controller: AdminBundle:RegistrationRequest:selectTvShow}
     methods: [GET]
 
-admin_users:
+show_registration_requests:
+    path: /registration_requests/{tvshowID}
+    defaults: { _controller: AdminBundle:RegistrationRequest:show}
+    methods: [GET]
+
+
+users:
     path: /users
     defaults: { _controller: AdminBundle:UsersList:showAll}
     methods: [GET]
-

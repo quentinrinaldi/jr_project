@@ -1,10 +1,10 @@
 <tr>
     <td>{{ recording.tvShow.title }}</td>
     <td>{{ recording.location.name }}</td>
-    <td>{{ recording.date |date('Y-m-d')}}</td>
-    <td>{{ recording.startTime |date('h:i') }}</td>
-    <td>{{ recording.endTime  |date('h:i')}}</td>
-    <td>{{ recording.recordingCondition }}</td>
+    <td>{{ recording.date |date('d-m-Y')}}</td>
+    <td>{{ recording.startTime |format_time('H\'h\'mm') }}</td>
+    <td>{{ recording.endTime  |format_time('H\'h\'mm')}}</td>
+    <td>{{ recording.information }}</td>
     <td>{{ recording.availability }}</td>
     <td><form action="{{ path('remove_recording', {'id': recording.id}) }}" method="post">
                  <a href="{{path('edit_recording', {'id': recording.id}) }}" class="fa fa-edit" role="button"></a>

@@ -3,7 +3,7 @@
     <td>{{ recording.date | format_date('EEEE e MMMM Y') }}</td>
     <td>{{ recording.startTime |format_time('H\'h\'mm') }}</td>
     <td>{{ recording.endTime  |format_time('H\'h\'mm')}}</td>
-    <td>{{ recording.recordingCondition }}</td>
+    <td>{{ recording.information }}</td>
     <td> 
 
         {% if recording.availability == 'Complet' %} 

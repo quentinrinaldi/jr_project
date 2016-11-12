@@ -96,6 +96,13 @@ class TVShowFormType extends AbstractType
             'label'  => 'Intégrez les autorisation de diffusions dans les informations pratiques',
             'required' => false)
         );
+
+        $builder->add('invitationFile',FileType::class, array(
+            'trim' => true,
+            'label'  => 'Invitation',
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'required' => false
+            ));
         
 
     }

@@ -97,7 +97,7 @@ class TVShow
      *
      * @var \DateTime
      */
-private $updatedAt;
+  private $updatedAt;
 
     /**
    * @ORM\OneToMany(targetEntity="Recording", mappedBy="tvShow", cascade={"remove"})
@@ -109,6 +109,15 @@ private $updatedAt;
     */
     protected $licenseVisibility;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+    */
+    protected $invitationName;
+
+   /**
+     * @Vich\UploadableField(mapping="invitation", fileNameProperty="invitationName")
+    */
+   protected $invitationFile; 
 
     public function __construct()
     {
@@ -282,6 +291,29 @@ private $updatedAt;
   public function setUnderageLicenseName($underageLicenseName) {
     $this->underageLicenseName = $underageLicenseName;
     $this->updatedAt = new \DateTime();
+  }
+
+  public function getInvitationFile()
+  {
+    return $this->invitationFile;
+  }
+
+  public function setInvitationFile($invitationFile) {
+    $this->invitationFile = $invitationFile;
+  }
+
+  public function getInvitationName() 
+  {
+    return $this->invitationName;
+  }
+
+  public function setInvitationName($invitationName) {
+    $this->invitationName = $invitationName;
+    $this->updatedAt = new \DateTime();
+  }
+
+  public function getUpdatedAt() {
+    return $this->updatedAt;
   }
 
 }

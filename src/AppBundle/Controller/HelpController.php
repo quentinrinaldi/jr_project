@@ -28,4 +28,8 @@ class HelpController extends Controller
     public function showLegalNoticeAction() {
         return $this->render('AppBundle:Help:legal_notice.html.twig',array());
     }
+
+    public function showAboutUsAction() {
+        return $this->render('AppBundle:Help:about_us.html.twig');
+    }
 }

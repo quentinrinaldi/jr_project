@@ -14,27 +14,33 @@ use Symfony\Component\HttpFoundation\File\File;
 class RecordingController extends Controller
 {
 
-  public function showAllAction(Request $request)
+  public function selectTvShowAction(Request $request)
   {
    $repository = $this
    ->getDoctrine()
    ->getManager()
-   ->getRepository('AppBundle:TVshow');
+   ->getRepository('AppBundle:TVShow');
    $tvShows = $repository->findAll();
 
    return $this->render('AdminBundle:Recording:index.html.twig', array('tvShows' => $tvShows));
  }
 
-  public function showAction(Request $request, $id)
+public function showAction(Request $request, $tvshowID)
   {
    $repository = $this
    ->getDoctrine()
    ->getManager()
    ->getRepository('AppBundle:Recording');
-   $recordings = $repository->getRecordings($id);
+   $recordings = $repository->getRecordings($tvshowID);
 
-   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvshowID' => $id);
+   $tvShowRepository = $this
+   ->getDoctrine()
+   ->getManager()
+   ->getRepository('AppBundle:TVShow');
+   $tvShow = $tvShowRepository->find($tvshowID);
+   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvShow' => $tvShow));
  }
+
 
  public function addAction(Request $request, $tvshowID) {
   $em = $this->getDoctrine()->getManager();
@@ -48,17 +54,16 @@ class RecordingController extends Controller
     $em->flush();
 
     $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
-
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
-    if ($tvshowID) {
-      return $this->redirect($this->generateUrl('show_recordings', array('tvshowID' => tvshowID)));
+    if (tvshowID == null) {
+      return $this->redirect($this->generateUrl('admin_recordings'));
     }
     else {
-    return $this->redirect($this->generateUrl('admin_recordings'));
-    		}
+      return $this->redirect($this->generateUrl('show_recordings', array('tvshowID' => $tvshowID)));
+    }
   }
   else {
-    return $this->render('AdminBundle:Recording:add.html.twig',array('form' => $form->createView(), 'recording' => $recording));
+    return $this->render('AdminBundle:Recording:add.html.twig',array('form' => $form->createView(), 'recording' => $recording, 'tvshowID' => $tvshowID));
   }
 }
 public function removeAction(Request $request, $id) {

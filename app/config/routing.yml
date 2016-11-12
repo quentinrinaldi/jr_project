@@ -68,3 +68,7 @@ request_registration_form:
 calendar:
     path: /calendrier
     defaults: { _controller: AppBundle:Calendar:show}
+
+about_us:
+    path: /qui-sommes-nous
+    defaults: { _controller: AppBundle:Help:showAboutUs}

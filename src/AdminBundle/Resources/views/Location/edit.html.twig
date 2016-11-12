@@ -21,8 +21,8 @@
 
   <div>
     <div class="form-group">
-      <button type="submit" name="save" value="Editer" class="btn btn-primary">save</button>
-      <a href="{{ path('admin_locations') }}" value="Annuler" class="btn btn-default">cancel</a>
+      <button type="submit" name="Editer" value="Editer" class="btn btn-primary">Editer</button>
+      <a href="{{ path('admin_locations') }}" value="Annuler" class="btn btn-default">Annuler</a>
     </div>
   </div>
 {{ form_end(form) }}
@@ -31,4 +31,21 @@
 
 {% block scripts %}
   <script src="{{ asset('assets/admin_website/js/fileinput.min.js') }}"></script>
+    <script>
+  $("#Location_imageFile").fileinput({
+
+    //uploadUrl: "/file-upload-batch/1",
+    uploadAsync: false,
+    minFileCount: 0,
+    maxFileCount: 1,
+    overwriteInitial: true,
+    initialPreview: [
+        // IMAGE DATA
+        "{{ asset('uploads/' ~ location.imageName) }}"],
+    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+    initialPreviewFileType: 'image', // image is the default and can be overridden in config below
+    
+    purifyHtml: false, // this by default purifies HTML data for preview
+});
+  </script>
 {% endblock %}

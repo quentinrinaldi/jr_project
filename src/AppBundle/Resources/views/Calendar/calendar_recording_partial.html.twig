@@ -3,7 +3,7 @@
     <td>{{ recording.date |date('d-m-Y')}}</td>
     <td>{{ recording.startTime |date('h:i') }}</td>
     <td>{{ recording.endTime  |date('h:i')}}</td>
-    <td>{{ recording.recordingCondition }}</td>
+    <td>{{ recording.information }}</td>
     <td> {% if recording.availability == 'Complet' %} 
         <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg register-button disabled" >Complet</button>
         {% else %} 

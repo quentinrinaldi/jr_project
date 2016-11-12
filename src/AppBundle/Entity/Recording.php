@@ -12,10 +12,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Recording
 {
- public function __construct()
- {
-    $this->registrationRequests = new ArrayCollection();
-}
+   public function __construct()
+   {
+        $this->registrationRequests = new ArrayCollection();
+    }
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -50,11 +50,9 @@ class Recording
     */
    protected $date;
    /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     * @Assert\Choice(choices = {"En direct", "Enregistré"})
+     * @ORM\Column(type="string", nullable=true)
     */
-   protected $recordingCondition;
+   protected $information;
 
 /**
      * @ORM\Column(type="string")
@@ -92,8 +90,8 @@ public function getDate() {
     return $this->date;
 }
 
-public function getRecordingCondition() {
-    return $this->recordingCondition;
+public function getInformation() {
+    return $this->information;
 }
 
 public function getAvailability() {
@@ -118,8 +116,8 @@ public function setLocation(Location $location) {
 public function setDate($date) {
     $this->date = $date;
 }
-public function setRecordingCondition($recordingCondition) {
-    $this->recordingCondition = $recordingCondition;
+public function setInformation($information) {
+    $this->information = $information;
 }
 public function setAvailability($availability) {
     $this->availability = $availability;

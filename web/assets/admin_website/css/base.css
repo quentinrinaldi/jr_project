@@ -2,8 +2,11 @@
 	width:100%;
 }
 
-.page-header > a {
-	margin-left: 500px;
-}
-
 table, th {text-align: center;}
+
+.action-button {
+	display: inline-block;
+	position:absolute;
+	right:30px;
+	bottom:30px;
+}

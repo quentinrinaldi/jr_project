@@ -79,10 +79,10 @@ class User extends BaseUser
   protected $registrationRequests;
 
    /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */    
-    protected $created_at;
+    protected $createdAt;
 
   public function __construct()
   {
@@ -194,5 +194,9 @@ public function setCity($city)
 public function getCreatedAt() 
 {
     return $this->created_at;
+}
+public function setCreatedAt()
+{
+
 }
 }

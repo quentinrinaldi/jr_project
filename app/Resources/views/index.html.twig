@@ -14,12 +14,10 @@
       <img class="logo" src="{{ asset('slides/' ~ slide.fileName) }}"></img>
     {% endfor %}
     
-{#     <div><img src="http://jrproduction.tv/upload/emission/26/359_HARRY%20IMAGE%20TYPE%20SLIDER.png"></img></div>
-    <div><img src="http://jrproduction.tv/upload/emission/64/386_DCDL%20TYPE%20SLIDER.png" class="logo" /></div>
-    <div><img src="http://jrproduction.tv/upload/emission/17/382_MONEY%20DROP%20TYPE%20SLIDER.png" class="logo" /></div> #}
+
   </div>
   <div class="jumbotron">
-    <h1 class="jumbotron-content"></h1>
+    <h1 class="jumbotron-content">Bienvenue chez JR Production</h1>
   </div>
 </div
 
@@ -175,7 +173,7 @@
   <script src="{{ asset('assets/client_website/js/typed.min.js') }}"></script>
   <script>
     $(function(){
-      $(".jumbotron-content").typed({
+ /*     $(".jumbotron-content").typed({
         strings: ["Ne regardez plus la tv<br>^3000Vivez-là !!!!!!^3000"],
         typeSpeed: 200,
         showCursor: true,
@@ -183,7 +181,7 @@
         contentType: 'html',
         loop:true,
         countLoop:false
-      });
+      });*/
 
       $('.slide-class').slick({
        autoplay: true,

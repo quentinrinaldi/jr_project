@@ -61,12 +61,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
+
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -75,9 +70,17 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: gmail
-    username:  quentind2@gmail.com
-    password:  obiyoda023
+    # transport: gmail
+    # username:  quentind2@gmail.com
+    # password:  obiyoda023
+    # spool:     { type: memory }
+    # auth_mode:  login
+    # delivery_address: 'quentin.rinaldi@gmail.com'
+    transport: smtp
+    username:  test@jrproduction.tv 
+    password:  quentin2892
+    host:  mail.jrproduction.tv
+    port:  25
     spool:     { type: memory }
     auth_mode:  login
     delivery_address: 'quentin.rinaldi@gmail.com'
@@ -168,6 +171,13 @@ vich_uploader:
             delete_on_remove:   true
             namer:              vich_uploader.namer_origname
         underageLicense:
+            uri_prefix:         /upload
+            upload_destination: %kernel.root_dir%/../web/uploads
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_origname
+        invitation:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
             inject_on_load:     false

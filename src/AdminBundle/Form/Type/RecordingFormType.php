@@ -21,7 +21,7 @@ class RecordingFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $recording = var_dump($options["recording"]);
+        $recording = $builder->getData();
         if ($recording != null) {
             $tvShowID = $builder->getData()->getTvShow(); 
             $locationID = $builder->getData()->getLocation(); 
@@ -62,17 +62,10 @@ class RecordingFormType extends AbstractType
             ));
 
 
-        $builder->add('recordingCondition','text', array(
+        $builder->add('information','text', array(
             'trim' => true,
-            'label'  => 'Condition d\'enregistrement',
+            'label'  => 'Information concernant le tournage',
             ));
-
-        $builder->add('recordingCondition','choice', array(
-        'choices'   => array('En direct' => 'En direct', 'Enregistré' => 'Enregistré'),
-        'required'  => true,
-        'label'  => 'Condition d\'enregistrement',
-        'empty_data' => 'Enregistré'
-        ));
 
         $builder->add('availability','choice', array(
         'choices'   => array("Bientôt Disponible" => "Bientôt Disponible", "Disponible" => "Disponible", "Dernières places" => "Dernières places", "Complet" => "Complet", "Annulé" => "Annulé"),
@@ -91,7 +84,7 @@ class RecordingFormType extends AbstractType
 
         public function getDefaultOptions(array $options)
         {
-            return array('data_class' => 'AppBundle\Entity\Recording', 'recording' => null, 'tvShow' => null);
+            return array('data_class' => 'AppBundle\Entity\Recording');
         }
 
 
