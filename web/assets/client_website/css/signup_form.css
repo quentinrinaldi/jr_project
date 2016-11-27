@@ -13,6 +13,10 @@
 	height: 100%;
 }
 
+.name-input{
+    width:36% !important;
+}
+
 .form-signup input {
 	 background: #fff none repeat scroll 0 0 !important;
     border: 1px solid #d0d0d0 !important;
@@ -53,17 +57,16 @@
 
 .inline-input {
     display:inline-block !important;
-    width:49% !important;
 }
 
 .birthday-input {
-    width:69% !important;
+    width:50% !important;
     display: inline-block !important;
     margin-top: 0 !important;
 }
 .gender-input {
     
-    width:29% !important;
+    width:25% !important;
     display: inline-block !important;
     margin-top: -15px;
 }
@@ -73,4 +76,35 @@
 }
 .dropdown-menu {
     margin-top:10px;
+}
+
+.newsletter_checkbox {
+    top: -15px !important;
+    width: 0 !important;
+    margin-left: -30px !important;
+}
+
+.newsletter_label {
+    padding-left: 30px !important;
+}
+
+.city-input, .country-input {
+    width:49% !important;
+}
+
+.address-input {
+    width:63% !important;
+}
+
+.zipCode-input {
+    width:35% !important;
+}
+
+.phoneNumber-input {
+    width:48% !important;
+}
+
+.robot-error {
+    font-size:11px;
+    margin-top:5px;
 }

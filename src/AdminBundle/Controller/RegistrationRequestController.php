@@ -41,4 +41,21 @@ class RegistrationRequestController extends Controller
    return $this->render('AdminBundle:RegistrationRequest:show_requests.html.twig', array('regRequests' => $regRequests, 'tvShow' => $tvShow));
  }
 
+ public function acceptAction(Request $request, $registrationRequestID) {
+  $repository = $this
+   ->getDoctrine()
+   ->getManager()
+   ->getRepository('AppBundle:RegistrationRequest');
+   $regRequests = $repository->find($registrationRequestID);
+
+  $user = $regRequests->getUser();
+
+  $array = array( 'success' => true ); // data to return via JSON
+  $response = new Response( json_encode( $array ) );
+  $response->headers->set( 'Content-Type', 'application/json' );
+ 
+  return $response;
+
+ }
+
 }

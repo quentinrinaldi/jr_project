@@ -7,4 +7,9 @@
 	<td>{{ user.city }}</td>
 	<td>{{ user.phoneNumber }}</td>
 	<td>{{ user.createdAt |format_date('dd MMMM Y') }}</td>
+	<td>{% if user.enabled == 1 %} Oui {% else %} Non {% endif %}</td>
+	<td><form action="{{ path('remove_user', {'id': user.id}) }}" method="post">
+             <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+        </form>   
+    </td>
 </tr>

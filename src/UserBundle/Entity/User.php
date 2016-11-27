@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\RegistrationRequest as RegistrationRequest;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 
 /**
  * @ORM\Entity
@@ -73,6 +74,12 @@ class User extends BaseUser
     */
     protected $city;
 
+    /**
+      * @ORM\Column(type="string")
+      * @Assert\NotBlank()
+    */
+    protected $country;
+
   /**
    * @ORM\OneToMany(targetEntity="AppBundle\Entity\RegistrationRequest", mappedBy="user",cascade={"remove"})
    */
@@ -83,6 +90,18 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */    
     protected $createdAt;
+/**
+      * @ORM\Column(type="boolean")
+      */
+    protected $newsletter;
+
+    /**
+        * @Recaptcha\IsTrue
+    */
+    /**
+     * @Recaptcha\IsTrue(groups="UserRegistration")
+     */
+    public $recaptcha;
 
   public function __construct()
   {
@@ -90,6 +109,7 @@ class User extends BaseUser
     $this->roles = array('ROLE_USER');
     $this->registrationRequests = new ArrayCollection();
     $this->createdAt = new \DateTime('now');
+    $this->newsletter = false;
 
 }
 
@@ -191,12 +211,35 @@ public function setCity($city)
     $this->city = $city; 
 }
 
+public function getCountry() {
+    return $this->country;
+}
+
+public function setCountry($country) 
+{
+    $this->country = $country; 
+}
 public function getCreatedAt() 
 {
-    return $this->created_at;
+    return $this->createdAt;
 }
 public function setCreatedAt()
 {
 
+}
+
+ public function getAge()
+    {
+        $dateInterval = $this->birthday->diff(new \DateTime());
+ 
+        return $dateInterval->y;
+    }
+
+public function getNewsletter() {
+    return $this->newsletter;
+}
+
+public function setNewsletter($newsletter) {
+    $this->newsletter = $newsletter;
 }
 }

@@ -4,11 +4,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecordingRepository")
  * @ORM\Table(name="recording")
+ * @Vich\Uploadable 
  */
 class Recording
 {
@@ -27,12 +29,6 @@ class Recording
     * @ORM\JoinColumn(nullable=false)
     */
     protected $tvShow;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumn(nullable=false)
-    */
-    protected $location;
 
        /**
      * @ORM\Column(type="time")
@@ -66,6 +62,17 @@ protected $availability;
    */
  protected $registrationRequests;
 
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+    */
+    protected $invitationName;
+
+   /**
+     * @Vich\UploadableField(mapping="invitation", fileNameProperty="invitationName")
+    */
+   protected $invitationFile; 
+
  public function getID() {
     return $this->id;
 }
@@ -80,10 +87,6 @@ public function getEndTime() {
 
 public function getTvShow() {
     return $this->tvShow;
-}
-
-public function getLocation() {
-    return $this->location;
 }
 
 public function getDate() {
@@ -110,9 +113,7 @@ public function setTvShow($tvShow) {
     $this->tvShow = $tvShow;
     $tvShow->addRecording($this);
 }
-public function setLocation(Location $location) {
-    $this->location = $location;
-}
+
 public function setDate($date) {
     $this->date = $date;
 }
@@ -133,6 +134,25 @@ public function removeRegistrationRequest(RegistrationRequest $registrationReque
 {
     $this->registrationRequests->removeElement($registrationRequest);
 }
+
+  public function getInvitationFile()
+  {
+    return $this->invitationFile;
+  }
+
+  public function setInvitationFile($invitationFile) {
+    $this->invitationFile = $invitationFile;
+  }
+
+  public function getInvitationName() 
+  {
+    return $this->invitationName;
+  }
+
+  public function setInvitationName($invitationName) {
+    $this->invitationName = $invitationName;
+    $this->updatedAt = new \DateTime();
+  }
 
 public function __toString() 
 {

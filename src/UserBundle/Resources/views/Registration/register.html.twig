@@ -6,25 +6,28 @@
     <!-- <div class="signup_container"> -->
     {{ form_start(form, {'attr': {'class': 'form-signup registerAjaxForm', 'action' : path('fos_user_registration_register'), 'novalidate' : 'novalidate'  }} ) }}
 
-    {{ form_errors(form) }}
+  
 
     <span class="form-group" style="display:inline;">
-     {{ form_widget(form.firstName, {'attr': {'class':  'inline-input', 'placeholder': 'Prénom'}})}}
-     {{ form_widget(form.lastName, {'attr': {'class': 'inline-input', 'placeholder': 'Nom'}})}}
+    {{ form_widget(form.gender, {'attr': {'class': 'form-control selectpicker gender-input'}}) }}
+     {{ form_widget(form.firstName, {'attr': {'class':  'inline-input name-input', 'placeholder': 'Prénom'}})}}
+     {{ form_widget(form.lastName, {'attr': {'class': 'inline-input name-input', 'placeholder': 'Nom'}})}}
      
+     {{ form_errors(form.gender) }}
      {{ form_errors(form.firstName) }}
      {{ form_errors(form.lastName) }}
    </span>
 
    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
    {{ form_errors(form.email) }}
-   <div class="form-group" style="display:inline;">
+   <div class="form-group">
 
-    {{ form_widget(form.gender, {'attr': {'class': 'form-control selectpicker gender-input'}}) }}
-    {{ form_widget(form.birthday, {'attr': {'class': 'js-datepicker birthday-input' , 'placeholder': 'Date de naissance'}}) }}
     
-    {{ form_errors(form.gender) }}
+    {{ form_widget(form.birthday, {'attr': {'class': 'js-datepicker birthday-input inline-input' , 'placeholder': 'Date de naissance', 'autocomplete' : 'off'}}) }}
+    {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control phoneNumber-input inline-input', 'placeholder': 'N° de téléphone'}}) }}
+    
     {{ form_errors(form.birthday) }}
+    {{ form_errors(form.phoneNumber) }}
 
 
   </div>
@@ -35,22 +38,25 @@
   {{ form_errors(form.plainPassword.second) }}
 
 
-
-
-  {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone'}}) }}
-  {{ form_errors(form.phoneNumber) }}
-
-  {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+  {{ form_widget(form.address, {'attr': {'class': 'form-control address-input inline-input', 'placeholder': 'Adresse'}}) }}
+  {{ form_widget(form.zipCode, {'attr': {'class': 'form-control inline-input zipCode-input', 'placeholder': 'Code postal'}}) }}
   {{ form_errors(form.address) }}
+  {{ form_errors(form.zipCode) }}
+  
+  {{ form_widget(form.city, {'attr': {'class': 'form-control inline-input city-input', 'placeholder': 'Ville'}}) }}
+  {{ form_widget(form.country, {'attr': {'class': 'form-control inline-input country-input', 'placeholder': 'Pays'}}) }}
+  {{ form_errors(form.city) }}
+  {{ form_errors(form.country) }}
 
-  <div style="display:inline">
-    {{ form_widget(form.zipCode, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Code postal'}}) }}
-    {{ form_widget(form.city, {'attr': {'class': 'form-control inline-input', 'placeholder': 'Ville'}}) }}
+  {{ form_widget(form.newsletter, {'attr': {'class': 'form-control newsletter_checkbox'}}) }}
+  {{ form_errors(form.newsletter) }}
 
-    {{ form_errors(form.zipCode) }}
-    {{ form_errors(form.city) }}
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Créer son compte</button>
+  {{ form_widget(form.recaptcha) }}
+  {{ form_errors(form.recaptcha) }}
+<div class="robot-error">
+{{ form_errors(form) }}
+</div>
+  <button class="btn btn-lg btn-primary btn-block register-submit-button" type="submit">Créer son compte</button>
   {{ form_end(form) }}
 </div>
 </div>
@@ -75,7 +81,7 @@
       yearRange: '1900:' + new Date().getFullYear()
 
     });
-    initRegistrationForm();
+    initRegistrationForm($('.register-submit-button'));
     $('.selectpicker').selectpicker({});
   });
   

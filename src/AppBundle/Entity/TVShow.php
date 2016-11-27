@@ -109,15 +109,6 @@ class TVShow
     */
     protected $licenseVisibility;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-    */
-    protected $invitationName;
-
-   /**
-     * @Vich\UploadableField(mapping="invitation", fileNameProperty="invitationName")
-    */
-   protected $invitationFile; 
 
     public function __construct()
     {
@@ -293,24 +284,7 @@ class TVShow
     $this->updatedAt = new \DateTime();
   }
 
-  public function getInvitationFile()
-  {
-    return $this->invitationFile;
-  }
 
-  public function setInvitationFile($invitationFile) {
-    $this->invitationFile = $invitationFile;
-  }
-
-  public function getInvitationName() 
-  {
-    return $this->invitationName;
-  }
-
-  public function setInvitationName($invitationName) {
-    $this->invitationName = $invitationName;
-    $this->updatedAt = new \DateTime();
-  }
 
   public function getUpdatedAt() {
     return $this->updatedAt;

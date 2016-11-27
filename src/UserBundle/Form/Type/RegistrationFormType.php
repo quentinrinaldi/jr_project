@@ -5,6 +5,9 @@ namespace UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType as EWZRecaptchaType;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -14,9 +17,8 @@ class RegistrationFormType extends AbstractType
         $builder->add('firstName');
         $builder->remove('username');
         $builder->add('gender','choice', array(
-            'choices'   => array('M' => 'Homme', 'F' => 'Femme'),
+            'choices'   => array('M' => 'Mr', 'F' => 'Mme'),
             'required'  => true,
-            'placeholder' => 'Sexe'
 
             ));
         $builder->add('birthday',DateType::class, array(
@@ -36,6 +38,28 @@ class RegistrationFormType extends AbstractType
         $builder->add('address','text');
         $builder->add('zipCode','text');
         $builder->add('city','text');
+        $builder->add('country','text');
+        $builder->add('newsletter','checkbox', array(
+            'label' => 'J\'accepte recevoir des informations de la part de JRProduction',
+            'required' => false,
+            'label_attr' => array('class' => 'newsletter_label')));
+
+        $builder->add('recaptcha', EWZRecaptchaType::class, array(
+            'attr' => array(
+                'options' => array(
+                    'theme' => 'light',
+                    'size'  => 'normal',
+                    'type'  => 'image',
+                    'defer' => true,
+                    'async' => true
+                )
+            ),
+            'mapped' => false,
+            'constraints'   => array(
+                new RecaptchaTrue()
+            ),
+            'error_bubbling' => true
+        ));
     }
 
     public function getParent()

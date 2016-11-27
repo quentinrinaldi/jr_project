@@ -16,7 +16,7 @@ class RegistrationRequestFormType extends AbstractType
         $builder->add('peopleNumber','choice', array(
         'choices'   => array('1' => 1, '2' => 2,'3' => 3,'4' => 4,'5' => 5),
         'required'  => true,
-        'label'  => 'Nombre de places demandeés',
+        'label'  => 'Nombre de places demandées',
         ));
 
     }

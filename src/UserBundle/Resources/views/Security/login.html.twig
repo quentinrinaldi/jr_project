@@ -7,9 +7,9 @@
     <div class="modal-content">
 
       <div class="modal-body">
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         
         <div class="login_container">
-
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <form class="ajaxForm form-signin" action="{{ path("fos_user_security_check") }}" method="post" class="ajaxForm" novalidate>
             <h2 class="form-signin-heading">Connexion</h2>
 
@@ -27,7 +27,7 @@
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
               </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+            <button class="btn btn-lg btn-primary btn-block login-submit-button" type="submit">Se connecter</button>
           </form>
           <a href="#" onclick='passwordRetriever();'>Mot de passe oubilé</a>
         </div>
@@ -42,6 +42,10 @@
 
       e.preventDefault()
       $('.error-content').html("");
+
+      $('.login-submit-button').addClass("disabled");
+      $('.login-submit-button').html("Connexion...");
+
       $.ajax({
         type: $(this).attr('method'),
         url: $(this).attr('action'),
@@ -51,10 +55,12 @@
        // alert(data.message)
         if (data.success == false) {
           $('.error-content').html("Pseudo ou mot de passe incorrect");
+          $('.login-submit-button').removeClass("disabled");
+          $('.login-submit-button').html("Se connecter");
         }
         else {
           $('.login_container').replaceWith(data.message);
-          // redirect to google after 5 seconds
+          // redirect to previous page after 3 seconds
           window.setTimeout(function() {
             window.location.href = data.referer;
           }, 3000);

@@ -28,7 +28,12 @@ class LocationFormType extends AbstractType
             'label' => 'Description')
         );
 
-
+        $builder->add('mapFile',FileType::class, array(
+            'trim' => true,
+            'label'  => 'Plan',
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'required' => false
+            ));
     }
 
     public function getDefaultOptions(array $options)

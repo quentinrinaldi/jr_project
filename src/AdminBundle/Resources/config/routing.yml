@@ -151,3 +151,13 @@ users:
     path: /users
     defaults: { _controller: AdminBundle:UsersList:showAll}
     methods: [GET]
+
+remove_user:
+    path: /users/{id}/remove
+    defaults: { _controller: AdminBundle:UsersList:removeUser}
+    methods: [POST]
+
+accept_registration_request:
+    path: /registration_requests/{registrationRequestID}/accept
+    defaults: { _controller: AdminBundle:RegistrationRequest:accept}
+    methods: [POST]

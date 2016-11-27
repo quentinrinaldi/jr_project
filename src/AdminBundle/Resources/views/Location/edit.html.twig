@@ -47,5 +47,21 @@
     
     purifyHtml: false, // this by default purifies HTML data for preview
 });
+
+  $("#Location_mapFile").fileinput({
+
+    //uploadUrl: "/file-upload-batch/1",
+    uploadAsync: false,
+    minFileCount: 0,
+    maxFileCount: 1,
+    overwriteInitial: true,
+    initialPreview: [
+        // IMAGE DATA
+        "{{ asset('uploads/' ~ location.mapName) }}"],
+    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+    initialPreviewFileType: 'pdf', // image is the default and can be overridden in config below
+    
+    purifyHtml: false, // this by default purifies HTML data for preview
+});
   </script>
 {% endblock %}

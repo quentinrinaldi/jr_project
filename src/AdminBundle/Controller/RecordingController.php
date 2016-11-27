@@ -55,7 +55,7 @@ public function showAction(Request $request, $tvshowID)
 
     $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
-    if (tvshowID == null) {
+    if ($tvshowID == null) {
       return $this->redirect($this->generateUrl('admin_recordings'));
     }
     else {

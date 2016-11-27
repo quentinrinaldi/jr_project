@@ -1,8 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %} 
-<link rel="stylesheet" href="{{ asset('assets/client_website/css/calendar.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/calendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/client_website/css/bootstrap-datepicker3.min.css') }}" />
+
 {% endblock %}
 
 {% block body_content %}
@@ -28,6 +31,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <p class="subcomment">Sur cette page, visualisez en un coup d'oeil tous les tournages programmés.</p>
+                <div id="calendar" class="center-block"></div>
             </div>
 
             <table id="events_calendar" class="display" cellspacing="0" width="100%">
@@ -35,10 +39,11 @@
                     <tr>
                         <th>Emission</th>
                         <th>Date</th>
-                        <th>Heure de début</th>
-                        <th>Heure de fin</th>
+                        <th>Début</th>
+                        <th>Fin</th>
                         <th>Information</th>
                         <th>Inscription</th>
+                        <th>Helper</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +64,7 @@
     <div class="modal fade" id="anonymousSuscribtionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog register-modal" role="document">
             <div class="modal-content">
-                
+
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="suscribtion_container text-center">
@@ -78,25 +83,45 @@
 {% block scripts %}
 
     <script src="{{ asset('assets/shared_assets/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/client_website/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/client_website/js/bootstrap-datepicker.fr.min.js') }}"></script>
 
     <script>
+
         $(document).ready(function() {
-            $('#events_calendar').DataTable({
+            $.fn.exists = function () {
+                return this.length !== 0;
+            }
+
+            var calendarTable = $('#events_calendar').dataTable({
                 "language": {
-                    "lengthMenu": "Afficher _MENU_ dates par page",
-                    "info": "Page _PAGE_/_PAGES_",
-                    "emptyTable": "Aucune date n'est actuellement prévue",
-                    "infoEmpty": "",
-                    "paginate": {
-                        "first":      "Première page",
-                        "last":       "Dernière page",
-                        "next":       "Suivant",
-                        "previous":   "Précédent"
-                    }
+                    "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
+                    "emptyTable" : "Aucun tournage n'est prévu pour ce jour"
                 },
-                "bFilter": false,
+                "bFilter": true,
+                "columnDefs": [
+                {
+                    "targets": [ 6 ],
+                    "visible": false,
+                    "searchable": false
+                }
+                ],
+                "columns": [
+                    null,
+                    null,
+                    { "width": "8%" },
+                    { "width": "8%" },
+                    { "width": "30%" },
+                    null
+                    ],
 
             });
+            var calendarAPI = $('#events_calendar').DataTable();
+            var dateColumn = calendarAPI.column( 6 ).data();
+
+
+            
+
 
             $('.connected-register-button').click(function() {
 
@@ -112,10 +137,54 @@
             $('.anonymous-register-button').click(function() {
                 $('#anonymousSuscribtionModal').modal();
             });
+
+            function setCalendar(calendarAPI, columnData) {
+
+                var calendar = $('#calendar').datepicker({
+                    todayHighlight: true,
+                    language: "fr",
+                    format: 'DD dd MM yyyy',
+                    startDate: '+0d',
+                    maxViewMode: 2,
+                    beforeShowDay: function (date){
+                            var dateString = date.getDate()+" "+ (date.getMonth()+1) + " "+date.getFullYear();
+                            var today = new Date();
+
+                            if ((today <= date) && ($.inArray(dateString,columnData) != -1)) {
+                               
+                                return {
+                                    classes: 'active'
+                                };
+                            }
+                        
+                    }
+                });
+                return calendar;
+            }
+            var calendar = setCalendar(calendarAPI,dateColumn);
+
+            function onChangeDate(calendarTable, calendar) {
+                calendar.on('changeDate', function(e) {
+                    var date = e.format("DD dd MM yyyy");
+                    calendarTable.fnFilter(date, 1);
+                })
+            }
+
+            function onChangeMonth(calendarTable, calendar) {
+                calendar.on('changeMonth', function(e) {
+                    var dateMonth = e.format("MM yyyy");
+                    alert(dateMonth);
+                    calendarTable.fnFilter(dateMonth, 1);
+                })
+            }
+
+
+
+            onChangeDate(calendarTable, calendar);
+           // onChangeMonth(calendarTable, calendar);
+            $('#calendar').datepicker("setDate", new Date());
             
         });
-
-
     </script>
 {% endblock %}
 

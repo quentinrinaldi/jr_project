@@ -8,9 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use AppBundle\Entity\Channel;
-use AppBundle\Entity\Location;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RecordingFormType extends AbstractType
 {
@@ -24,7 +23,6 @@ class RecordingFormType extends AbstractType
         $recording = $builder->getData();
         if ($recording != null) {
             $tvShowID = $builder->getData()->getTvShow(); 
-            $locationID = $builder->getData()->getLocation(); 
         }
         $builder->add('tvShow','entity', array(
             'class' => 'AppBundle:TVShow',
@@ -34,17 +32,6 @@ class RecordingFormType extends AbstractType
             'multiple' => false,
             'placeholder' => 'Selectionnez une émission',
             ));
-        
-        $builder->add('location','entity', array(
-            'class' => 'AppBundle:Location',
-            'choice_label'  => 'name',
-            'choice_value' => 'id',
-            'label'  => 'Lieu de tournage',
-            'multiple' => false,
-            'placeholder' => 'Selectionnez le lieu du tournage',
-        
-            ));
-
         
 
         $builder->add('date','date', array(
@@ -65,6 +52,7 @@ class RecordingFormType extends AbstractType
         $builder->add('information','text', array(
             'trim' => true,
             'label'  => 'Information concernant le tournage',
+             'required'  => false,
             ));
 
         $builder->add('availability','choice', array(
@@ -74,12 +62,13 @@ class RecordingFormType extends AbstractType
         'empty_data' => 'Bientôt Disponible'
         ));
 
-
-       /* $builder->add('description', 'ckeditor', array(
-            'config_name' => 'my_config',
-            'label' => 'Description')
-            );*/
-
+        $builder->add('invitationFile',FileType::class, array(
+            'trim' => true,
+            'label'  => 'Invitation',
+            'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
+            'required' => false
+            ));
+        
         }
 
         public function getDefaultOptions(array $options)

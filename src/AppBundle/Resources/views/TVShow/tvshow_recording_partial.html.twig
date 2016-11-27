@@ -1,6 +1,5 @@
 <tr>
-    {# <td>{{ recording.date |date('l d-m-Y')}}</td> #}
-    <td>{{ recording.date | format_date('EEEE e MMMM Y') }}</td>
+    <td>{{ recording.date | format_date('EEEE dd MMMM y') }}</td>
     <td>{{ recording.startTime |format_time('H\'h\'mm') }}</td>
     <td>{{ recording.endTime  |format_time('H\'h\'mm')}}</td>
     <td>{{ recording.information }}</td>

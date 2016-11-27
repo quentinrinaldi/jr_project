@@ -29,6 +29,7 @@ services:
             - @router
             - @session
             - @translator
+            - @templating
   #  app.file_uploader:
    #     class: AppBundle\FileUploader
     #    arguments: ['%uploads_directory%']

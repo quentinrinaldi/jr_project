@@ -20,4 +20,16 @@ class UsersListController extends Controller
 
 		return $this->render('AdminBundle:UsersList:index.html.twig', array('users' => $users));
 	}
+	public function removeUserAction(Request $request, $id)
+	{
+
+		$em = $this->getDoctrine()->getManager();
+ 		$user = $em->find('UserBundle:User', $id);
+ 		$em->remove($user);
+ 		$em->flush();
+
+ 		$request->getSession()->getFlashBag()->add('success', 'L\'utilisateur a bien été supprimé');
+
+ 		return $this->redirect($this->generateUrl('users'));
+ 	}
 }

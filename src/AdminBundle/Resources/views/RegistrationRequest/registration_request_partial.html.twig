@@ -2,13 +2,13 @@
 	<td>{{ regRequest.user.email }}</td>
 	<td>{{ regRequest.user.lastName }}</td>
 	<td>{{ regRequest.user.firstName }}</td>
-	<td>{{ regRequest.user.address }}</td>
-	<td>{{ regRequest.user.zipCode }}</td>
+	<td>{{ regRequest.user.getAge }}</td>
+	<td>{{ regRequest.user.phoneNumber }}</td>
 	<td>{{ regRequest.user.city }}</td>
 	<td>{{ regRequest.createdAt |format_date('d/MM/Y') }}</td>
 	<td>{{ regRequest.recording.tvShow.title }}</td>
 	<td>{{ regRequest.recording.date |format_date('d MMM Y')}} {{ regRequest.recording.startTime | date('h:i')}} - {{ regRequest.recording.endTime | date('h:i') }}</td>
 	<td>{{ regRequest.peopleNumber }}</td>
 	<td>{{ regRequest.status }}</td>
-	<td></td>
+	<td><div><button type="button" class="btn btn-success accepting-button" data-button="{{ regRequest.id }}">Accepter</button><button type="button" class="btn btn-danger">Refuser</button></div></td>
 </tr>

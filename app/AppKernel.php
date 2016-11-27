@@ -29,8 +29,8 @@ public function __construct($environment, $debug)
             new AdminBundle\AdminBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle()
-        );
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle());
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

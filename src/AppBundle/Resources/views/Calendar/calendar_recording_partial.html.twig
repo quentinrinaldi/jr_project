@@ -1,17 +1,40 @@
 <tr>
     <td>{{ recording.tvShow.title }}</td>
-    <td>{{ recording.date |date('d-m-Y')}}</td>
-    <td>{{ recording.startTime |date('h:i') }}</td>
-    <td>{{ recording.endTime  |date('h:i')}}</td>
+    <td>{{ recording.date |format_date('EEEE dd MMMM y')}}</td>
+    <td>{{ recording.startTime |format_time('HH\'h\'mm') }}</td>
+    <td>{{ recording.endTime  |format_time('HH\'h\'mm')}}</td>
     <td>{{ recording.information }}</td>
     <td> {% if recording.availability == 'Complet' %} 
         <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg register-button disabled" >Complet</button>
-        {% else %} 
+        
+        {% elseif  recording.availability == 'Disponible' %} 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-               <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg connected-register-button" >S'inscrire</button>
+               <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg connected-register-button" >Réserver</button>
             {% else %}
-                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg anonymous-register-button" >S'inscrire</button>
+                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg anonymous-register-button" >Réserver</button>
+            {% endif %}
+        
+        {% elseif  recording.availability == 'Bientôt Disponible' %} 
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg disabled" >Bientôt disponible</button>
+            {% else %}
+                <button type="button" id={{ recording.id }} class="btn btn-primary btn-lg disabled" >Bientôt disponible</button>
+            {% endif %}
+       
+        {% elseif  recording.availability == 'Dernières places' %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <button type="button" id={{ recording.id }} class="btn btn-warning btn-lg connected-register-button" >Dernières places</button>
+            {% else %}
+                <button type="button" id={{ recording.id }} class="btn btn-warning btn-lg anonymous-register-button" >Dernières places</button>
+            {% endif %} 
+       
+        {% elseif  recording.availability == 'Annulé' %} 
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg disabled" >Annulé</button>
+            {% else %}
+                <button type="button" id={{ recording.id }} class="btn btn-danger btn-lg disabled" >Annulé</button>
             {% endif %}
         {% endif %} 
     </td>
+    <td>{{ recording.date |format_date('d M y')}}</td>
 </tr>

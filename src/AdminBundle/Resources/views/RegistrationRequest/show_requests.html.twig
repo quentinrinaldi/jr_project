@@ -1,7 +1,7 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
 
 {% block stylesheets %} 
-<link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
 {% endblock %}
 
 {% block body_content %}
@@ -22,9 +22,9 @@
                 <th>Adresse Mail</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Adresse</th>
-                <th>C. postal</th>
-                <th>Ville</th>
+                <th>Age</th>
+                <th>Téléphone</th>
+                <th>Ville-Pays</th>
                 <th>Date de la dem.</th>
                 <th>Emission</th>
                 <th>Tournage</th>
@@ -47,23 +47,35 @@
     {% block scripts %} 
         <script src="{{ asset('assets/shared_assets/js/jquery.dataTables.min.js') }}"></script>
         <script>
-        $(document).ready(function() {
-            $('#recordings_table').DataTable({
-                "language": {
-                    "lengthMenu": "Afficher _MENU_ dates par page",
-                    "info": "Page _PAGE_/_PAGES_",
-                    "emptyTable": "Aucune demande d'inscription n'est présente dans la base",
-                    "infoEmpty": "",
-                    "paginate": {
-                        "first":      "Première page",
-                        "last":       "Dernière page",
-                        "next":       "Suivant",
-                        "previous":   "Précédent"
-                    }
-                },
-                "bFilter": false,
+            $(document).ready(function() {
+                $('#recordings_table').DataTable({
+                    "language": {
+                        "lengthMenu": "Afficher _MENU_ dates par page",
+                        "info": "Page _PAGE_/_PAGES_",
+                        "emptyTable": "Aucune demande d'inscription n'est présente dans la base",
+                        "infoEmpty": "",
+                        "paginate": {
+                            "first":      "Première page",
+                            "last":       "Dernière page",
+                            "next":       "Suivant",
+                            "previous":   "Précédent"
+                        }
+                    },
+                    "bFilter": true,
 
+                });
+
+
+                $('.accepting-button').click(function () {
+                    var registrationRequestID = $(this).data('button');
+                    var url = "{{ path('accept_registration_request', {'registrationRequestID': 'registrationRequestIDValue'} ) }}".replace('registrationRequestIDValue', registrationRequestID)
+                    $.post(url).done(function (data) {
+                        alert(data.success);
+
+                    });
+                });
             });
-        } );
-    </script>
+
+
+        </script>
     {% endblock %}

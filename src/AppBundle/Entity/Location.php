@@ -45,6 +45,15 @@ class Location
      * @var \DateTime
      */
 private $updatedAt;
+    /**
+     * @ORM\Column(type="string")
+    */
+    protected $mapName;
+
+    /**
+     * @Vich\UploadableField(mapping="map", fileNameProperty="mapName")
+    */
+    protected $mapFile;
 
 
 public function getID() {
@@ -95,5 +104,24 @@ public function update() {
 public function __toString() 
 {
     return (string) $this->getId();
+}
+
+public function getMapName() 
+{
+  return $this->mapName;
+}
+
+public function setMapName($mapName) {
+  $this->mapName = $mapName;
+  $this->updatedAt = new \DateTime();
+}
+
+public function getMapFile()
+{
+  return $this->mapFile;
+}
+
+public function setMapFile($mapFile) {
+  $this->mapFile = $mapFile;
 }
 }

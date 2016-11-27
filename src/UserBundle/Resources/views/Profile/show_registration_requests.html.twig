@@ -53,9 +53,9 @@
           {% for regRequest in regRequests %}
             <tr>
               <td>{{ regRequest.recording.tvShow.title }}</td>
-              <td>{{ regRequest.recording.date |date('Y-m-d')}}</td>
-              <td>{{ regRequest.recording.startTime |date('h:i') }}</td>
-              <td>{{ regRequest.recording.endTime  |date('h:i')}}</td>
+              <td>{{ regRequest.recording.date |format_date('EEEE dd MMMM y')}}</td>
+              <td>{{ regRequest.recording.startTime |format_time('HH\'h\'mm') }}</td>
+              <td>{{ regRequest.recording.endTime  |format_time('HH\'h\'mm')}}</td>
               <td>{{ regRequest.peopleNumber}}</td>
               <td>{{ regRequest.status }}</td>
             </tr>

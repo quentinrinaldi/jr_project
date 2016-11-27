@@ -145,13 +145,14 @@
             $.fn.modal.Constructor.prototype.enforceFocus = function() {};
         </script>
         <script>
-          function initRegistrationForm()
+          function initRegistrationForm(submitButton)
           {
             $('.registerAjaxForm').unbind();
 
             $('.registerAjaxForm').submit(function (e) {
               e.preventDefault();
-              $('.register-submit-button').addClass("disabled");
+              submitButton.addClass("disabled");
+              submitButton.html("Veuillez patienter...");
               $.ajax({
                 type: $(this).attr('method'),                
                 url: $(this).attr('action'),

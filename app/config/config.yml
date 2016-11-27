@@ -184,3 +184,7 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
             namer:              vich_uploader.namer_origname
+
+ewz_recaptcha:
+    public_key:  6Ld02QYUAAAAABF0yMHOEgYir0Ucl4ZHJ4dUgDdA
+    private_key: 6Ld02QYUAAAAAA4kBEenGDI2X4_07Hvv3Qg_bce_

@@ -19,6 +19,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 	private $router;
 	private $session;
  	private $translator;
+ 	private $twig;
 	/**
 	 * Constructor
 	 *
@@ -26,11 +27,12 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 	 * @param 	RouterInterface $router
 	 * @param 	Session $session
 	 */
-	public function __construct( RouterInterface $router, Session $session, $translator )
+	public function __construct( RouterInterface $router, Session $session, $translator, $twig )
 	{
 		$this->router  = $router;
 		$this->session = $session;
 		$this->translator = $translator;
+		$this->twig = $twig;
 	}
  
 	/**
@@ -46,7 +48,8 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 		// if AJAX login
 		if ( $request->isXmlHttpRequest() ) {
  			$referer = $request->headers->get('referer');
-			$array = array( 'success' => true, 'message' => '<p>Bonjour ! Vous allez être redirigé vers la page d\'accueil</p>', 'referer'=> $referer); // data to return via JSON
+ 			$test = $this->twig->render('UserBundle:Security:confirmed.html.twig');
+			$array = array( 'success' => true, 'message' => $test, 'referer'=> $referer); // data to return via JSON
 			$response = new Response( json_encode( $array ) );
 			$response->headers->set( 'Content-Type', 'application/json' );
  
