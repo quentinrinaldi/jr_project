@@ -23,7 +23,7 @@ class RegistrationRequestController extends Controller
 		$entity = new RegistrationRequest();
 		$entity->setUser($user);
 		$entity->setRecording($recording);
-		$entity->setStatus('En attente');
+		$entity->setState('En attente');
 
 
 		$form = $this->createCreateForm($entity);

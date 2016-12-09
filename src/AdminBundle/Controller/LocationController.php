@@ -50,7 +50,7 @@ public function removeAction(Request $request, $id) {
   $em->remove($location);
   $em->flush();
 
-  $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
+  $request->getSession()->getFlashBag()->add('success', 'Le lieu a bien été supprimé.');
 
   return $this->redirect($this->generateUrl('admin_locations'));
 }
@@ -62,7 +62,7 @@ public function editAction(Request $request, $id) {
 
   $form->handleRequest($request);
   if ($form->isSubmitted() && $form->isValid()) {
-    
+    $location->update();
     $em->flush();
 
     $request->getSession()->getFlashBag()->add('success', 'Les modifications ont bien été prises en compte.');
@@ -72,6 +72,4 @@ public function editAction(Request $request, $id) {
     return $this->render('AdminBundle:Location:edit.html.twig',array('form' => $form->createView(), 'location' => $location));
   }
 }
-
-
 }

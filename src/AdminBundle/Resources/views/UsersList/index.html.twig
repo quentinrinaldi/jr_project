@@ -3,6 +3,7 @@
 {% block stylesheets %} 
     <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin_website/css/bootstrap-switch.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin_website/css/user_lists.css') }}" />
 {% endblock %}
 
 {% block body_content %}
@@ -30,7 +31,8 @@
             <th>Ville</th>
             <th>Téléphone</th>
             <th>Date d'inscription</th>
-            <th>Compte activé</th>
+            <th>Activé</th>
+            <th>Rôles</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -50,7 +52,8 @@
         $(document).ready(function() {
             var table = $('#users_table').dataTable({
                 "language": {
-                    "url": "{{ asset('assets/shared_assets/tools/French.json') }}"
+                    "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
+                    "sZeroRecords" : "Aucun utilisateur n'est présent dans la base de données."
                 },
                 "bFilter": true,
 

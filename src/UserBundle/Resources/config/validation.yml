@@ -15,7 +15,7 @@ UserBundle\Entity\User:
                 message: "Veuillez saisir un numéro de téléphone."
                 groups: [ "UserRegistration" ]
             - Regex :
-                pattern: "/0[1-9][0-9]{8}$/"
+                pattern: "/^(\+)?([0-9]|-|\(|\)|\.|\\s){8,}$/"
                 match: true
                 message: "Le numéro de téléphone n'est pas valide."
                 groups: [ "UserRegistration" ]

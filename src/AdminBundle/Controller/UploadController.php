@@ -36,7 +36,7 @@ class UploadController extends Controller
     $em->persist($upload);
     $em->flush();
 
-    $request->getSession()->getFlashBag()->add('sucess', 'Annonce bien enregistrée.');
+    $request->getSession()->getFlashBag()->add('success', 'Le fichier a bien été uploadé.');
 
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
     return $this->redirect($this->generateUrl('admin_uploads'));

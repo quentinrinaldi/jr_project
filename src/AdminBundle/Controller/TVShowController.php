@@ -35,7 +35,7 @@ namespace AdminBundle\Controller;
  			$em->persist($tvShow);
  			$em->flush();
 
- 			$request->getSession()->getFlashBag()->add('sucess', 'Annonce bien enregistrée.');
+ 			$request->getSession()->getFlashBag()->add('success', "L'émission a bien été enregistrée.");
 
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
  			return $this->redirect($this->generateUrl('admin_tvshows'));
@@ -50,7 +50,7 @@ namespace AdminBundle\Controller;
  		$em->remove($tvShow);
  		$em->flush();
 
- 		$request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
+ 		$request->getSession()->getFlashBag()->add('success', "L'émission a bien été supprimée.");
 
  		return $this->redirect($this->generateUrl('admin_tvshows'));
  	}

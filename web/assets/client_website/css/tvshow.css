@@ -5,3 +5,31 @@
 p {
 	text-align: center;
 }
+
+.caption {
+	display:table;
+	height: 4em;
+	width:100%;
+}
+
+.caption span {
+	font-size: 15px;
+	display:table-cell;
+	vertical-align: middle;
+}
+
+.thumbnail .caption {
+    padding: 5px !important;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}

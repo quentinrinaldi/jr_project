@@ -146,7 +146,6 @@ show_registration_requests:
     defaults: { _controller: AdminBundle:RegistrationRequest:show}
     methods: [GET]
 
-
 users:
     path: /users
     defaults: { _controller: AdminBundle:UsersList:showAll}
@@ -160,4 +159,49 @@ remove_user:
 accept_registration_request:
     path: /registration_requests/{registrationRequestID}/accept
     defaults: { _controller: AdminBundle:RegistrationRequest:accept}
+    methods: [POST]
+
+show_email_template:
+    path: /email_template/
+    defaults: { _controller: AdminBundle:EmailTemplate:showEmailTemplate}
+    methods: [GET]
+
+add_email_template:
+    path: /email_template/add
+    defaults: { _controller: AdminBundle:EmailTemplate:addEmailTemplate}
+    methods: [POST]
+
+edit_email_template:
+    path: /email_template/edit
+    defaults: { _controller: AdminBundle:EmailTemplate:editEmailTemplate}
+    methods: [POST]
+
+set_admin_role:
+    path: /users/{id}/admin_role_granting
+    defaults: { _controller: AdminBundle:UsersList:grantAdminRole}
+    methods: [POST]
+
+delete_admin_role:
+    path: /users/{id}/admin_role_delete
+    defaults: { _controller: AdminBundle:UsersList:deleteAdminRole}
+    methods: [POST]
+
+past_recordings:
+    path: /recordings-history
+    defaults: { _controller: AdminBundle:Recording:showHistory}
+    methods: [GET]
+
+show_contact_infos:
+    path: /contact_infos/
+    defaults: { _controller: AdminBundle:ContactInfos:showContactInfos}
+    methods: [GET]
+
+add_contact_infos:
+    path: /contact_infos/add
+    defaults: { _controller: AdminBundle:ContactInfos:addContactInfos}
+    methods: [POST]
+
+edit_contact_infos:
+    path: /contact_infos/edit
+    defaults: { _controller: AdminBundle:ContactInfos:editContactInfos}
     methods: [POST]

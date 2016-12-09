@@ -56,72 +56,76 @@ private $updatedAt;
     protected $mapFile;
 
 
-public function getID() {
-    return $this->id;
-}
+    public function getID() {
+      return $this->id;
+    }
 
-public function getName() {
-    return $this->name;
-}
-
-
-public function getDescription() {
-    return $this->description;
-}
-
-public function setName($name) {
-    $this->name = $name;
-}
+    public function getName() {
+      return $this->name;
+    }
 
 
-public function setDescription($description) {
-    $this->description = $description;
-}
+    public function getDescription() {
+      return $this->description;
+    }
 
-public function getImageName() 
-{
-  return $this->imageName;
-}
+    public function setName($name) {
+      $this->name = $name;
+    }
 
-public function setImageName($imageName) {
-  $this->imageName = $imageName;
-  $this->updatedAt = new \DateTime();
-}
 
-public function getImageFile()
-{
-  return $this->imageFile;
-}
+    public function setDescription($description) {
+      $this->description = $description;
+    }
 
-public function setImageFile($imageFile) {
-  $this->imageFile = $imageFile;
-}
+    public function getImageName() 
+    {
+      return $this->imageName;
+    }
 
-public function update() {
-  $this->updatedAt = new \DateTime();
-}
+    public function setImageName($imageName) {
+      $this->imageName = $imageName;
+      $this->updatedAt = new \DateTime();
+    }
 
-public function __toString() 
-{
-    return (string) $this->getId();
-}
+    public function getImageFile()
+    {
+      return $this->imageFile;
+    }
 
-public function getMapName() 
-{
-  return $this->mapName;
-}
+    public function setImageFile($imageFile) {
+      $this->imageFile = $imageFile;
+    }
 
-public function setMapName($mapName) {
-  $this->mapName = $mapName;
-  $this->updatedAt = new \DateTime();
-}
+    public function update() {
+      $this->updatedAt = new \DateTime();
+    }
 
-public function getMapFile()
-{
-  return $this->mapFile;
-}
+    public function __toString() 
+    {
+      return (string) $this->getId();
+    }
 
-public function setMapFile($mapFile) {
-  $this->mapFile = $mapFile;
-}
-}
+    public function getMapName() 
+    {
+      return $this->mapName;
+    }
+
+    public function setMapName($mapName) {
+      $this->mapName = $mapName;
+      $this->updatedAt = new \DateTime();
+    }
+
+    public function getMapFile()
+    {
+      return $this->mapFile;
+    }
+
+    public function setMapFile($mapFile) {
+      $this->mapFile = $mapFile;
+    }
+
+    public function getUpdatedAt() {
+      return $this->updatedAt;
+    }
+  }

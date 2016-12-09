@@ -27,6 +27,7 @@ class Recording
     /**
     * @ORM\ManyToOne(targetEntity="TVShow", inversedBy="recordings")
     * @ORM\JoinColumn(nullable=false)
+    * @Assert\NotBlank()
     */
     protected $tvShow;
 

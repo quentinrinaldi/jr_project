@@ -25,11 +25,7 @@ class RegistrationFormType extends AbstractType
 
             'widget' => 'single_text',
             'format' => 'dd/MM/yyyy',
-
-    // do not render as type="date", to avoid HTML5 date pickers
             'html5' => false,
-
-    // add a class that can be selected in JavaScript
             'placeholder' => 'Date de naissance'
             ));
 

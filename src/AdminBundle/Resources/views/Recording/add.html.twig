@@ -1,18 +1,40 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
 
+{% block stylesheets %} 
+  <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/bootstrap-datetimepicker.min.css') }}" />
+{% endblock %}
+
 {% block body_content %}
 
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Ajout d'un enregistrement d'émission
-                    </h1>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Ajout d'un enregistrement d'émission
+      </h1>
 
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-{{ form_start(form, { 'action': path('add_recording', {'tvshowID' : tvshowID}), 'method':'POST'}) }}
- {{ form_widget(form) }}
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+
+  {{ form_start(form, { 'action': path('add_recording', {'tvshowID' : tvshowID}), 'method':'POST'}) }}
+
+  <div class="form-group">
+    {{ form_label(form.tvShow) }}
+    {{ form_widget(form.tvShow) }}
+    {{ form_errors(form.tvShow) }}
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.date) }}
+    <div class="row">
+      <div class='col-md-12'>
+        {{ form_widget(form.date, {'attr': { 'autocomplete' : 'off'}}) }}
+      </div>
+    </div>
+    {{ form_errors(form.date) }}
+  </div>
+
+  {{ form_rest(form) }}
 
   <div>
     <div class="form-group">
@@ -20,9 +42,21 @@
       <a href="{{ path('admin_recordings') }}" value="Annuler" class="btn btn-default">Annuler</a>
     </div>
   </div>
-{{ form_end(form) }}
+
+  {{ form_end(form) }}
 
 {% endblock %}
 
 {% block scripts %}
+  <script src="{{ asset('assets/shared_assets/js/moment-with-locales.min.js') }}"></script>
+  <script src="{{ asset('assets/shared_assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#recording_date').datetimepicker({
+        'format': 'DD/MM/YYYY',
+        'locale' : 'fr'
+      });
+    });
+  </script>
 {% endblock %}

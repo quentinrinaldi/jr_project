@@ -112,16 +112,8 @@
 		$(document).ready(function() {
 			$('#events_calendar').DataTable({
 				"language": {
-					"lengthMenu": "Afficher _MENU_ dates par page",
-					"info": "Page _PAGE_/_PAGES_",
-					"emptyTable": "Aucune date n'est actuellement prévue",
-					"infoEmpty": "",
-					"paginate": {
-						"first":      "Première page",
-						"last":       "Dernière page",
-						"next":       "Suivant",
-						"previous":   "Précédent"
-					}
+					"url": "{{ asset('assets/shared_assets/tools/French.json') }}",
+                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission."
 				},
 				"bFilter": false,
 				"columns": [

@@ -10,8 +10,7 @@ use AdminBundle\Form\Type\FAQFormType;
 use AppBundle\Entity\QuestionAnswer;
 
 
-class FAQController extends Controller
-{
+class FAQController extends Controller {
 
   public function showFAQAction(Request $request)
   {
@@ -22,26 +21,26 @@ class FAQController extends Controller
    $questionAnswers = $repository->findAll();
 
    return $this->render('AdminBundle:FAQ:index.html.twig', array('questionAnswers' => $questionAnswers));
-  }
+ }
 
-  public function addToFAQAction(Request $request) {
-    $questionAnswer = new QuestionAnswer();
-    $form = $this->get('form.factory')->create(new FAQFormType(), $questionAnswer);
+ public function addToFAQAction(Request $request) {
+  $questionAnswer = new QuestionAnswer();
+  $form = $this->get('form.factory')->create(new FAQFormType(), $questionAnswer);
 
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($questionAnswer);
-      $em->flush();
+  $form->handleRequest($request);
+  if ($form->isSubmitted() && $form->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($questionAnswer);
+    $em->flush();
 
-      $request->getSession()->getFlashBag()->add('sucess', 'Annonce bien enregistrée.');
+    $request->getSession()->getFlashBag()->add('success', 'La question/réponse a bien été ajoutée.');
 
         // On redirige vers la page de visualisation de l'annonce nouvellement créée
-      return $this->redirect($this->generateUrl('admin_faq'));
-    }
-    else {
-      return $this->render('AdminBundle:FAQ:add.html.twig',array('form' => $form->createView(), 'questionAnswer' => $questionAnswer));
-    }
+    return $this->redirect($this->generateUrl('admin_faq'));
+  }
+  else {
+    return $this->render('AdminBundle:FAQ:add.html.twig',array('form' => $form->createView(), 'questionAnswer' => $questionAnswer));
+  }
 }
 public function removeFromFAQAction(Request $request, $id) {
   $em = $this->getDoctrine()->getManager();
@@ -49,7 +48,7 @@ public function removeFromFAQAction(Request $request, $id) {
   $em->remove($questionAnswer);
   $em->flush();
 
-  $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
+  $request->getSession()->getFlashBag()->add('success', 'La question/réponse a bien été supprimée.');
 
   return $this->redirect($this->generateUrl('admin_faq'));
 }
@@ -71,5 +70,4 @@ public function editAction(Request $request, $id) {
     return $this->render('AdminBundle:FAQ:edit.html.twig',array('form' => $form->createView(), 'questionAnswer' => $questionAnswer));
   }
 }
-
 }

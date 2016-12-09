@@ -31,14 +31,20 @@ public function showAction(Request $request, $tvshowID)
    ->getDoctrine()
    ->getManager()
    ->getRepository('AppBundle:Recording');
-   $recordings = $repository->getRecordings($tvshowID);
+   $nextRecordings = $repository->getNextRecordings($tvshowID);
+   $tvShow = $tvShowRepository->find($tvshowID);
+   return $this->render('AdminBundle:Recording:recordings.html.twig', array('nextRecordings' => $nextRecordings, 'tvShow' => $tvShow));
+ }
 
-   $tvShowRepository = $this
+ public function showHistoryAction(Request $request)
+  {
+   $repository = $this
    ->getDoctrine()
    ->getManager()
-   ->getRepository('AppBundle:TVShow');
-   $tvShow = $tvShowRepository->find($tvshowID);
-   return $this->render('AdminBundle:Recording:recordings.html.twig', array('recordings' => $recordings, 'tvShow' => $tvShow));
+   ->getRepository('AppBundle:Recording');
+   $pastRecordings = $repository->findAll();
+
+   return $this->render('AdminBundle:Recording:history.html.twig', array('pastRecordings' => $pastRecordings));
  }
 
 
@@ -53,7 +59,7 @@ public function showAction(Request $request, $tvshowID)
     $em->persist($recording);
     $em->flush();
 
-    $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
+    $request->getSession()->getFlashBag()->add('success', 'Le tournage a bien été enregistré.');
       // On redirige vers la page de visualisation de l'annonce nouvellement créée
     if ($tvshowID == null) {
       return $this->redirect($this->generateUrl('admin_recordings'));
@@ -72,7 +78,7 @@ public function removeAction(Request $request, $id) {
   $em->remove($recording);
   $em->flush();
 
-  $request->getSession()->getFlashBag()->add('success', 'Annonce bien enregistrée.');
+  $request->getSession()->getFlashBag()->add('success', 'Le tournage a bien été supprimé.');
 
   return $this->redirect($this->generateUrl('admin_recordings'));
     			// return $this->render("AdminBundle:Recording:showAll");

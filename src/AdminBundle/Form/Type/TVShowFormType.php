@@ -71,8 +71,12 @@ class TVShowFormType extends AbstractType
 
         $builder->add('description', 'ckeditor', array(
             'config_name' => 'my_config',
-            'label' => 'Description')
-        );
+            'label' => 'Description',
+            'config' => array(
+                'extraPlugins' => 'placeholder',
+            ),
+        ));
+
         $builder->add('generalInformation', 'ckeditor', array(
             'config_name' => 'my_config',
             'label' => 'Informations pratiques')

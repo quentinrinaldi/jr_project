@@ -21,7 +21,7 @@ class TVShowController extends Controller
 		->getRepository('AppBundle:TVShow');
 		$tvShows = $repository->findAll();
 
-		return $this->render('AppBundle:TVShow:home.html.twig', array('tvShows' => $tvShows));
+		return $this->render('AppBundle:TVShow:home.html.twig', array('currentTvShows' => $repository->getCurrentTvShows(), 'pastTvShows' => $repository->getPastTvShows()));
 	}
 
 	public function showAction(Request $request, $id)

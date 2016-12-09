@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use UserBundle\Entity\User as User;
 
 /**
- * @ORM\Entity
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RegistrationRequestRepository")
  * @ORM\Table(name="registration_request")
  * @ORM\HasLifecycleCallbacks
@@ -35,9 +34,9 @@ class RegistrationRequest
 	/**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
-     * @Assert\Choice(choices = {"En attente", "Validée"})
+     * @Assert\Choice(choices = {"En attente", "Validée", "Refusée"})
     */
-	protected $status;
+	protected $state;
 
 	/**
      * @ORM\Column(type="datetime")
@@ -89,12 +88,12 @@ public function setRecording($recording) {
    $this->recording->addRegistrationRequest($this);
 }
 
-public function getStatus() {
-	return $this->status;
+public function getState() {
+	return $this->state;
 }
 
-public function setStatus($status) {
-	$this->status = $status;
+public function setState($state) {
+	$this->state = $state;
 }
 
 public function getCreatedAt() {

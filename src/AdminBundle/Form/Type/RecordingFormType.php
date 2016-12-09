@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Entity\Channel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class RecordingFormType extends AbstractType
 {
@@ -24,6 +25,7 @@ class RecordingFormType extends AbstractType
         if ($recording != null) {
             $tvShowID = $builder->getData()->getTvShow(); 
         }
+        
         $builder->add('tvShow','entity', array(
             'class' => 'AppBundle:TVShow',
             'choice_label'  => 'title',
@@ -31,16 +33,22 @@ class RecordingFormType extends AbstractType
             'label'  => 'Emission',
             'multiple' => false,
             'placeholder' => 'Selectionnez une émission',
+            'required' => true
             ));
         
 
-        $builder->add('date','date', array(
-            'trim' => true,
-            'label'  => 'Date',
+        $builder->add('date',DateType::class, array(
+
+            'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy',
+            'html5' => false,
+            'label' => "Date de tournage",
             ));
+
         $builder->add('startTime','time', array(
             'trim' => true,
             'label'  => 'Heure de début',
+            'minutes' => array('0','5','10','15','20','25','30','35','40','45','50','55')
             ));
 
         $builder->add('endTime','time', array(

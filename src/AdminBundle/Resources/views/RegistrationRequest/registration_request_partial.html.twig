@@ -1,14 +1,20 @@
-<tr>
+<tr id="row-{{ regRequest.id }}">
 	<td>{{ regRequest.user.email }}</td>
 	<td>{{ regRequest.user.lastName }}</td>
 	<td>{{ regRequest.user.firstName }}</td>
 	<td>{{ regRequest.user.getAge }}</td>
 	<td>{{ regRequest.user.phoneNumber }}</td>
-	<td>{{ regRequest.user.city }}</td>
+	<td>{{ regRequest.user.city }} - {{ regRequest.user.country }}</td>
 	<td>{{ regRequest.createdAt |format_date('d/MM/Y') }}</td>
-	<td>{{ regRequest.recording.tvShow.title }}</td>
 	<td>{{ regRequest.recording.date |format_date('d MMM Y')}} {{ regRequest.recording.startTime | date('h:i')}} - {{ regRequest.recording.endTime | date('h:i') }}</td>
 	<td>{{ regRequest.peopleNumber }}</td>
-	<td>{{ regRequest.status }}</td>
-	<td><div><button type="button" class="btn btn-success accepting-button" data-button="{{ regRequest.id }}">Accepter</button><button type="button" class="btn btn-danger">Refuser</button></div></td>
+	<td>{{ regRequest.state }}</td>
+	<td>
+{# 		{% if regRequest.state == "En attente" %} #}
+		<div class="responseButtons"><button type="button" class="btn btn-success accepting-button" data-button="{{ regRequest.id }}">Accepter</button><button type="button" class="btn btn-danger">Refuser</button></div>
+{# 	{% else %}
+		<div>Réponse envoyée</div>
+	{% endif %} #}
+	</td>
+		
 </tr>

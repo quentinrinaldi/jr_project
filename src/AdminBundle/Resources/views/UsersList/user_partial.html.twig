@@ -8,8 +8,21 @@
 	<td>{{ user.phoneNumber }}</td>
 	<td>{{ user.createdAt |format_date('dd MMMM Y') }}</td>
 	<td>{% if user.enabled == 1 %} Oui {% else %} Non {% endif %}</td>
-	<td><form action="{{ path('remove_user', {'id': user.id}) }}" method="post">
-             <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+	<td>{% if (user.roles | length) == 1 %} Utilisateur {% else %} Admin {% endif %}</td>
+	<td>
+	{% if (user.roles | length) == 1 %}
+			<form action="{{ path('set_admin_role', {'id': user.id}) }}" method="post">
+             <button type="submit" name="your_name" value="your_value" class="btn-link fa fa-user-plus" title="Accorder le privilège administrateur"></button>
+        </form> 
+    {% else %}
+    	<form action="{{ path('delete_admin_role', {'id': user.id}) }}" method="post">
+             <button type="submit" name="your_name" value="your_value" class="btn-link fa fa-ban" title="Supprimer le privilège administrateur"></button>
+        </form>  
+    {% endif %}
+		<form action="{{ path('remove_user', {'id': user.id}) }}" method="post">
+             <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove" title="Supprimer l'utilisateur"></button>
         </form>   
+         
+         
     </td>
 </tr>

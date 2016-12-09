@@ -5,8 +5,10 @@
     <td>{{ recording.endTime  |format_time('H\'h\'mm')}}</td>
     <td>{{ recording.information }}</td>
     <td>{{ recording.availability }}</td>
-    <td><form action="{{ path('remove_recording', {'id': recording.id}) }}" method="post">
-                 <a href="{{path('edit_recording', {'id': recording.id}) }}" class="fa fa-edit" role="button"></a>
-                <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
-            </form>   </td>
+    <td>
+        <form action="{{ path('remove_recording', {'id': recording.id}) }}" method="post">
+            <a href="{{path('edit_recording', {'id': recording.id}) }}" class="fa fa-edit" role="button"></a>
+            <button type="submit" name="your_name" value="your_value" class="btn-link glyphicon glyphicon-remove"></button>
+        </form>   
+    </td>
 </tr>

@@ -17,19 +17,19 @@
     <link rel="stylesheet" href="{{ asset('assets/admin_website/css/metisMenu.min.css') }}" />
 
     <!-- Timeline CSS -->
-{#     <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/timeline.css') }}" /> #}
+    {#     <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/timeline.css') }}" /> #}
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin_website/css/sb-admin-2.css') }}" />
 
     <!-- Morris Charts CSS -->
-{#     <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/morrisjs/morris.css') }}" /> #}
+    {#     <link rel="stylesheet" href="{{ asset('assets/admin/bower_components/morrisjs/morris.css') }}" /> #}
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin_website/css/base.css') }}" />
-   
-        {% block stylesheets %} {% endblock %}
+
+    {% block stylesheets %} {% endblock %}
 
     </head>
 
@@ -74,13 +74,16 @@
                                         <a href="#">Aide<span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level collapse">
                                             <li>
-                                                <a href="#">Nos coordonnées</a>
+                                                <a href="{{ path('show_contact_infos') }} ">Nos coordonnées</a>
                                             </li>
                                             <li>
                                                 <a href="{{ path('admin_faq') }}">FAQ</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('show_email_template') }}">Emails</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -93,6 +96,9 @@
                                     </li>
                                     <li>
                                         <a href="{{ path('admin_registration_requests') }}">Inscriptions</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('past_recordings') }}">Anciens tournages</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -122,14 +128,15 @@
 
 
             <div id="page-wrapper">
+                {% if app.session.flashBag.has('success') %}
+                    <div class="alert alert-success text-center">
+                        {% for msg in app.session.flashBag.get('success') %}
+                            {{ msg }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <div class="container-fluid">
-                    {% if app.session.flashBag.has('success') %}
-                        <div class="alert alert-success">
-                            {% for msg in app.session.flashBag.get('success') %}
-                                {{ msg }}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
+
                     {% block body_content %}
                     {% endblock %}
 
@@ -137,21 +144,12 @@
             </div>
 
         </div>
-    
+
         <script src="{{ asset('assets/shared_assets/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/client_website/js/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('assets/shared_assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/admin_website/js/sb-admin-2.js') }}"></script>
-          <script src="{{ asset('assets/admin_website/js/metisMenu.min.js') }}"></script>
-
-        <!-- Morris Charts JavaScript -->
-    <!-- <script src="{{ asset('assets/admin/bower_components/raphael/raphael-min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bower_components/morrisjs/morris.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/morris-data.js') }}"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-
-
-    <!-- <script src="{{ asset('assets/admin_website/js/fileinput.min.js') }}"></script>-->
+        <script src="{{ asset('assets/admin_website/js/metisMenu.min.js') }}"></script>
 
 
     {% block scripts %}

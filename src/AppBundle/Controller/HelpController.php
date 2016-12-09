@@ -7,6 +7,7 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\ContactInfos as ContactInfos;
 
 class HelpController extends Controller
 {
@@ -22,7 +23,20 @@ class HelpController extends Controller
 
     public function showContactAction()
     {
-        return $this->render('AppBundle:Help:contact.html.twig',array());
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AppBundle:ContactInfos');
+        $questionAnswers = $repository->findAll();
+
+        if ($questionAnswers == null) {
+            $contactInfos = new ContactInfos();
+        }
+        else {
+            $contactInfos = $questionAnswers[0];
+        }
+
+        return $this->render('AppBundle:Help:contact.html.twig',array('contactInfos' => $contactInfos));
     }
 
     public function showLegalNoticeAction() {

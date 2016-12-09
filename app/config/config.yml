@@ -70,20 +70,20 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    # transport: gmail
-    # username:  quentind2@gmail.com
-    # password:  obiyoda023
+    transport: gmail
+    username:  quentind2@gmail.com
+    password:  obiyoda023
+    auth_mode:  login
+    delivery_address: 'quentin.rinaldi@gmail.com'
+    
+    # transport: smtp
+    # username:  test@jrproduction.tv 
+    # password:  quentin2892
+    # host:  mail.jrproduction.tv
+    # port:  25
     # spool:     { type: memory }
     # auth_mode:  login
     # delivery_address: 'quentin.rinaldi@gmail.com'
-    transport: smtp
-    username:  test@jrproduction.tv 
-    password:  quentin2892
-    host:  mail.jrproduction.tv
-    port:  25
-    spool:     { type: memory }
-    auth_mode:  login
-    delivery_address: 'quentin.rinaldi@gmail.com'
     
 #Assetic config
 assetic:
@@ -114,7 +114,7 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     resetting:
         email:
-            template: email/password_resetting_email.twig
+            template: email/email.txt.twig
         form:
             type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
             name:               fos_user_resetting_form
@@ -123,7 +123,23 @@ fos_user:
 ivory_ck_editor:
     configs:
         my_config:
-            toolbar: "standard"
+            toolbar: "my_toolbar"
+            extraPlugins: 'placeholder'
+    plugins:
+        placeholder:
+            path: '/ckeditor/plugins/placeholder/'
+            filename: 'plugin.js'
+        lineutils: 
+            path: '/ckeditor/plugins/lineutils/'
+            filename: 'plugin.js'
+        widget:
+            path: '/ckeditor/plugins/widget/'
+            filename: 'plugin.js'
+
+    toolbars:
+        configs:
+            my_toolbar: 
+                [ [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],[ 'Scayt' ], [ 'Link', 'Unlink', 'Anchor' ], [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ],[ 'Maximize' ],[ 'Source' ],'/',[ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ], [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote' ],[ 'Styles', 'Format' ],[ 'About' ] ["CreatePlaceholder"] ]
 
 vich_uploader:
     db_driver: orm 
@@ -178,6 +194,13 @@ vich_uploader:
             delete_on_remove:   true
             namer:              vich_uploader.namer_origname
         invitation:
+            uri_prefix:         /upload
+            upload_destination: %kernel.root_dir%/../web/uploads
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_origname
+        map:
             uri_prefix:         /upload
             upload_destination: %kernel.root_dir%/../web/uploads
             inject_on_load:     false

@@ -32,4 +32,32 @@ class UsersListController extends Controller
 
  		return $this->redirect($this->generateUrl('users'));
  	}
+
+ 	public function grantAdminRoleAction(Request $request, $id)
+	{
+
+		$em = $this->getDoctrine()->getManager();
+ 		$user = $em->find('UserBundle:User', $id);
+ 		$user->setRoles(array('ROLE_USER', 'ROLE_ADMIN'));
+ 		$em->flush();
+
+ 		$request->getSession()->getFlashBag()->add('success', 'L\'utilisateur '.$user->getFirstName(). " ".$user->getLastName()." a bien été promu administrateur");
+
+ 		return $this->redirect($this->generateUrl('users'));
+ 	}
+
+ 	public function deleteAdminRoleAction(Request $request, $id)
+	{
+
+		$em = $this->getDoctrine()->getManager();
+ 		$user = $em->find('UserBundle:User', $id);
+ 		$user->setRoles(array('ROLE_USER'));
+ 		$em->flush();
+
+ 		$request->getSession()->getFlashBag()->add('success', 'L\'utilisateur '.$user->getFirstName(). " ".$user->getLastName()." ne possède plus les droits administrateurs");
+
+ 		return $this->redirect($this->generateUrl('users'));
+ 	}
+
+
 }

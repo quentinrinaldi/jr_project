@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TVShowRepository")
  * @ORM\Table(name="tv_show")
  * @Vich\Uploadable 
  */
@@ -73,22 +73,22 @@ class TVShow
    protected $iconeFile;
 
      /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
     */
      protected $underageLicenseName;
 
    /**
-     * @Vich\UploadableField(mapping="underageLicense", fileNameProperty="underageLicenseName")
+     * @Vich\UploadableField(mapping="underageLicense", fileNameProperty="underageLicenseName"))
     */
    protected $underageLicenseFile;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
     */
     protected $adultLicenseName;
 
    /**
-     * @Vich\UploadableField(mapping="adultLicense", fileNameProperty="adultLicenseName")
+     * @Vich\UploadableField(mapping="adultLicense", fileNameProperty="adultLicenseName", nullable=true)
     */
    protected $adultLicenseFile;
 

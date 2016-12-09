@@ -1,0 +1,36 @@
+<div class="login_container">
+	<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request form-signin">
+		<h2 class="form-signin-heading">Mot de passe oublié</h2>
+		<div>
+		
+			<label for="username">Entrez l'adresse mail de votre compte :</label>
+			<input type="text" id="username" name="username" class="form-control username-field" required="required" />
+				{% if invalid_username is defined %}
+				<p class="text-danger">L'adresse email n'a pas été reconnu</p>
+			{% endif %}
+		</div>
+		<div>
+			<button class="btn btn-primary btn-block" type="submit" class="forgot-pswd-submit-button">Envoyer</button>
+		</div>
+	</form>
+</div>
+
+<script>
+	$('.fos_user_resetting_request').unbind();
+	$('.fos_user_resetting_request').submit(function (e) {
+		e.preventDefault();
+		$('.forgot-pswd-submit-button').addClass("disabled");
+		$.ajax({
+			type: $(this).attr('method'),
+			url: $(this).attr('action'),
+			data: $(this).serialize()
+		})
+		.done(function (data) {
+			//$('.login_container').replaceWith(data);
+			if (typeof data.message !== 'undefined') {
+				$('.error-content').replaceWith(data.message);
+			}
+
+		})
+	})
+</script>

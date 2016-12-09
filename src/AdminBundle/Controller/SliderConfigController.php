@@ -56,7 +56,7 @@ public function removeSlideAction(Request $request, $id) {
 public function switchSlideVisibiltyAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
 		$slide = $em->find('AppBundle:Slide', $id);
-		$message = $slide->getEnabled() ? "La slide a bien été masquée" : "La slide sera de nouveau visible sur la page d'accueil";
+		$message = $slide->getEnabled() ? "Le slide a bien été masqué" : "Le slide est désormais visible sur la page d'accueil";
 		$slide->switchVisibility();
 		$em->flush();
 		$request->getSession()->getFlashBag()->add('success', $message);
