@@ -1,6 +1,6 @@
 {% extends 'AdminBundle:Home:base.html.twig' %}
 
-{% block stylesheet%} 
+{% block stylesheets %} 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/adminBundle_tvShows.css') }}"/>
 {% endblock %}
 
@@ -27,7 +27,7 @@
 
                 </div>
                 <div class="panel-body">
-                 <img src="{{ asset('uploads/' ~ tvShow.iconeName) }}" class="center-block"></img> 
+                 <img src="{{ asset('uploads/' ~ tvShow.iconeName) }}" class="center-block thumbnail-img"></img> 
              </div>
          </div>
      </div>

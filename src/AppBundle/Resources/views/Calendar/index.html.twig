@@ -96,7 +96,8 @@
             var calendarTable = $('#events_calendar').dataTable({
                 "language": {
                     "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
-                    "sZeroRecords" : "Aucun tournage n'est prévu pour la date sélectionnée"
+                    "sZeroRecords" : "Aucun tournage n'est prévu pour la date sélectionnée",
+                    "sEmptyTable" : "Aucun tournage n'est prévu pour la date sélectionnée"
                 },
                 "bFilter": true,
                 "columnDefs": [

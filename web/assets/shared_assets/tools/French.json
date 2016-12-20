@@ -8,9 +8,7 @@
 	"sInfoEmpty":      "",
 	"sInfoFiltered":   "",
 	"sInfoPostFix":    "",
-	"sLoadingRecords": "Chargement en cours...",
-    
-	"sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+	"sLoadingRecords": "Chargement en cours...",    
 	"oPaginate": {
 		"sFirst":      "Premier",
 		"sPrevious":   "Pr&eacute;c&eacute;dent",

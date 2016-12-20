@@ -27,21 +27,28 @@ CKEDITOR.dialog.add( 'placeholder', function( editor ) {
 				title: generalLabel,
 				elements: [
 					// Dialog window UI elements.
+
 					{
-						id: 'name',
-						type: 'text',
-						style: 'width: 100%;',
-						label: lang.name,
-						'default': '',
-						required: true,
-						validate: CKEDITOR.dialog.validate.regex( validNameRegex, lang.invalidName ),
-						setup: function( widget ) {
-							this.setValue( widget.data.name );
-						},
-						commit: function( widget ) {
-							widget.setData( 'name', this.getValue() );
+							id : 'text',
+							type : 'select',
+							items : [ ['EMISSION'], ['DATE_TOURNAGE'],['PRENOM'],['NOM'],['DATE_DEMANDE'],['NBPLACES'] ],
+							'default': 'EMISSION',
+							style : 'width: 100%;',
+							label : lang.text,
+							required : true,
+							validate : CKEDITOR.dialog.validate.notEmpty( lang.textMissing ),
+							setup : function( element )
+							{
+								if ( isEdit )
+									this.setValue( element.getText().slice( 2, -2 ) );
+							},
+							commit : function( element )
+							{
+								var text = '[[' + this.getValue() + ']]';
+								// The placeholder must be recreated.
+								CKEDITOR.plugins.placeholder.createPlaceholder( editor, element, text );
+							}
 						}
-					}
 				]
 			}
 		]

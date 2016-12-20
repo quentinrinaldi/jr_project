@@ -48,7 +48,7 @@
   {{ form_errors(form.city) }}
   {{ form_errors(form.country) }}
 
-  {{ form_widget(form.newsletter, {'attr': {'class': 'form-control newsletter_checkbox'}}) }}
+  {{ form_widget(form.newsletter, {'attr': {'class': 'newsletter_checkbox'}}) }}
   {{ form_errors(form.newsletter) }}
 
   {{ form_widget(form.recaptcha) }}
@@ -67,7 +67,7 @@
     $('.js-datepicker').datepicker({
       changeMonth: true,
       changeYear: true,
-      format: 'dd-mm-yyyy',
+      dateFormat: 'dd/mm/yy',
       language: "fr",
       defaultDate: "-30y" ,
       maxDate: "+0d",

@@ -22,7 +22,7 @@ class ContactInfosFormType extends AbstractType
         );
 
         $builder->add('openningTimes', 'text', array(
-            'label' => 'Horraires')
+            'label' => 'Horaires')
         );
 
         $builder->add('email', 'text', array(

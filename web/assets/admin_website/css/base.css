@@ -1,5 +1,4 @@
 .panel-body > img {
-	width:100%;
 }
 
 table, th {text-align: center;}
@@ -9,4 +8,9 @@ table, th {text-align: center;}
 	position:absolute;
 	right:30px;
 	bottom:30px;
+}
+
+.thumbnail-img {
+	width:329px !important;
+	height: 219px !important;
 }

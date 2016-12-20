@@ -17,16 +17,14 @@
             <tr>
                 <th>Emission</th>
                 <th>Date</th>
-                <th>Début</th>
-                <th>Fin</th>
+                <th>Horaires</th>
                 <th>Information</th>
                 <th>Inscription</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             {% for recording in pastRecordings %}
-                {{ include('AdminBundle:Recording:recording_partial.html.twig', { 'recording' : recording }) }}
+                {{ include('AdminBundle:Recording:history_partial.html.twig', { 'recording' : recording }) }}
             {% endfor %}
         </tbody>
     </table>
@@ -41,7 +39,8 @@
             $('#past_recordings_table').DataTable({
                 "language": {
                     "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
-                    "sZeroRecords" : "Aucun tournage n'a encore été enregistré pour cette émission."
+                    "sZeroRecords" : "Aucun tournage n'a encore été enregistré pour cette émission.",
+                    "sEmptyTable" : "Aucun tournage n'a encore été enregistré pour cette émission."
                 },
                 "bFilter": true,
             });

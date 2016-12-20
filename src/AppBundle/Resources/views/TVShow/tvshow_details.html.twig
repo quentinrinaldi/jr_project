@@ -113,9 +113,16 @@
 			$('#events_calendar').DataTable({
 				"language": {
 					"url": "{{ asset('assets/shared_assets/tools/French.json') }}",
-                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission."
+                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission.",
+                    "sEmptyTable" : "Aucun tournage n'est actuellement prévu pour cette émission."
 				},
 				"bFilter": false,
+				"columnDefs": [
+                {
+                    "targets": [ 5 ],
+                    "visible": false,
+                    "searchable": false
+                }],
 				"columns": [
 					null,
 					{ "width": "8%" },
@@ -123,7 +130,8 @@
 					{ "width": "50%" },
 					null
 					],
-				"order": [[ 0, "desc" ]]
+				"order": [[ 5, "asc" ]],
+				"bSort" : false
 
 				});
 			$('.connected-register-button').click(function() {

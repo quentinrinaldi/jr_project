@@ -2,6 +2,8 @@
 
 {% block stylesheets %} 
     <link rel="stylesheet" href="{{ asset('assets/shared_assets/css/jquery.dataTables.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin_website/css/registration_request.css') }}"/>
+
 {% endblock %}
 
 {% block body_content %}
@@ -51,7 +53,8 @@
             $('#recordings_table').DataTable({
                 "language": {
                     "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
-                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission."
+                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission.",
+                    "sEmptyTable" : "Aucun tournage n'est actuellement prévu pour cette émission."
                 },
                 "bFilter": true,
 
@@ -60,10 +63,38 @@
 
             $('.accepting-button').click(function () {
                 var registrationRequestID = $(this).data('button');
+                $('.accepting-button').addClass("disabled");
+                $('.refusing-button').addClass("disabled");
+                
                 var url = "{{ path('accept_registration_request', {'registrationRequestID': 'registrationRequestIDValue'} ) }}".replace('registrationRequestIDValue', registrationRequestID)
                 $.post(url).done(function (data) {
-                    alert(data.success);
-                    $("#row-"+registrationRequestID+" .responseButtons").replaceWith("<div>Réponse envoyée</div>");
+                    if (data.success == false) {
+                        alert(data.error);
+                        $('.accepting-button').removeClass("disabled");
+                        $('.refusing-button').removeClass("disabled");
+                    }
+                    else {
+                        $("#row-"+registrationRequestID+" .responseButtons").replaceWith("<div>Réponse envoyée</div>");
+                    }
+
+                });
+            });
+
+            $('.refusing-button').click(function () {
+                var registrationRequestID = $(this).data('button');
+                $('.accepting-button').addClass("disabled");
+                $('.refusing-button').addClass("disabled");
+                
+                var url = "{{ path('refuse_registration_request', {'registrationRequestID': 'registrationRequestIDValue'} ) }}".replace('registrationRequestIDValue', registrationRequestID)
+                $.post(url).done(function (data) {
+                    if (data.success == false) {
+                        alert("Une erreur est survenue : "+data.error);
+                        $('.accepting-button').removeClass("disabled");
+                        $('.refusing-button').removeClass("disabled");
+                    }
+                    else {
+                        $("#row-"+registrationRequestID+" .responseButtons").replaceWith("<div>Réponse envoyée</div>");
+                    }
 
                 });
             });

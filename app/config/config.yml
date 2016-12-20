@@ -61,8 +61,6 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -209,5 +207,5 @@ vich_uploader:
             namer:              vich_uploader.namer_origname
 
 ewz_recaptcha:
-    public_key:  6Ld02QYUAAAAABF0yMHOEgYir0Ucl4ZHJ4dUgDdA
-    private_key: 6Ld02QYUAAAAAA4kBEenGDI2X4_07Hvv3Qg_bce_
+    public_key:  "%captcha_public%"
+    private_key: "%captcha_private%"

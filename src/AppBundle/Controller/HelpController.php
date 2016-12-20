@@ -27,13 +27,13 @@ class HelpController extends Controller
         ->getDoctrine()
         ->getManager()
         ->getRepository('AppBundle:ContactInfos');
-        $questionAnswers = $repository->findAll();
+        $contactInfosArray = $repository->findAll();
 
-        if ($questionAnswers == null) {
+        if ($contactInfosArray == null) {
             $contactInfos = new ContactInfos();
         }
         else {
-            $contactInfos = $questionAnswers[0];
+            $contactInfos = $contactInfosArray[0];
         }
 
         return $this->render('AppBundle:Help:contact.html.twig',array('contactInfos' => $contactInfos));

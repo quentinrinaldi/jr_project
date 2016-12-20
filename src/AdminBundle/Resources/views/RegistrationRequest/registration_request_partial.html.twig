@@ -6,12 +6,12 @@
 	<td>{{ regRequest.user.phoneNumber }}</td>
 	<td>{{ regRequest.user.city }} - {{ regRequest.user.country }}</td>
 	<td>{{ regRequest.createdAt |format_date('d/MM/Y') }}</td>
-	<td>{{ regRequest.recording.date |format_date('d MMM Y')}} {{ regRequest.recording.startTime | date('h:i')}} - {{ regRequest.recording.endTime | date('h:i') }}</td>
+	<td>{{ regRequest.recording.date |format_date('d MMM Y')}} {{ regRequest.recording.startTime | format_time('H\'h\'mm')}}-{{ regRequest.recording.endTime | format_time('H\'h\'mm') }}</td>
 	<td>{{ regRequest.peopleNumber }}</td>
 	<td>{{ regRequest.state }}</td>
 	<td>
 {# 		{% if regRequest.state == "En attente" %} #}
-		<div class="responseButtons"><button type="button" class="btn btn-success accepting-button" data-button="{{ regRequest.id }}">Accepter</button><button type="button" class="btn btn-danger">Refuser</button></div>
+		<div class="responseButtons"><button type="button" class="btn btn-success accepting-button" data-button="{{ regRequest.id }}">Accepter</button><button type="button" class="btn btn-danger" data-button="{{ regRequest.id }}">Refuser</button></div>
 {# 	{% else %}
 		<div>Réponse envoyée</div>
 	{% endif %} #}

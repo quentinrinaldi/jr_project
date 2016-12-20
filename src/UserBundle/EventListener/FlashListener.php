@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace UserBundle\EventListener;
+namespace FOS\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event;
@@ -60,13 +60,13 @@ class FlashListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::GROUP_CREATE_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::GROUP_DELETE_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::GROUP_EDIT_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::PROFILE_EDIT_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::REGISTRATION_COMPLETED => 'addSuccessFlash',
-            FOSUserEvents::RESETTING_RESET_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::GROUP_CREATE_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::GROUP_DELETE_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::GROUP_EDIT_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::PROFILE_EDIT_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::REGISTRATION_COMPLETED => 'addSuccessFlash',
+            // FOSUserEvents::RESETTING_RESET_COMPLETED => 'addSuccessFlash',
         );
     }
 

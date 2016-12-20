@@ -32,6 +32,12 @@ public function showAction(Request $request, $tvshowID)
    ->getManager()
    ->getRepository('AppBundle:Recording');
    $nextRecordings = $repository->getNextRecordings($tvshowID);
+
+   $tvShowRepository = $this
+   ->getDoctrine()
+   ->getManager()
+   ->getRepository('AppBundle:TVShow');
+   
    $tvShow = $tvShowRepository->find($tvshowID);
    return $this->render('AdminBundle:Recording:recordings.html.twig', array('nextRecordings' => $nextRecordings, 'tvShow' => $tvShow));
  }

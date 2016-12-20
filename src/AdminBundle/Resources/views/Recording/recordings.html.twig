@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Les prochains tournages 
-                <small> {{ tvShow.title }} </small>
+                <small> ({{ tvShow.title }}) </small>
                 <div class="action-button">
                     <a class="btn btn-primary btn-lg" role="button" href="{{path('add_recording', {'tvshowID': tvShow.id}) }}">Ajouter un tournage</a>
                     <a class="btn btn-default btn-lg" role="button" href="{{path('admin_recordings') }}">Retour</a>
@@ -20,10 +20,8 @@
     <table id="next_recordings_table" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Emission</th>
                 <th>Date</th>
-                <th>Début</th>
-                <th>Fin</th>
+                <th>Horaires</th>
                 <th>Information</th>
                 <th>Inscription</th>
                 <th>Action</th>
@@ -45,14 +43,13 @@
             $('#next_recordings_table').DataTable({
                 "language": {
                     "url": "{{ asset('assets/shared_assets/tools/French.json') }}",
-                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission."
+                    "sZeroRecords" : "Aucun tournage n'est actuellement prévu pour cette émission.",
+                    "sEmptyTable" : "Aucun tournage n'est actuellement prévu pour cette émission."
                 },
                 "bFilter": true,
                  "columns": [
                     null,
-                    null,
-                    { "width": "6%" },
-                    { "width": "6%" },
+                    { "width": "11%" },
                     { "width": "40%" },
                     null,
                     null
