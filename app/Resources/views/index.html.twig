@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body_content %}
-  <div class="header-slides">
+  <div class="slides-container">
    <div class="slide-class">
 
     {% for slide in slides %}
@@ -174,7 +174,7 @@
 
 
       $('.slide-class').slick({
-        autoplay: true,
+        autoplay: false,
         infinite: true,
         speed: 500,
       //  fade: true,

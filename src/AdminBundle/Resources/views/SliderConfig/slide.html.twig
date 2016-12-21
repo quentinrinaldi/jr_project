@@ -13,10 +13,10 @@
         </div>
         <div class="panel-footer center-block">
             <form action="{{ path('switch_slide_visibility', {'id': slide.id}) }}" method="post" class="channel-button">
-             <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %} Masquer la slide {% else %}Afficher la slide {% endif %}</button>
+             <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %} Masquer{% else %}Afficher{% endif %}</button>
             </form>   
             <form action="{{ path('remove_slide', {'id': slide.id}) }}" method="post" class="channel-button">
-              <button class="btn btn-primary btn-sm" role="button">Supprimer la slide</button>
+              <button class="btn btn-primary btn-sm" role="button">Supprimer</button>
             </form>
         </div>
     </div>

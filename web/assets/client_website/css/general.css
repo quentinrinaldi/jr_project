@@ -14,8 +14,7 @@ html > * {
 	display:inline-block !important;*/
 	width:98%;
 	position: relative;
-
-margin: 0 auto;
+	margin: 0 auto;
 }
 
 .slide-class img {
@@ -29,10 +28,12 @@ margin: 0 auto;
 	height:250px;
 }
 
-.header-slides {
+.slides-container {
 	/*background-color: rgba(66,139,202,0.8); */
 	background-color: #eee;
 	color:rgba(66,139,202,1);
+	height:400px;
+	display: flex; align-items:center
 /*	display:flex;
 */
 
@@ -66,4 +67,10 @@ table, th {text-align: center;}
 
 .slide-img {
 	height:300px;
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+}
+
+.slick-slide {
+display: flex; align-items:center
 }
