@@ -9,7 +9,7 @@
             {% endif %}
         </div>
         <div class="panel-body">
-            <img src="{{ asset('slides/' ~ slide.fileName) }}" class="thumbnail-img"></img>
+            <img src="{{ asset('slides/' ~ slide.fileName) }}" class="thumbnail-img "></img>
         </div>
         <div class="panel-footer center-block">
             <form action="{{ path('switch_slide_visibility', {'id': slide.id}) }}" method="post" class="channel-button">

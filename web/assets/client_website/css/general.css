@@ -15,18 +15,13 @@ html > * {
 	width:98%;
 	position: relative;
 	margin: 0 auto;
+	margin-top: 25px;
 }
 
 .slide-class img {
 	margin:0 30px;
+}
 
-}
-.jumbotron {
-	display:inline-block !important;
-	width:55%;
-	margin: auto !important;
-	height:250px;
-}
 
 .slides-container {
 	/*background-color: rgba(66,139,202,0.8); */
@@ -66,11 +61,9 @@ html > * {
 table, th {text-align: center;}
 
 .slide-img {
-	height:300px;
-  width: auto;
-  margin: 0 auto; /* it centers any block level element */
+  width: 90%;
 }
 
-.slick-slide {
+/*.slick-slide {
 display: flex; align-items:center
-}
+}*/
