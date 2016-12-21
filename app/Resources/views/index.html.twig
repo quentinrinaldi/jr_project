@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %} 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/index.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick-theme.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/index.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/client_website/css/slick-theme.css') }}"/>
 {% endblock %}
 
 {% block body_content %}
@@ -11,13 +11,9 @@
    <div class="slide-class">
 
     {% for slide in slides %}
-      <img class="logo" src="{{ asset('slides/' ~ slide.fileName) }}"></img>
+      <div><img class="slide-img" src="{{ asset('slides/' ~ slide.fileName) }}"></img></div>
     {% endfor %}
-    
 
-  </div>
-  <div class="jumbotron">
-    <h1 class="jumbotron-content">Bienvenue chez JR Production</h1>
   </div>
 </div>
 
@@ -28,7 +24,7 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header" style="text-align:center">
-       Venez assistez à nos émissions !
+       Venez assister à nos émissions !
        
      </h1>
    </div>
@@ -59,7 +55,7 @@
       <div class="panel-body">
         <h4>Choisissez votre émission</h4>
         <p>Allez-y, cherchez, il y en a forcément une pour vous !</p>
-         <br />
+        <br />
         <a class="btn btn-primary" href="{{ path('tvshows') }}">Les émissions</a>
       </div>
     </div>
@@ -67,61 +63,61 @@
   <div class="col-md-4">
     <div class="panel panel-default text-center">
       <div class="panel-heading">
-         <span class="fa-stack fa-5x">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
-        </span>
-      </div>
-      <div class="panel-body">
-        <h4>Nous nous occupons de tout !</h4>
-        <p>Nous prenons contact avec vous pour vous confirmer la réservation.</p>
-         <br />
-        <a class="btn btn-primary" href="#">Mes réservations</a>
-      </div>
+       <span class="fa-stack fa-5x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
+      </span>
+    </div>
+    <div class="panel-body">
+      <h4>Nous nous occupons de tout !</h4>
+      <p>Nous prenons contact avec vous pour vous confirmer la réservation.</p>
+      <br />
+      <a class="btn btn-primary" href="#">Mes réservations</a>
     </div>
   </div>
+</div>
 </div>
 <!-- /.row -->
 
 <!-- Portfolio Section -->
 <div class="container-fluid">
-<div class="row">
-  <div class="col-lg-12">
-    <h2 class="page-header">Vos émissions préférées</h2>
-  </div>
-  {% for tvShow in tvShows %}
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">Vos émissions préférées</h2>
+    </div>
+    {% for tvShow in tvShows %}
+      <div class="col-md-4 col-sm-6">
+        <a href="{{ path('show_tvshow', {id: tvShow.id}) }}">
+          <img class="img-responsive img-portfolio img-hover" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
+        </a>
+      </div>
+    {% endfor %}
     <div class="col-md-4 col-sm-6">
-    <a href="{{ path('show_tvshow', {id: tvShow.id}) }}">
-      <img class="img-responsive img-portfolio img-hover" src="{{ asset('uploads/' ~ tvShow.imageName) }}" alt="">
-    </a>
+      <a href="portfolio-item.html">
+        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="portfolio-item.html">
+        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="portfolio-item.html">
+        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="portfolio-item.html">
+        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="portfolio-item.html">
+        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
+      </a>
+    </div>
   </div>
-  {% endfor %}
-  <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <a href="portfolio-item.html">
-      <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/600x350" alt="">
-    </a>
-  </div>
-</div>
 </div>
 <!-- /.row -->
 
@@ -145,7 +141,7 @@
   </div>
   <div class="col-md-6">
     <img class="img-responsive" src="http://placehold.it/700x350" alt="">
-</div>
+  </div>
 </div>
 <!-- /.row -->
 
@@ -175,28 +171,24 @@
   <script src="{{ asset('assets/client_website/js/typed.min.js') }}"></script>
   <script>
     $(function(){
- /*     $(".jumbotron-content").typed({
-        strings: ["Ne regardez plus la tv<br>^3000Vivez-là !!!!!!^3000"],
-        typeSpeed: 200,
-        showCursor: true,
-        cursorChar: "|",
-        contentType: 'html',
-        loop:true,
-        countLoop:false
-      });*/
+
 
       $('.slide-class').slick({
-       autoplay: true,
-       infinite: true,
-       speed: 500,
-       fade: true,
-       cssEase: 'linear',
-       centerMode: true,
-       dots: true,
-       pauseOnHover:true
-
-
-     });
+        autoplay: true,
+        infinite: true,
+        speed: 500,
+      //  fade: true,
+        cssEase: 'linear',
+      //  centerMode: true,
+        dots: true,
+      //  pauseOnHover:true,
+      //  slidesToShow: 3,
+      // centerPadding: '60px'
+      centerMode: true,
+      centerPadding: '50px',
+      slidesToShow: 3,
+      variableWidth: false
+    });
 
     });
   </script>

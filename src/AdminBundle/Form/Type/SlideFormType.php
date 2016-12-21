@@ -31,7 +31,7 @@ class SlideFormType extends AbstractType
             'trim' => true,
             'label'  => 'Illustration',
             'attr' => array('class' => 'file', 'data-show-upload'=>'false'),
-            'required' => false
+            'required' => true
             ));
     	}
     }

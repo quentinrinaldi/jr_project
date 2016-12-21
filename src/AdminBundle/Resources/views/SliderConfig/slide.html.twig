@@ -1,4 +1,4 @@
-<div class="col-lg-4">
+<div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
             {{ slide.tvShow.title }} 
@@ -9,9 +9,9 @@
             {% endif %}
         </div>
         <div class="panel-body">
-            <img src="{{ asset('slides/' ~ slide.fileName) }}"></img>
+            <img src="{{ asset('slides/' ~ slide.fileName) }}" class="thumbnail-img"></img>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer center-block">
             <form action="{{ path('switch_slide_visibility', {'id': slide.id}) }}" method="post" class="channel-button">
              <button type='submit' class="btn btn-primary btn-sm" role="button">{% if slide.enabled %} Masquer la slide {% else %}Afficher la slide {% endif %}</button>
             </form>   
